@@ -9,6 +9,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import static com.example.cruisecompany.dao.SQLRequests.*;
+
 public class UserCruiseDAO {
 
     private final DBCPDataSource dataSource = DBCPDataSource.getInstance();
@@ -16,11 +18,11 @@ public class UserCruiseDAO {
     public void create(UserCruise userCruise){
         try(Connection connection = dataSource.getConnection();){
 
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO \"user_cruise\" (cabin_number, cruise_id, user_id, status_id) VALUES (?,?,?,?)");
+            PreparedStatement preparedStatement = connection.prepareStatement(CREATE_USERCRUISE);
 
             preparedStatement.setInt(1,userCruise.getCabinNumber());
-            preparedStatement.setInt(2, Math.toIntExact(userCruise.getCruise().getCruiseId()));
-            preparedStatement.setInt(3,userCruise.getUser().getRoleId());
+            preparedStatement.setInt(2,Math.toIntExact(userCruise.getCruise().getId()));
+            preparedStatement.setInt(3, Math.toIntExact(userCruise.getUser().getId()));
             preparedStatement.setInt(4,userCruise.getStatusId());
 
             preparedStatement.execute();
@@ -34,7 +36,7 @@ public class UserCruiseDAO {
     public UserCruise read(Integer ticket_id ){
         try(Connection connection = dataSource.getConnection();) {
 
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT cabin_number, cruise_id, user_id, status_id FROM \"user_cruise\" WHERE ticket_id = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement(READ_USERCRUISE);
 
             preparedStatement.setLong(1,ticket_id);
 
@@ -48,11 +50,11 @@ public class UserCruiseDAO {
     public void update(UserCruise userCruise){
         try(Connection connection = dataSource.getConnection();){
 
-            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE \"user_cruise\" SET cabin_number = ?, cruise_id = ?, user_id = ?, status_id = ? WHERE ticket_id = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_USERCRUISE);
 
             preparedStatement.setInt(1,userCruise.getCabinNumber());
-            preparedStatement.setInt(2, Math.toIntExact(userCruise.getCruise().getCruiseId()));
-            preparedStatement.setInt(3,userCruise.getUser().getRoleId());
+            preparedStatement.setInt(2,Math.toIntExact(userCruise.getCruise().getId()));
+            preparedStatement.setInt(3, Math.toIntExact(userCruise.getUser().getId()));
             preparedStatement.setInt(4,userCruise.getStatusId());
 
             preparedStatement.execute();
@@ -65,7 +67,7 @@ public class UserCruiseDAO {
     public void delete(UserCruise userCruise){
         try(Connection connection = dataSource.getConnection();){
 
-            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM \"user_cruise\" WHERE ticket_id = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement(DELETE_USERCRUISE);
 
             preparedStatement.execute();
 

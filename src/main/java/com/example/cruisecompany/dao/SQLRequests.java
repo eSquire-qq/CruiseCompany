@@ -1,0 +1,22 @@
+package com.example.cruisecompany.dao;
+
+public class SQLRequests {
+
+    public static final String CREAT_USER = "INSERT INTO \"user\" (name, surname, phone_number, role_id) VALUES (?,?,?,?)";
+    public static final String READ_USER = "SELECT name, surname, phone_number, role_id FROM \"user\" WHERE id = ?";
+    public static final String UPDATE_USER = "UPDATE \"user\" SET name = ?, surname = ?, phone_number = ?, role_id = ? WHERE passenger_id = ?";
+    public static final String DELETE_USER = "DELETE FROM \"user\" WHERE id = ?";
+
+
+    public static final String CREAT_CRUISE = "INSERT INTO \"cruise\" (duration, price, cruise_start_date, cruise_end_date, cruise_liner_name,passenger_capacity,status)\" +\n" +
+            "                                 \" VALUES (?,?,?,?,?,?,?)";
+    public static final String READ_CRUISE = "SELECT duration, price, cruise_start_date, cruise_end_date, cruise_liner_name,passenger_capacity,status FROM \"cruise\" WHERE id = ?";
+    public static final String UPDATE_CRUISE = "UPDATE \"cruise\" SET duration = ?, price = ?, cruise_start_date = ?, cruise_end_date = ?, cruise_liner_name = ?, passenger_capacity = ?,status = ? WHERE id = ? ";
+    public static final String DELETE_CRUISE = "DELETE FROM \"cruise\" WHERE id = ?";
+
+    public static final String CREATE_USERCRUISE = "INSERT INTO \"user_cruise\" (ticket_id, cabinNumber, cruise_id, user_id, status_id ) VALUES (?,?,?,?,?)";
+    public static final String READ_USERCRUISE = "SELECT cabinNumber, cruise_id, user_id, status_id FROM \"user_cruise\" WHERE ticket_id = ?";
+    public static final String UPDATE_USERCRUISE = "UPDATE \"user_cruise\" SET cabin_number = ?, cruise_id = ?, user_id = ?, status_id = ? WHERE ticket_id = ?";
+    public static final String DELETE_USERCRUISE = "DELETE FROM \"user_cruise\" WHERE ticket_id = ?";
+
+}

@@ -9,6 +9,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Time;
+import java.util.Optional;
+
+import static com.example.cruisecompany.dao.SQLRequests.*;
 
 public class CruiseDAO {
 
@@ -17,11 +20,7 @@ public class CruiseDAO {
     public void create(Cruise cruise){
         try(Connection connection = dataSource.getConnection();){
 
-            PreparedStatement preparedStatement = connection.prepareStatement(" INSERT INTO \"cruise\" (duration, price, cruise_start_date, cruise_end_date, cruise_liner_name,passenger_capacity,status)" +
-                                                                                 " VALUES (?,?,?,?,?,?,?)");
-            preparedStatement.setTime(1, (Time) cruise.getCruiseStartDate());
-            preparedStatement.setTime(1, (Time) cruise.getCruiseEndDate());
-
+            PreparedStatement preparedStatement = connection.prepareStatement(READ_CRUISE);
 
             preparedStatement.execute();
 
@@ -31,19 +30,46 @@ public class CruiseDAO {
 
     }
 
-    public UserCruise read(int cruise_id){
+    public Optional<Cruise> read(int id){
+
+        Cruise cruise = null;
+
         try(Connection connection = dataSource.getConnection();) {
 
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO \"cruise\" (duration, price, cruise_start_date, cruise_end_date, cruise_liner_name,passenger_capacity,status) WHERE cruise_id = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement(READ_CRUISE);
 
-            preparedStatement.setLong(1,cruise_id);
+            preparedStatement.setLong(1,id);
+            preparedStatement.executeQuery();
 
         }catch (SQLException e){
             e.printStackTrace();
         }
 
-        return null;
+        return Optional.ofNullable(cruise);
     }
 
+    public void update(Cruise cruise){
+        try(Connection connection = dataSource.getConnection();){
+
+            PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_CRUISE);
+
+            preparedStatement.executeUpdate();
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void delete(Cruise cruise){
+        try(Connection connection = dataSource.getConnection();){
+
+            PreparedStatement preparedStatement = connection.prepareStatement(DELETE_CRUISE);
+
+            preparedStatement.executeUpdate();
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
 
 }

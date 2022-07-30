@@ -2,21 +2,32 @@ package com.example.cruisecompany.entity;
 
 import java.util.Objects;
 
+// Змінити в інших класах на UserRole
+// Створити клас з SQL запросами
+// Замінити класи на послідовність полів(як в БД)
+
 public class User {
 
+    private Long id;
     private String name;
     private String surname;
     private String phoneNumber;
-    private UserRole roleId; // Змінити в інших класах на UserRole
-    private Long id;
-    // Створити клас з SQL запросами
-    // Замінити класи на послідовність полів(як в БД)
-    public User(String name, String surname, String phoneNumber, Integer roleId, Long passengerId) {
+    private UserRole roleId;
+
+    public User(Long id, String name, String surname, String phoneNumber, UserRole roleId) {
+        this.id = id;
         this.name = name;
         this.surname = surname;
         this.phoneNumber = phoneNumber;
         this.roleId = roleId;
-        this.id = passengerId;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -43,30 +54,22 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public Integer getRoleId() {
+    public UserRole getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(Integer roleId) {
+    public void setRoleId(UserRole roleId) {
         this.roleId = roleId;
-    }
-
-    public Long getPassengerId() {
-        return id;
-    }
-
-    public void setPassengerId(Long passengerId) {
-        this.id = passengerId;
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", roleId=" + roleId +
-                ", passengerId=" + id +
                 '}';
     }
 
@@ -75,11 +78,11 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(name, user.name) && Objects.equals(surname, user.surname) && Objects.equals(phoneNumber, user.phoneNumber) && Objects.equals(roleId, user.roleId) && Objects.equals(id, user.id);
+        return Objects.equals(id, user.id) && Objects.equals(name, user.name) && Objects.equals(surname, user.surname) && Objects.equals(phoneNumber, user.phoneNumber) && roleId == user.roleId;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, surname, phoneNumber, roleId, id);
+        return Objects.hash(id, name, surname, phoneNumber, roleId);
     }
 }
