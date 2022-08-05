@@ -3,5 +3,11 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/AddCruise.jsp" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/AddUser.jsp" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/AddUserCruise.jsp" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/Style.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/web" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/test/java/tests/UserDAOTest.java" charset="windows-1251" />
   </component>
 </project>

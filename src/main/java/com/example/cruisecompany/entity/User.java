@@ -1,25 +1,26 @@
 package com.example.cruisecompany.entity;
 
 import java.util.Objects;
-
-// Змінити в інших класах на UserRole
-// Створити клас з SQL запросами
-// Замінити класи на послідовність полів(як в БД)
-
 public class User {
 
     private Long id;
     private String name;
     private String surname;
     private String phoneNumber;
-    private UserRole roleId;
+    private UserRole role;
+    private String password;
 
-    public User(Long id, String name, String surname, String phoneNumber, UserRole roleId) {
+    public User(Long id, String name, String surname, String phoneNumber, UserRole role, String password) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.phoneNumber = phoneNumber;
-        this.roleId = roleId;
+        this.role = role;
+        this.password = password;
+    }
+
+    public User() {
+
     }
 
     public Long getId() {
@@ -54,12 +55,20 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public UserRole getRoleId() {
-        return roleId;
+    public UserRole getRole() {
+        return role;
     }
 
-    public void setRoleId(UserRole roleId) {
-        this.roleId = roleId;
+    public void setRole(UserRole role) {
+        this.role = role;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
@@ -69,7 +78,8 @@ public class User {
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
-                ", roleId=" + roleId +
+                ", role=" + role +
+                ", password='" + password + '\'' +
                 '}';
     }
 
@@ -78,11 +88,11 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(id, user.id) && Objects.equals(name, user.name) && Objects.equals(surname, user.surname) && Objects.equals(phoneNumber, user.phoneNumber) && roleId == user.roleId;
+        return Objects.equals(id, user.id) && Objects.equals(name, user.name) && Objects.equals(surname, user.surname) && Objects.equals(phoneNumber, user.phoneNumber) && role == user.role && Objects.equals(password, user.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, surname, phoneNumber, roleId);
+        return Objects.hash(id, name, surname, phoneNumber, role, password);
     }
 }

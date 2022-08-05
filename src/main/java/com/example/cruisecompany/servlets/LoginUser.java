@@ -1,47 +1,46 @@
 package com.example.cruisecompany.servlets;
 
 import com.example.cruisecompany.dao.UserDAO;
-import com.example.cruisecompany.entity.UserRole;
+import com.example.cruisecompany.dao.UserLoginDAO;
+import com.example.cruisecompany.entity.User;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
+import javax.ws.rs.core.Response;
 import java.io.IOException;
+import java.sql.SQLException;
 
-import com.example.cruisecompany.entity.User;
+import static java.lang.System.out;
 
-@WebServlet(name = "AddNewUser", value = "/AddNewUser")
-public class AddNewUser extends HttpServlet {
+@WebServlet(name = "LoginUser", value = "/LoginUser")
+public class LoginUser extends HttpServlet {
 
-     UserDAO userDAO = UserDAO.getUserInstance();
+    public LoginUser() {
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        response.sendRedirect("index.jsp");
+
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        String name = request.getParameter("name");
-        String surname = request.getParameter("surname");
+        try {
         String phoneNumber = request.getParameter("phoneNumber");
-        UserRole role = UserRole.USER;
         String password = request.getParameter("password");
 
-        User user = new User();
+        if(UserLoginDAO.DataVerification(phoneNumber,password)){
+            response.sendRedirect("index.jsp");
+        }
 
-        user.setName(name);
-        user.setSurname(surname);
-        user.setPhoneNumber(phoneNumber);
-        user.setRole(role);
-        user.setPassword(password);
+        response.sendRedirect("LoginUser.jsp");
 
-        try {
-            userDAO.create(user);
-        } catch (Exception e) {
+        } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
 
     }
-
 }

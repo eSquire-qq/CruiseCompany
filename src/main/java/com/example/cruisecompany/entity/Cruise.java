@@ -8,20 +8,20 @@ public class Cruise {
     private Long id;
     private Integer duration;
     private Double price;
-    private Date cruise_start_date;
-    private Date cruise_end_date;
-    private String cruise_liner_name;
-    private Integer passenger_capacity;
+    private Date cruiseStartDate;
+    private Date cruiseEndDate;
+    private String cruiseLinerName;
+    private Integer passengerCapacity;
     private CruiseStatus status;
 
-    public Cruise(Long id, Integer duration, Double price, Date cruise_start_date, Date cruise_end_date, String cruise_liner_name, Integer passenger_capacity, CruiseStatus status) {
+    public Cruise(Long id, Integer duration, Double price, Date cruiseStartDate, Date cruiseEndDate, String cruiseLinerName, Integer passengerCapacity, CruiseStatus status) {
         this.id = id;
         this.duration = duration;
         this.price = price;
-        this.cruise_start_date = cruise_start_date;
-        this.cruise_end_date = cruise_end_date;
-        this.cruise_liner_name = cruise_liner_name;
-        this.passenger_capacity = passenger_capacity;
+        this.cruiseStartDate = cruiseStartDate;
+        this.cruiseEndDate = cruiseEndDate;
+        this.cruiseLinerName = cruiseLinerName;
+        this.passengerCapacity = passengerCapacity;
         this.status = status;
     }
 
@@ -49,36 +49,36 @@ public class Cruise {
         this.price = price;
     }
 
-    public Date getCruise_start_date() {
-        return cruise_start_date;
+    public Date getCruiseStartDate() {
+        return cruiseStartDate;
     }
 
-    public void setCruise_start_date(Date cruise_start_date) {
-        this.cruise_start_date = cruise_start_date;
+    public void setCruiseStartDate(Date cruiseStartDate) {
+        this.cruiseStartDate = cruiseStartDate;
     }
 
-    public Date getCruise_end_date() {
-        return cruise_end_date;
+    public Date getCruiseEndDate() {
+        return cruiseEndDate;
     }
 
-    public void setCruise_end_date(Date cruise_end_date) {
-        this.cruise_end_date = cruise_end_date;
+    public void setCruiseEndDate(Date cruiseEndDate) {
+        this.cruiseEndDate = cruiseEndDate;
     }
 
-    public String getCruise_liner_name() {
-        return cruise_liner_name;
+    public String getCruiseLinerName() {
+        return cruiseLinerName;
     }
 
-    public void setCruise_liner_name(String cruise_liner_name) {
-        this.cruise_liner_name = cruise_liner_name;
+    public void setCruiseLinerName(String cruiseLinerName) {
+        this.cruiseLinerName = cruiseLinerName;
     }
 
-    public Integer getPassenger_capacity() {
-        return passenger_capacity;
+    public Integer getPassengerCapacity() {
+        return passengerCapacity;
     }
 
-    public void setPassenger_capacity(Integer passenger_capacity) {
-        this.passenger_capacity = passenger_capacity;
+    public void setPassengerCapacity(Integer passengerCapacity) {
+        this.passengerCapacity = passengerCapacity;
     }
 
     public CruiseStatus getStatus() {
@@ -95,10 +95,10 @@ public class Cruise {
                 "id=" + id +
                 ", duration=" + duration +
                 ", price=" + price +
-                ", cruise_start_date=" + cruise_start_date +
-                ", cruise_end_date=" + cruise_end_date +
-                ", cruise_liner_name='" + cruise_liner_name + '\'' +
-                ", passenger_capacity=" + passenger_capacity +
+                ", cruiseStartDate=" + cruiseStartDate +
+                ", cruiseEndDate=" + cruiseEndDate +
+                ", cruiseLinerName='" + cruiseLinerName + '\'' +
+                ", passengerCapacity=" + passengerCapacity +
                 ", status=" + status +
                 '}';
     }
@@ -108,11 +108,11 @@ public class Cruise {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Cruise cruise = (Cruise) o;
-        return Objects.equals(id, cruise.id) && Objects.equals(duration, cruise.duration) && Objects.equals(price, cruise.price) && Objects.equals(cruise_start_date, cruise.cruise_start_date) && Objects.equals(cruise_end_date, cruise.cruise_end_date) && Objects.equals(cruise_liner_name, cruise.cruise_liner_name) && Objects.equals(passenger_capacity, cruise.passenger_capacity) && status == cruise.status;
+        return Objects.equals(id, cruise.id) && Objects.equals(duration, cruise.duration) && Objects.equals(price, cruise.price) && Objects.equals(cruiseStartDate, cruise.cruiseStartDate) && Objects.equals(cruiseEndDate, cruise.cruiseEndDate) && Objects.equals(cruiseLinerName, cruise.cruiseLinerName) && Objects.equals(passengerCapacity, cruise.passengerCapacity) && status == cruise.status;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, duration, price, cruise_start_date, cruise_end_date, cruise_liner_name, passenger_capacity, status);
+        return Objects.hash(id, duration, price, cruiseStartDate, cruiseEndDate, cruiseLinerName, passengerCapacity, status);
     }
 }

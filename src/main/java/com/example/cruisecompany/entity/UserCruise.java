@@ -4,26 +4,26 @@ import java.util.Objects;
 
 public class UserCruise {
 
-    private Long ticket_id;
+    private Long ticketId;
     private Integer cabinNumber;
     private Cruise cruise;
     private User user;
     private Integer statusId;
 
-    public UserCruise(Long ticket_id, Integer cabinNumber, Cruise cruise, User user, Integer statusId) {
-        this.ticket_id = ticket_id;
+    public UserCruise(Long ticketId, Integer cabinNumber, Cruise cruise, User user, Integer statusId) {
+        this.ticketId = ticketId;
         this.cabinNumber = cabinNumber;
         this.cruise = cruise;
         this.user = user;
         this.statusId = statusId;
     }
 
-    public Long getTicket_id() {
-        return ticket_id;
+    public Long getTicketId() {
+        return ticketId;
     }
 
-    public void setTicket_id(Long ticket_id) {
-        this.ticket_id = ticket_id;
+    public void setTicketId(Long ticketId) {
+        this.ticketId = ticketId;
     }
 
     public Integer getCabinNumber() {
@@ -61,7 +61,7 @@ public class UserCruise {
     @Override
     public String toString() {
         return "UserCruise{" +
-                "ticket_id=" + ticket_id +
+                "ticket_id=" + ticketId +
                 ", cabinNumber=" + cabinNumber +
                 ", cruise=" + cruise +
                 ", user=" + user +
@@ -74,11 +74,11 @@ public class UserCruise {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserCruise that = (UserCruise) o;
-        return Objects.equals(ticket_id, that.ticket_id) && Objects.equals(cabinNumber, that.cabinNumber) && Objects.equals(cruise, that.cruise) && Objects.equals(user, that.user) && Objects.equals(statusId, that.statusId);
+        return Objects.equals(ticketId, that.ticketId) && Objects.equals(cabinNumber, that.cabinNumber) && Objects.equals(cruise, that.cruise) && Objects.equals(user, that.user) && Objects.equals(statusId, that.statusId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(ticket_id, cabinNumber, cruise, user, statusId);
+        return Objects.hash(ticketId, cabinNumber, cruise, user, statusId);
     }
 }

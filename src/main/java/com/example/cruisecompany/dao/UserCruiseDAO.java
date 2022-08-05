@@ -1,24 +1,31 @@
 package com.example.cruisecompany.dao;
 
 import com.example.cruisecompany.database.DBCPDataSource;
-import com.example.cruisecompany.entity.User;
 import com.example.cruisecompany.entity.UserCruise;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import static com.example.cruisecompany.dao.SQLRequests.*;
+import static com.example.cruisecompany.database.SQLRequests.*;
 
 public class UserCruiseDAO {
+
+    private UserCruiseDAO(){
+
+    }
+
+    private static final UserCruiseDAO USER_CRUISE_INSTANCE = new UserCruiseDAO();
+
+    static UserCruiseDAO getUserCruiseInstance(){
+        return USER_CRUISE_INSTANCE;
+    }
 
     private final DBCPDataSource dataSource = DBCPDataSource.getInstance();
 
     public void create(UserCruise userCruise){
-        try(Connection connection = dataSource.getConnection();){
-
-            PreparedStatement preparedStatement = connection.prepareStatement(CREATE_USERCRUISE);
+        try(Connection connection = dataSource.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(CREATE_USER_CRUISE)){
 
             preparedStatement.setInt(1,userCruise.getCabinNumber());
             preparedStatement.setInt(2,Math.toIntExact(userCruise.getCruise().getId()));
@@ -33,12 +40,11 @@ public class UserCruiseDAO {
 
     }
 
-    public UserCruise read(Integer ticket_id ){
-        try(Connection connection = dataSource.getConnection();) {
+    public UserCruise read(Integer ticketId ){
+        try(Connection connection = dataSource.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(READ_USER_CRUISE)){
 
-            PreparedStatement preparedStatement = connection.prepareStatement(READ_USERCRUISE);
-
-            preparedStatement.setLong(1,ticket_id);
+            preparedStatement.setLong(1,ticketId);
 
         }catch (SQLException e){
             e.printStackTrace();
@@ -48,9 +54,8 @@ public class UserCruiseDAO {
     }
 
     public void update(UserCruise userCruise){
-        try(Connection connection = dataSource.getConnection();){
-
-            PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_USERCRUISE);
+        try(Connection connection = dataSource.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_USER_CRUISE)){
 
             preparedStatement.setInt(1,userCruise.getCabinNumber());
             preparedStatement.setInt(2,Math.toIntExact(userCruise.getCruise().getId()));
@@ -65,9 +70,8 @@ public class UserCruiseDAO {
     }
 
     public void delete(UserCruise userCruise){
-        try(Connection connection = dataSource.getConnection();){
-
-            PreparedStatement preparedStatement = connection.prepareStatement(DELETE_USERCRUISE);
+        try(Connection connection = dataSource.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(DELETE_USER_CRUISE)){
 
             preparedStatement.execute();
 

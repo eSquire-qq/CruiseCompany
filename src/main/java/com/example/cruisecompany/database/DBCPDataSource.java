@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public class DBCPDataSource { // Connection connection = DBCPDataSource.getConnection();
+public class DBCPDataSource {
 
     private static final Logger logger = LoggerFactory.getLogger(DBCPDataSource.class);
 
@@ -19,7 +19,7 @@ public class DBCPDataSource { // Connection connection = DBCPDataSource.getConne
         try {
             return dataSource.getConnection();
         } catch (SQLException e) {
-            logger.error("Connection successfully", e);
+            logger.info("Connection successfully", e);
             return dataSource.getConnection();
         }
 
@@ -37,4 +37,5 @@ public class DBCPDataSource { // Connection connection = DBCPDataSource.getConne
         dataSource.setMaxIdle(10);
         dataSource.setMaxOpenPreparedStatements(100);
     }
+
 }

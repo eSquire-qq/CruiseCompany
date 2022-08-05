@@ -2,27 +2,40 @@ package com.example.cruisecompany.dao;
 
 import com.example.cruisecompany.database.DBCPDataSource;
 import com.example.cruisecompany.entity.Cruise;
-import com.example.cruisecompany.entity.User;
-import com.example.cruisecompany.entity.UserCruise;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Time;
+import java.sql.*;
 import java.util.Optional;
 
-import static com.example.cruisecompany.dao.SQLRequests.*;
+import static com.example.cruisecompany.database.SQLRequests.*;
 
 public class CruiseDAO {
+
+    private CruiseDAO(){
+
+    }
+
+    private static final CruiseDAO CRUISE_INSTANCE = new CruiseDAO();
+
+    static CruiseDAO getCruiseInstance(){
+        return CRUISE_INSTANCE;
+    }
 
     private final DBCPDataSource dataSource = DBCPDataSource.getInstance();
 
     public void create(Cruise cruise){
-        try(Connection connection = dataSource.getConnection();){
+        try(Connection connection = dataSource.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(CREAT_CRUISE)){
 
-            PreparedStatement preparedStatement = connection.prepareStatement(READ_CRUISE);
+            preparedStatement.setInt(1,cruise.getDuration());
+            preparedStatement.setDouble(2,cruise.getPrice());
+            preparedStatement.setDate(3, (Date) cruise.getCruiseStartDate());
+            preparedStatement.setDate(4, (Date) cruise.getCruiseEndDate());
+            preparedStatement.setString(5,cruise.getCruiseLinerName());
+            preparedStatement.setInt(6,cruise.getPassengerCapacity());
+            preparedStatement.setInt(7,cruise.getStatus().ordinal());
 
-            preparedStatement.execute();
+
+            preparedStatement.executeUpdate();
 
         }catch (SQLException e){
             e.printStackTrace();
@@ -34,9 +47,8 @@ public class CruiseDAO {
 
         Cruise cruise = null;
 
-        try(Connection connection = dataSource.getConnection();) {
-
-            PreparedStatement preparedStatement = connection.prepareStatement(READ_CRUISE);
+        try(Connection connection = dataSource.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(READ_CRUISE)){
 
             preparedStatement.setLong(1,id);
             preparedStatement.executeQuery();
@@ -49,9 +61,16 @@ public class CruiseDAO {
     }
 
     public void update(Cruise cruise){
-        try(Connection connection = dataSource.getConnection();){
+        try(Connection connection = dataSource.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_CRUISE)){
 
-            PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_CRUISE);
+            preparedStatement.setInt(1,cruise.getDuration());
+            preparedStatement.setDouble(2,cruise.getPrice());
+            preparedStatement.setDate(3, (Date) cruise.getCruiseStartDate());
+            preparedStatement.setDate(4, (Date) cruise.getCruiseEndDate());
+            preparedStatement.setString(5,cruise.getCruiseLinerName());
+            preparedStatement.setInt(6,cruise.getPassengerCapacity());
+            preparedStatement.setInt(7,cruise.getStatus().ordinal());
 
             preparedStatement.executeUpdate();
 
@@ -61,9 +80,8 @@ public class CruiseDAO {
     }
 
     public void delete(Cruise cruise){
-        try(Connection connection = dataSource.getConnection();){
-
-            PreparedStatement preparedStatement = connection.prepareStatement(DELETE_CRUISE);
+        try(Connection connection = dataSource.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(DELETE_CRUISE)){
 
             preparedStatement.executeUpdate();
 
