@@ -30,12 +30,15 @@ public class UserLoginDAO {
 
     public static boolean DataVerification(String phoneNumber, String password) throws ClassNotFoundException {
 
-        boolean answer = false;
-
         Class.forName("org.postgresql.Driver");
+
+        boolean answer = false;
 
         try(Connection connection = dataSource.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(DATA_VERIFICATION)){
+
+            preparedStatement.setString(1,phoneNumber);
+            preparedStatement.setString(2,password);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -45,8 +48,10 @@ public class UserLoginDAO {
                 }
             }
 
-        }catch (SQLException e){
+        } catch (SQLException e) {
             logger.error(e.getMessage());
+            throw new RuntimeException(e);
+
         }
         return answer;
     }
