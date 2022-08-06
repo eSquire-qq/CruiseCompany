@@ -20,7 +20,7 @@ public class SQLRequests {
 
 
 
-    public static final String DATA_VERIFICATION = "SELECT phone_number, password FROM \"user\" VALUES(?,?)";
+    public static final String DATA_VERIFICATION = "SELECT phone_number, password FROM \"user\" WHERE phone_number = ? AND password = ? ";
 
 
 
