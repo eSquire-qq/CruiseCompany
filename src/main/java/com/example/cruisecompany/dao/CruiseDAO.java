@@ -34,7 +34,6 @@ public class CruiseDAO {
             preparedStatement.setInt(6,cruise.getPassengerCapacity());
             preparedStatement.setInt(7,cruise.getStatus().ordinal());
 
-
             preparedStatement.executeUpdate();
 
         }catch (SQLException e){
