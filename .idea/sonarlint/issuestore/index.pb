@@ -9,8 +9,6 @@ j
 :src/main/java/com/example/cruisecompany/entity/Cruise.java,7\7\779c8a9950e0e4a5c2fbcd6583e1555d049add70
 V
 &src/test/java/tests/CruiseDAOTest.java,4\e\4ef6392981fae13fd99711d44bf93f50661fc319
-[
-+src/test/java/tests/DBCPDataSourceTest.java,2\f\2ffd28b9f4b838a6eaed20343993ddfc3a993516
 h
 8src/main/java/com/example/cruisecompany/entity/User.java,f\3\f399e5d664ca6f547ae76b76430835b6be94ee83
 n
@@ -19,8 +17,6 @@ n
 >src/main/java/com/example/cruisecompany/dao/UserCruiseDAO.java,a\0\a084973271242966ed5dec041d4fa5ec5bd98848
 Z
 *src/test/java/tests/UserCruiseDAOTest.java,8\b\8b93fe6f10bdc241fd74790b017d15e343b8d128
-T
-$src/test/java/tests/UserDAOTest.java,a\c\acaf1fb477d719cefb7e3807d60badc712cd90d3
 a
 1src/main/java/com/example/cruisecompany/Main.java,5\1\514a84b2508189e7b646e3e7112303cea5ab93fe
 p
@@ -37,7 +33,5 @@ q
 Asrc/main/java/com/example/cruisecompany/database/SQLRequests.java,9\e\9e781ec159629c509f44b7fa6265ad650fa89378
 Q
 !src/main/webapp/AddUserCruise.jsp,8\3\8320cd6e26d0a8861744d7a9a6f795f2b2ca4d32
-t
-Dsrc/main/java/com/example/cruisecompany/database/DBCPDataSource.java,2\b\2ba7070a1ff775606fdb9dd893709562dba1ce7a
 j
 :src/main/java/com/example/cruisecompany/dao/CruiseDAO.java,3\f\3f9c1a7cff9c4f38f4e8d48b4c4015c6f227acfb
