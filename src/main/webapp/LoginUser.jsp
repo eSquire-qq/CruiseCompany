@@ -30,7 +30,7 @@
     </div>
 
     <button type="submit" value="Submit" id="button">Submit</button>
-    <a href="index.jsp">Back to Home</a>
+    <a href="HomePage.jsp">Back to Home</a>
 
 </form>
 </body>

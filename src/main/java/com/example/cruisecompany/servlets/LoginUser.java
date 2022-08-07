@@ -20,7 +20,7 @@ public class LoginUser extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/webapp/index.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/webapp/HomePage.jsp");
         requestDispatcher.forward(request,response);
     }
 
@@ -32,7 +32,7 @@ public class LoginUser extends HttpServlet {
 
         try {
             if(UserLoginDAO.getUserLoginInstance().DataVerification(phoneNumber,password)){
-                RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("HomePage.jsp");
                 requestDispatcher.forward(request,response);
             }
         } catch (ClassNotFoundException e) {
