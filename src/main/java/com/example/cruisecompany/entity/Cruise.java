@@ -25,6 +25,10 @@ public class Cruise {
         this.status = status;
     }
 
+    public Cruise() {
+
+    }
+
     public Long getId() {
         return id;
     }

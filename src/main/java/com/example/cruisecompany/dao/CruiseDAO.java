@@ -16,7 +16,7 @@ public class CruiseDAO {
 
     private static final CruiseDAO CRUISE_INSTANCE = new CruiseDAO();
 
-    static CruiseDAO getCruiseInstance(){
+    public static CruiseDAO getCruiseInstance(){
         return CRUISE_INSTANCE;
     }
 

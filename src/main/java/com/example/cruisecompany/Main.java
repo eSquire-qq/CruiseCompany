@@ -1,5 +1,6 @@
 package com.example.cruisecompany;
 
+import com.example.cruisecompany.dao.AdminDAO;
 import com.example.cruisecompany.dao.UserCruiseDAO;
 import com.example.cruisecompany.dao.UserDAO;
 import com.example.cruisecompany.dao.UserLoginDAO;
@@ -14,11 +15,16 @@ import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 
+import static com.example.cruisecompany.entity.UserRole.ADMINISTRATOR;
+import static com.example.cruisecompany.entity.UserRole.MANAGER;
+
 
 public class Main {
     public static void main(final String[] args) throws ClassNotFoundException {
 
-        System.out.println(UserLoginDAO.getUserLoginInstance().DataVerification("56845671","password"));
+        AdminDAO adminDAO = AdminDAO.getAdminInstance();
+
+        adminDAO.create(new User(20L,"name1", "surname1", "phoneNumber1", ADMINISTRATOR, "password1", "email1"));
 
     }
 }
