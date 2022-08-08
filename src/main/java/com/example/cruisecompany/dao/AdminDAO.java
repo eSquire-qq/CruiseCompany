@@ -1,7 +1,8 @@
 package com.example.cruisecompany.dao;
 
-import com.example.cruisecompany.database.DBCPDataSource;
 import com.example.cruisecompany.entity.User;
+
+import com.example.cruisecompany.database.DBCPDataSource;
 import com.example.cruisecompany.entity.UserRole;
 
 import java.sql.Connection;
@@ -38,7 +39,7 @@ public class AdminDAO {
             preparedStatement.setString(1,user.getName());
             preparedStatement.setString(2,user.getSurname());
             preparedStatement.setString(3,user.getPhoneNumber());
-            preparedStatement.setInt(4,user.getRole().ordinal());
+            preparedStatement.setInt(4, user.getRole().ordinal());
             preparedStatement.setString(5,user.getPassword());
             preparedStatement.setString(6,user.getEmail());
 
