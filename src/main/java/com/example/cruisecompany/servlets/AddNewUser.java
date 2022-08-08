@@ -27,6 +27,7 @@ public class AddNewUser extends HttpServlet {
         String phoneNumber = request.getParameter("phoneNumber");
         UserRole role = UserRole.USER;
         String password = request.getParameter("password");
+        String email = request.getParameter("email");
 
         User user = new User();
 
@@ -35,6 +36,7 @@ public class AddNewUser extends HttpServlet {
         user.setPhoneNumber(phoneNumber);
         user.setRole(role);
         user.setPassword(password);
+        user.setEmail(email);
 
         try {
             userDAO.create(user);

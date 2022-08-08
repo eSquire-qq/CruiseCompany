@@ -39,6 +39,7 @@ public class UserDAO  {
             preparedStatement.setString(3,user.getPhoneNumber());
             preparedStatement.setInt(4,user.getRole().ordinal());
             preparedStatement.setString(5,user.getPassword());
+            preparedStatement.setString(6,user.getEmail());
 
             preparedStatement.executeQuery();
 
@@ -64,7 +65,7 @@ public class UserDAO  {
 
             if(resultSet.next()) {
 
-                user = new User(resultSet.getLong("id"), resultSet.getString("name"), resultSet.getString("surname"), resultSet.getString("phone_number"), UserRole.values()[resultSet.getInt("role_id")], resultSet.getString("password"));
+                user = new User(resultSet.getLong("id"), resultSet.getString("name"), resultSet.getString("surname"), resultSet.getString("phone_number"), UserRole.values()[resultSet.getInt("role_id")], resultSet.getString("password"),resultSet.getString("e-mail"));
 
             }
         }catch (SQLException e){
@@ -87,6 +88,7 @@ public class UserDAO  {
             preparedStatement.setString(3,user.getPhoneNumber());
             preparedStatement.setInt(4,user.getRole().ordinal());
             preparedStatement.setString(5,user.getPassword());
+            preparedStatement.setString(6,user.getEmail());
 
             preparedStatement.execute();
 
