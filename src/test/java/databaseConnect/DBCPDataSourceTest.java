@@ -1,26 +1,46 @@
 package databaseConnect;
 
+import com.example.cruisecompany.database.DBCPDataSource;
 import org.apache.commons.dbcp2.BasicDataSource;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.function.Executable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class DBCPDataSourceTest {
 
-    private final static BasicDataSource dataSource = new BasicDataSource();
+    private static final DBConnect dbcp = DBConnect.getInstance();
+
+    private static final Logger logger = LoggerFactory.getLogger(DBCPDataSourceTest.class);
 
     @Test
-    void ConnectTest() throws  ClassNotFoundException, SQLException {
+    void testIncorrectConnect() {
+        dbcp.setUrl("jdbc:postgresql://localhost:5432/TestCruiseCompany123123");
+        dbcp.setUsername("postgres");
+        dbcp.setPassword("eSquire021840984123123");
 
-        dataSource.setUrl("jdbc:postgresql://localhost:5432/ANDRIY");
-        dataSource.setUsername("postgres");
-        dataSource.setPassword("eSquire021840984");
-        dataSource.setMinIdle(5);
-        dataSource.setMaxIdle(10);
-        dataSource.setMaxOpenPreparedStatements(100);
+        try {
+            assertThrows(SQLException.class, (Executable) dbcp.getConnection());
+        }catch (SQLException e) {
+            logger.error("Cannot get connect");
+        }
+    }
 
+    @Test
+    void testSimpleConnect() {
+        dbcp.setUrl("jdbc:postgresql://localhost:5432/TestCruiseCompany");
+        dbcp.setUsername("postgres");
+        dbcp.setPassword("eSquire021840984");
+        try {
+            assertFalse(dbcp.getConnection().isClosed());
+        } catch (SQLException e) {
+            logger.error("Cannot get connection");
+        }
     }
 
 }
