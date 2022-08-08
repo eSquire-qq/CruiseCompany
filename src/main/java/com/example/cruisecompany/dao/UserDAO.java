@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.Optional;
 
 import static com.example.cruisecompany.database.SQLRequests.*;
+import static com.example.cruisecompany.entity.UserRole.*;
 
 public class UserDAO  {
 
@@ -37,7 +38,7 @@ public class UserDAO  {
             preparedStatement.setString(1,user.getName());
             preparedStatement.setString(2,user.getSurname());
             preparedStatement.setString(3,user.getPhoneNumber());
-            preparedStatement.setInt(4,user.getRole().ordinal());
+            preparedStatement.setInt(4, user.getRole().ordinal());
             preparedStatement.setString(5,user.getPassword());
             preparedStatement.setString(6,user.getEmail());
 
