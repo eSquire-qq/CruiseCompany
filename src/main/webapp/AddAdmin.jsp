@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="Style.css">
 </head>
 <body>
-<form action="<%= request.getContextPath() %>/AddNewUser" method="post">
+<form action="<%= request.getContextPath() %>/AddNewAdmin" method="post">
     <div class="container">
         <h1>Admin register</h1>
         <p>Please fill in this form to create an account.</p>
@@ -26,6 +26,9 @@
 
         <label  for="phoneNumber" id="mn">Mobile number :</label>
         <input type="text" name="phoneNumber" id="phoneNumber"><br/>
+
+        <label  for="email" id="em">Email :</label>
+        <input type="text" name="email" id="email"><br/>
 
     </div>
 
