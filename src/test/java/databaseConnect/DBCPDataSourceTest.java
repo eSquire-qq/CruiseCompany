@@ -1,18 +1,15 @@
 package databaseConnect;
 
-import com.example.cruisecompany.database.DBCPDataSource;
-import org.apache.commons.dbcp2.BasicDataSource;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.function.Executable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.sql.Connection;
 import java.sql.SQLException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class DBCPDataSourceTest {
+class DBCPDataSourceTest {
 
     private static final DBConnect dbcp = DBConnect.getInstance();
 
@@ -37,7 +34,7 @@ public class DBCPDataSourceTest {
         dbcp.setUsername("postgres");
         dbcp.setPassword("eSquire021840984");
         try {
-            assertFalse(dbcp.getConnection().isClosed());
+            assertDoesNotThrow((Executable) dbcp.getConnection());
         } catch (SQLException e) {
             logger.error("Cannot get connection");
         }
