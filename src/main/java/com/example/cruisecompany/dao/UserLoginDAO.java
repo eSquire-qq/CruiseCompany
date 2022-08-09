@@ -1,7 +1,6 @@
 package com.example.cruisecompany.dao;
 
 import com.example.cruisecompany.database.DBCPDataSource;
-import com.example.cruisecompany.entity.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -10,8 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import static com.example.cruisecompany.database.SQLRequests.CREAT_USER;
-import static com.example.cruisecompany.database.SQLRequests.DATA_VERIFICATION;
+import static com.example.cruisecompany.database.SQLRequests.*;
 
 public class UserLoginDAO {
 
@@ -28,9 +26,7 @@ public class UserLoginDAO {
 
     private static final DBCPDataSource dataSource = DBCPDataSource.getInstance();
 
-    public static boolean DataVerification(String phoneNumber, String password) throws ClassNotFoundException {
-
-        Class.forName("org.postgresql.Driver");
+    public static boolean dataVerification(String phoneNumber, String password) {
 
         boolean answer = false;
 
@@ -48,11 +44,11 @@ public class UserLoginDAO {
                 }
             }
 
-        } catch (SQLException e) {
-            logger.error(e.getMessage());
-            throw new RuntimeException(e);
-
+        }catch (SQLException e){
+            logger.info("Login correct");
+            e.printStackTrace();
         }
+
         return answer;
     }
 

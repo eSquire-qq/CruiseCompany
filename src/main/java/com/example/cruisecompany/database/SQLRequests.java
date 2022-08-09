@@ -2,6 +2,10 @@ package com.example.cruisecompany.database;
 
 public class SQLRequests {
 
+    private SQLRequests(){
+
+    }
+
     public static final String CREAT_USER = "INSERT INTO \"user\" (name, surname, phone_number, role_id, password, email) VALUES (?,?,?,?,?,?)";
     public static final String READ_USER = "SELECT name, surname, phone_number, role_id FROM \"user\" WHERE id = ?";
     public static final String UPDATE_USER = "UPDATE \"user\" SET name = ?, surname = ?, phone_number = ?, role_id = ?, password = ?, email = ? WHERE passenger_id = ?";

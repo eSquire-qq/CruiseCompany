@@ -40,11 +40,12 @@ public class UserCruiseDAO {
 
     }
 
-    public UserCruise read(Integer ticketId ){
+    public UserCruise read(Integer ticketId){
         try(Connection connection = dataSource.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(READ_USER_CRUISE)){
 
             preparedStatement.setLong(1,ticketId);
+            preparedStatement.execute();
 
         }catch (SQLException e){
             e.printStackTrace();
@@ -69,10 +70,11 @@ public class UserCruiseDAO {
         }
     }
 
-    public void delete(UserCruise userCruise){
+    public void delete(Integer ticketId){
         try(Connection connection = dataSource.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(DELETE_USER_CRUISE)){
 
+            preparedStatement.setLong(1,ticketId);
             preparedStatement.execute();
 
         }catch (SQLException e){

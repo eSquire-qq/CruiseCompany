@@ -24,6 +24,7 @@ public class CruiseDAO {
     private final DBCPDataSource dataSource = DBCPDataSource.getInstance();
 
     public void create(Cruise cruise){
+
         try(Connection connection = dataSource.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(CREAT_CRUISE)){
 
@@ -79,11 +80,12 @@ public class CruiseDAO {
         }
     }
 
-    public void delete(Cruise cruise){
+    public void delete(int id){
         try(Connection connection = dataSource.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(DELETE_CRUISE)){
 
-            preparedStatement.executeUpdate();
+            preparedStatement.setLong(1,id);
+            preparedStatement.executeQuery();
 
         }catch (SQLException e){
             e.printStackTrace();

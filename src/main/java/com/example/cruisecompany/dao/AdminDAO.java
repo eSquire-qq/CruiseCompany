@@ -12,7 +12,6 @@ import java.sql.SQLException;
 import java.util.Optional;
 
 import static com.example.cruisecompany.database.SQLRequests.*;
-import static com.example.cruisecompany.entity.UserRole.ADMINISTRATOR;
 
 public class AdminDAO {
 
@@ -28,9 +27,7 @@ public class AdminDAO {
 
     private final DBCPDataSource dataSource = DBCPDataSource.getInstance();
 
-    public void create(User user) throws ClassNotFoundException {
-
-        Class.forName("org.postgresql.Driver");
+    public void create(User user){
 
         try(Connection connection = dataSource.getConnection();
 
@@ -50,9 +47,7 @@ public class AdminDAO {
         }
     }
 
-    public Optional<User> read(Long id) throws ClassNotFoundException {
-
-        Class.forName("org.postgresql.Driver");
+    public Optional<User> read(Long id) {
 
         User user = null;
 
@@ -77,9 +72,7 @@ public class AdminDAO {
         return Optional.ofNullable(user);
     }
 
-    public void update(User user) throws ClassNotFoundException {
-
-        Class.forName("org.postgresql.Driver");
+    public void update(User user){
 
         try(Connection connection = dataSource.getConnection();
 
@@ -99,15 +92,14 @@ public class AdminDAO {
         }
     }
 
-    public void delete(User user) throws ClassNotFoundException {
-
-        Class.forName("org.postgresql.Driver");
+    public void delete(Long id){
 
         try(Connection connection = dataSource.getConnection();
 
             PreparedStatement preparedStatement = connection.prepareStatement(DELETE_ADMIN)){
 
-            preparedStatement.executeUpdate();
+            preparedStatement.setLong(1,id);
+            preparedStatement.executeQuery();
 
         }catch (SQLException e){
             e.printStackTrace();

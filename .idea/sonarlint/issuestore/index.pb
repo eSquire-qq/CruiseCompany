@@ -1,18 +1,10 @@
 
 ^
 ..idea/artifacts/CruiseCompany_war_exploded.xml,d\c\dcf35e93abccca9ba5bc36ca1ac7ee5c42946c05
-p
-@src/main/java/com/example/cruisecompany/entity/CruiseStatus.java,b\b\bbaa05bbc71144b3dc40c8179600facce7d904d4
-n
->src/main/java/com/example/cruisecompany/dao/UserCruiseDAO.java,a\0\a084973271242966ed5dec041d4fa5ec5bd98848
-m
-=src/main/java/com/example/cruisecompany/dao/UserLoginDAO.java,f\3\f395fd15da3c4487c982b3c0bcc006eb17e26400
 I
 src/main/webapp/Style.css,4\f\4f8bebbbf3dd0f1368a33bfa77c2c92d70379c49
 Q
 !src/main/webapp/AddUserCruise.jsp,8\3\8320cd6e26d0a8861744d7a9a6f795f2b2ca4d32
-o
-?src/main/java/com/example/cruisecompany/servlets/LoginUser.java,4\3\43be9bb2b500b1347583a40161418354510ce9d8
 L
 src/main/webapp/HomePage.jsp,c\6\c6804db36d62bb51c4ff08b9a712db445f1a7f84
 M
@@ -29,20 +21,6 @@ V
 ,src/test/java/databaseConnect/DBConnect.java,2\8\281d2d35a834d97a1dea8e49e513aa7939e38544
 T
 $src/test/java/tests/UserDAOTest.java,a\c\acaf1fb477d719cefb7e3807d60badc712cd90d3
-n
->src/main/java/com/example/cruisecompany/entity/UserCruise.java,5\2\52c9848d2037c716a2b4c7e42b45969dd9be5c9e
-q
-Asrc/main/java/com/example/cruisecompany/database/SQLRequests.java,9\e\9e781ec159629c509f44b7fa6265ad650fa89378
-t
-Dsrc/main/java/com/example/cruisecompany/database/DBCPDataSource.java,2\b\2ba7070a1ff775606fdb9dd893709562dba1ce7a
-h
-8src/main/java/com/example/cruisecompany/entity/User.java,f\3\f399e5d664ca6f547ae76b76430835b6be94ee83
-p
-@src/main/java/com/example/cruisecompany/servlets/AddNewUser.java,6\e\6e7c9911e6be8a1a80257e07083ed8c0fc769e82
-h
-8src/main/java/com/example/cruisecompany/dao/UserDAO.java,a\f\afdebc6fc2304e9020afca4f388501b79aabc8a8
-l
-<src/main/java/com/example/cruisecompany/entity/UserRole.java,c\8\c81bd35ba27186dcd4fcf88c11d14afbe7ebe764
 M
 src/main/webapp/AddCruise.jsp,2\8\28838b88e70d852ad37af38e14f4dffacdae20aa
 a

@@ -16,7 +16,8 @@ public class AddNewAdmin extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/webapp/HomePage.jsp");
+        requestDispatcher.forward(request,response);
     }
 
     @Override
@@ -37,12 +38,6 @@ public class AddNewAdmin extends HttpServlet {
         user.setRole(role);
         user.setPassword(password);
         user.setEmail(email);
-
-        try {
-            adminDAO.create(user);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
 
     }
 }

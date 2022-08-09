@@ -13,7 +13,15 @@ public class DBCPDataSource {
 
     private final static BasicDataSource dataSource = new BasicDataSource();
 
-    private static final DBCPDataSource dbcp = new DBCPDataSource();
+    private static final DBCPDataSource dbcp;
+
+    static {
+        try {
+            dbcp = new DBCPDataSource();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public Connection getConnection() throws SQLException {
         try {
@@ -29,7 +37,8 @@ public class DBCPDataSource {
         return dbcp;
     }
 
-    private DBCPDataSource(){
+    private DBCPDataSource() throws ClassNotFoundException {
+        Class.forName("org.postgresql.Driver");
         dataSource.setUrl("jdbc:postgresql://localhost:5432/CruiseCompany");
         dataSource.setUsername("postgres");
         dataSource.setPassword("eSquire021840984");
