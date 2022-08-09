@@ -1,5 +1,6 @@
 package com.example.cruisecompany.entity;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
@@ -8,13 +9,13 @@ public class Cruise {
     private Long id;
     private Integer duration;
     private Double price;
-    private Date cruiseStartDate;
-    private Date cruiseEndDate;
+    private LocalDate cruiseStartDate;
+    private LocalDate cruiseEndDate;
     private String cruiseLinerName;
     private Integer passengerCapacity;
     private CruiseStatus status;
 
-    public Cruise(Long id, Integer duration, Double price, Date cruiseStartDate, Date cruiseEndDate, String cruiseLinerName, Integer passengerCapacity, CruiseStatus status) {
+    public Cruise(Long id, Integer duration, Double price, LocalDate cruiseStartDate, LocalDate cruiseEndDate, String cruiseLinerName, Integer passengerCapacity, CruiseStatus status) {
         this.id = id;
         this.duration = duration;
         this.price = price;
@@ -53,19 +54,19 @@ public class Cruise {
         this.price = price;
     }
 
-    public Date getCruiseStartDate() {
+    public LocalDate getCruiseStartDate() {
         return cruiseStartDate;
     }
 
-    public void setCruiseStartDate(Date cruiseStartDate) {
+    public void setCruiseStartDate(LocalDate cruiseStartDate) {
         this.cruiseStartDate = cruiseStartDate;
     }
 
-    public Date getCruiseEndDate() {
+    public LocalDate getCruiseEndDate() {
         return cruiseEndDate;
     }
 
-    public void setCruiseEndDate(Date cruiseEndDate) {
+    public void setCruiseEndDate(LocalDate cruiseEndDate) {
         this.cruiseEndDate = cruiseEndDate;
     }
 

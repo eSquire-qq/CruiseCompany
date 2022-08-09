@@ -7,9 +7,8 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
-import javax.xml.crypto.Data;
 import java.io.IOException;
-import java.sql.Date;
+import java.time.LocalDate;
 
 @WebServlet(name = "AddNewCruise", value = "/AddNewCruise")
 public class AddNewCruise extends HttpServlet {
@@ -36,8 +35,8 @@ public class AddNewCruise extends HttpServlet {
 
         cruise.setDuration(Integer.valueOf(duration));
         cruise.setPrice(Double.valueOf(price));
-        cruise.setCruiseStartDate(cruiseStartDate);
-        cruise.setCruiseEndDate(cruiseEndDate);
+        cruise.setCruiseStartDate(LocalDate.parse(cruiseStartDate));
+        cruise.setCruiseEndDate(LocalDate.parse(cruiseEndDate));
         cruise.setCruiseLinerName(cruiseLinerName);
         cruise.setPassengerCapacity(Integer.valueOf(passengerCapacity));
         cruise.setStatus(status);

@@ -4,6 +4,7 @@ import com.example.cruisecompany.database.DBCPDataSource;
 import com.example.cruisecompany.entity.Cruise;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.Optional;
 
 import static com.example.cruisecompany.database.SQLRequests.*;
@@ -28,8 +29,8 @@ public class CruiseDAO {
 
             preparedStatement.setInt(1,cruise.getDuration());
             preparedStatement.setDouble(2,cruise.getPrice());
-            preparedStatement.setDate(3, (Date) cruise.getCruiseStartDate());
-            preparedStatement.setDate(4, (Date) cruise.getCruiseEndDate());
+            preparedStatement.setDate(3, Date.valueOf(cruise.getCruiseStartDate()));
+            preparedStatement.setDate(4, Date.valueOf(cruise.getCruiseEndDate()));
             preparedStatement.setString(5,cruise.getCruiseLinerName());
             preparedStatement.setInt(6,cruise.getPassengerCapacity());
             preparedStatement.setInt(7,cruise.getStatus().ordinal());
@@ -65,8 +66,8 @@ public class CruiseDAO {
 
             preparedStatement.setInt(1,cruise.getDuration());
             preparedStatement.setDouble(2,cruise.getPrice());
-            preparedStatement.setDate(3, (Date) cruise.getCruiseStartDate());
-            preparedStatement.setDate(4, (Date) cruise.getCruiseEndDate());
+            preparedStatement.setDate(3, Date.valueOf(cruise.getCruiseStartDate()));
+            preparedStatement.setDate(4, Date.valueOf(cruise.getCruiseEndDate()));
             preparedStatement.setString(5,cruise.getCruiseLinerName());
             preparedStatement.setInt(6,cruise.getPassengerCapacity());
             preparedStatement.setInt(7,cruise.getStatus().ordinal());
