@@ -1,38 +1,62 @@
-body{
-    margin: 100px;
-    text-align: center;
-    align: center;
-}
-
-input[type=text],[type=password],[type=number]{
-    width: 20%;
-    margin: 8px 0;
-    padding: 7px 10px;
-    display: inline-block;
-    border:1px solid #ccc;
+*,*:before,*:after {
     box-sizing: border-box;
 }
 
-button{
-    background-color:#4CAF50;
-    width: 10%;
-    padding: 9px 5px;
-    margin:5px 0;
-    cursor:pointer;
-    border:none;
-    color:#ffffff;
-    margin-left: 80px;
+body {
+    margin: 0;
 }
 
-button:hover{
-    opacity:0.8;
+.page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
 
-#fn,#ln,#un,#pwd,#em,#mn,#fm,#cy{
-    font-family:'Lato', sans-serif;
-    color: gray;
+
+.form {
+    width: 300px;
+
 }
 
-#em{
-    margin-left:30px;
+.form_group {
+    margin-bottom: 15px;
+}
+
+.input {
+    width: 100%;
+    height: 30px;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+    outline: 0;
+}
+
+.input.error {
+    border-color: red;
+}
+
+.input::placeholder {
+    color: #ccc;
+}
+
+.checkbox_label {
+    user-select: none;
+}
+
+.checkbox.error + .checkbox_label {
+    color: red;
+}
+
+.btn {
+    height: 30px;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0e16a5;
+    border: 0;
+    width: 100%;
+    outline: 0;
+    cursor: pointer;
+    color: #fff;
 }

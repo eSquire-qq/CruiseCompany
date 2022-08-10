@@ -15,19 +15,19 @@
         <h1>Admin register</h1>
         <p>Please fill in this form to create an account.</p>
 
-        <label for="name" id="fn">First Name :</label>
+        <label for="name" id="fn">First Name:</label>
         <input type="text" name="name" id="name"><br/>
 
-        <label  for="surname" id="ln">Last Name :</label>
+        <label  for="surname" id="ln">Last Name:</label>
         <input type="text" name="surname" id="surname"><br/>
 
-        <label  for="password" id="pwd">Password :</label>
+        <label  for="password" id="pwd">Password:</label>
         <input type="password" name="password" id="password"><br/>
 
-        <label  for="phoneNumber" id="mn">Mobile number :</label>
+        <label  for="phoneNumber" id="mn">Mobile number:</label>
         <input type="text" name="phoneNumber" id="phoneNumber"><br/>
 
-        <label  for="email" id="em">Email :</label>
+        <label  for="email" id="em">Email:</label>
         <input type="text" name="email" id="email"><br/>
 
     </div>

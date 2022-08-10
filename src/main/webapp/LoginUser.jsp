@@ -15,10 +15,10 @@
         <h1>Log in </h1>
         <p>Please fill in this form to log in your account</p>
 
-        <label  for="phoneNumber" id="mn">Mobile number :</label>
+        <label  for="phoneNumber" id="mn">Mobile number:</label>
         <input type="text" name="phoneNumber" id="phoneNumber"><br/>
 
-        <label  for="password" id="pwd">Password :</label>
+        <label  for="password" id="pwd">Password:</label>
         <input type="password" name="password" id="password"><br/>
 
     </div>

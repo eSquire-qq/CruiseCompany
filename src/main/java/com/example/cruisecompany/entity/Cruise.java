@@ -6,23 +6,23 @@ import java.util.Objects;
 public class Cruise {
 
     private Long id;
-    private Integer duration;
     private Double price;
     private LocalDate cruiseStartDate;
     private LocalDate cruiseEndDate;
     private String cruiseLinerName;
     private Integer passengerCapacity;
     private CruiseStatus status;
+    private Integer duration;
 
-    public Cruise(Long id, Integer duration, Double price, LocalDate cruiseStartDate, LocalDate cruiseEndDate, String cruiseLinerName, Integer passengerCapacity, CruiseStatus status) {
+    public Cruise(Long id, Double price, LocalDate cruiseStartDate, LocalDate cruiseEndDate, String cruiseLinerName, Integer passengerCapacity, CruiseStatus status, Integer duration) {
         this.id = id;
-        this.duration = duration;
         this.price = price;
         this.cruiseStartDate = cruiseStartDate;
         this.cruiseEndDate = cruiseEndDate;
         this.cruiseLinerName = cruiseLinerName;
         this.passengerCapacity = passengerCapacity;
         this.status = status;
+        this.duration = duration;
     }
 
     public Cruise() {
@@ -35,14 +35,6 @@ public class Cruise {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Integer getDuration() {
-        return duration;
-    }
-
-    public void setDuration(Integer duration) {
-        this.duration = duration;
     }
 
     public Double getPrice() {
@@ -93,17 +85,26 @@ public class Cruise {
         this.status = status;
     }
 
+    public Integer getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Integer duration) {
+        this.duration = duration;
+    }
+
     @Override
-    public String toString() {
+    public String
+    toString() {
         return "Cruise{" +
                 "id=" + id +
-                ", duration=" + duration +
                 ", price=" + price +
                 ", cruiseStartDate=" + cruiseStartDate +
                 ", cruiseEndDate=" + cruiseEndDate +
                 ", cruiseLinerName='" + cruiseLinerName + '\'' +
                 ", passengerCapacity=" + passengerCapacity +
                 ", status=" + status +
+                ", duration=" + duration +
                 '}';
     }
 
@@ -112,11 +113,11 @@ public class Cruise {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Cruise cruise = (Cruise) o;
-        return Objects.equals(id, cruise.id) && Objects.equals(duration, cruise.duration) && Objects.equals(price, cruise.price) && Objects.equals(cruiseStartDate, cruise.cruiseStartDate) && Objects.equals(cruiseEndDate, cruise.cruiseEndDate) && Objects.equals(cruiseLinerName, cruise.cruiseLinerName) && Objects.equals(passengerCapacity, cruise.passengerCapacity) && status == cruise.status;
+        return Objects.equals(id, cruise.id) && Objects.equals(price, cruise.price) && Objects.equals(cruiseStartDate, cruise.cruiseStartDate) && Objects.equals(cruiseEndDate, cruise.cruiseEndDate) && Objects.equals(cruiseLinerName, cruise.cruiseLinerName) && Objects.equals(passengerCapacity, cruise.passengerCapacity) && status == cruise.status && Objects.equals(duration, cruise.duration);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, duration, price, cruiseStartDate, cruiseEndDate, cruiseLinerName, passengerCapacity, status);
+        return Objects.hash(id, price, cruiseStartDate, cruiseEndDate, cruiseLinerName, passengerCapacity, status, duration);
     }
 }
