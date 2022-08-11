@@ -31,6 +31,10 @@ public class AddNewUser extends HttpServlet {
         String password = request.getParameter("password");
         String email = request.getParameter("email");
 
+        HttpSession httpSession = request.getSession();
+        httpSession.setAttribute("id",name);
+        System.out.println(httpSession.getAttribute("id"));
+
         User user = new User();
 
         user.setName(name);
