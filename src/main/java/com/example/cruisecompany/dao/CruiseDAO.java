@@ -3,11 +3,11 @@ package com.example.cruisecompany.dao;
 import com.example.cruisecompany.database.DBCPDataSource;
 import com.example.cruisecompany.entity.Cruise;
 import com.example.cruisecompany.entity.CruiseStatus;
-import com.example.cruisecompany.entity.User;
-import com.example.cruisecompany.entity.UserRole;
 
 import java.sql.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import static com.example.cruisecompany.database.SQLRequests.*;
@@ -61,7 +61,7 @@ public class CruiseDAO {
 
             if(resultSet.next()) {
 
-                //cruise = new Cruise(resultSet.getLong("id"),resultSet.getDouble("price"),resultSet.getDate("cruise_start_date"),resultSet.getDate("cruise_end_date"),resultSet.getString("cruise_liner_name"),resultSet.getInt("passenger_capacity"),CruiseStatus.values()[resultSet.getInt("cruise_status")],resultSet.getInt("duration"));
+                cruise = new Cruise(resultSet.getLong("id"),resultSet.getDouble("price"),resultSet.getDate("cruise_start_date").toLocalDate(),resultSet.getDate("cruise_end_date").toLocalDate(),resultSet.getString("cruise_liner_name"),resultSet.getInt("passenger_capacity"), CruiseStatus.values()[resultSet.getInt("cruise_status")],resultSet.getInt("duration"));
                 //10L, 100.000, java.time.LocalDate.now(), java.time.LocalDate.now(),"Viking", 800,REGISTERED, 100 CruiseStatus.values()[resultSet.getInt("cruise_status")]
             }
 
@@ -70,6 +70,25 @@ public class CruiseDAO {
         }
 
         return Optional.ofNullable(cruise);
+    }
+
+    public List<Cruise> readAll(){
+        List<Cruise> cruiseList = new ArrayList<>();
+
+        try(Connection connection = dataSource.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(READ_ALL_CRUISE)) {
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()){
+                cruiseList.add(new Cruise(resultSet.getLong("id"),resultSet.getDouble("price"),resultSet.getDate("cruise_start_date").toLocalDate(),resultSet.getDate("cruise_end_date").toLocalDate(),resultSet.getString("cruise_liner_name"),resultSet.getInt("passenger_capacity"), CruiseStatus.values()[resultSet.getInt("cruise_status")],resultSet.getInt("duration")));
+            }
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return cruiseList;
     }
 
     public void update(Cruise cruise){

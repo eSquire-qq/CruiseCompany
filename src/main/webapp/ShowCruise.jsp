@@ -5,16 +5,16 @@
     <title>Title</title>
 </head>
 <body>
-<form action="<%= request.getContextPath() %>/ShowCruise" method="post">
 
-    <label for="id" id="idi">Id</label>
-    <input type="text" name="id" id="id"><br/>
-
-    <button type="submit" value="Submit" id="button">Search</button>
-
-</form>
-
-<div>${sessionScope.cruise.toString()}</div>
+<div>
+    <c:forEach var="cruise" items="${cruises}">
+        <p>
+        <td>
+                ${cruise.getCruiseLinerName()}
+        </td>
+        </p>
+    </c:forEach>
+</div>
 
 </body>
 </html>

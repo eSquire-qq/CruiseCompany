@@ -23,13 +23,14 @@
 
     </div>
 
+    <button type="submit" value="Submit" id="button">Submit</button>
+
     <div>
         <a class="AddUser.jsp" href="#">  </a>
 
         <p>Don't have an account yet?<a href="AddUser.jsp">Create new account</a>.</p>
     </div>
 
-    <button type="submit" value="Submit" id="button">Submit</button>
     <a href="HomePage.jsp">Back to Home</a>
 
 </form>

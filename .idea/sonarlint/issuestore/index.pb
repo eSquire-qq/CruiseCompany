@@ -28,13 +28,9 @@ p
 l
 <src/main/java/com/example/cruisecompany/entity/UserRole.java,c\8\c81bd35ba27186dcd4fcf88c11d14afbe7ebe764
 M
-src/main/webapp/LoginUser.jsp,d\a\daa15112aa7abe217021a51ae9c58a65bd123fc9
-M
 src/main/webapp/AddCruise.jsp,2\8\28838b88e70d852ad37af38e14f4dffacdae20aa
 a
 1src/main/java/com/example/cruisecompany/Main.java,5\1\514a84b2508189e7b646e3e7112303cea5ab93fe
-L
-src/main/webapp/HomePage.jsp,c\6\c6804db36d62bb51c4ff08b9a712db445f1a7f84
 I
 src/main/webapp/Style.css,4\f\4f8bebbbf3dd0f1368a33bfa77c2c92d70379c49
 s
