@@ -11,8 +11,6 @@ T
 $src/test/java/tests/UserDAOTest.java,a\c\acaf1fb477d719cefb7e3807d60badc712cd90d3
 e
 5src/test/java/databaseConnect/DBCPDataSourceTest.java,b\d\bd9d1b07f7ca49a1b8dfcfef8a407c361b7e8cb0
-h
-8src/main/java/com/example/cruisecompany/entity/User.java,f\3\f399e5d664ca6f547ae76b76430835b6be94ee83
 n
 >src/main/java/com/example/cruisecompany/entity/UserCruise.java,5\2\52c9848d2037c716a2b4c7e42b45969dd9be5c9e
 o
@@ -23,8 +21,6 @@ m
 =src/main/java/com/example/cruisecompany/dao/UserLoginDAO.java,f\3\f395fd15da3c4487c982b3c0bcc006eb17e26400
 Q
 !src/main/webapp/AddUserCruise.jsp,8\3\8320cd6e26d0a8861744d7a9a6f795f2b2ca4d32
-q
-Asrc/main/java/com/example/cruisecompany/database/SQLRequests.java,9\e\9e781ec159629c509f44b7fa6265ad650fa89378
 r
 Bsrc/main/java/com/example/cruisecompany/servlets/AddNewCruise.java,b\c\bccf3d45902b9dd5d4a72819ec5f8a0c144481c0
 p
@@ -37,29 +33,27 @@ M
 src/main/webapp/AddCruise.jsp,2\8\28838b88e70d852ad37af38e14f4dffacdae20aa
 a
 1src/main/java/com/example/cruisecompany/Main.java,5\1\514a84b2508189e7b646e3e7112303cea5ab93fe
-h
-8src/main/java/com/example/cruisecompany/dao/UserDAO.java,a\f\afdebc6fc2304e9020afca4f388501b79aabc8a8
-j
-:src/main/java/com/example/cruisecompany/entity/Cruise.java,7\7\779c8a9950e0e4a5c2fbcd6583e1555d049add70
-q
-Asrc/main/java/com/example/cruisecompany/servlets/AddNewAdmin.java,a\3\a3531cc6f5ece3847e4d0eba1493de8e62f09871
 L
 src/main/webapp/HomePage.jsp,c\6\c6804db36d62bb51c4ff08b9a712db445f1a7f84
 I
 src/main/webapp/Style.css,4\f\4f8bebbbf3dd0f1368a33bfa77c2c92d70379c49
-j
-:src/main/java/com/example/cruisecompany/dao/CruiseDAO.java,3\f\3f9c1a7cff9c4f38f4e8d48b4c4015c6f227acfb
-t
-Dsrc/main/java/com/example/cruisecompany/style/css/bootstrap-grid.css,a\9\a92a82569ec6840923d98d8698e4fa24aa3424fd
-v
-Fsrc/main/java/com/example/cruisecompany/style/css/bootstrap-reboot.css,8\6\8620e3bf46f2f0e054ce7139561f0cba1181318f
-t
-Dsrc/main/java/com/example/cruisecompany/style/js/bootstrap.bundle.js,6\c\6c6e4af055aaf44f40e649d38bb58142050f57a1
-m
-=src/main/java/com/example/cruisecompany/style/js/bootstrap.js,7\e\7e9317dfb99c303acffcd2b4a0911c00ddd979ef
 s
 Csrc/main/java/com/example/cruisecompany/style/css/bootstrap.css.map,5\b\5b2a63f30ee61b1b57f173709fc706da91d74c62
 s
 Csrc/main/java/com/example/cruisecompany/style/css/bootstrap.min.css,a\4\a4ded0083664d5fa304de991805412f716066b4a
 t
 Dsrc/main/java/com/example/cruisecompany/database/DBCPDataSource.java,2\b\2ba7070a1ff775606fdb9dd893709562dba1ce7a
+K
+src/main/webapp/AddUser.jsp,0\5\05471be901bd49862c1b4b0ba3974298b7149b61
+r
+Bsrc/main/java/com/example/cruisecompany/controller/Validation.java,b\3\b30ba9955913e596e847527dad9caf0e2b2b7e27
+O
+src/main/webapp/WEB-INF/web.xml,2\e\2e22b6edd746fa3dc40ad7276c87c8d87d72a392
+^
+..idea/artifacts/CruiseCompany_war_exploded.xml,d\c\dcf35e93abccca9ba5bc36ca1ac7ee5c42946c05
+p
+@src/main/java/com/example/cruisecompany/servlets/AddNewUser.java,6\e\6e7c9911e6be8a1a80257e07083ed8c0fc769e82
+h
+8src/main/java/com/example/cruisecompany/entity/User.java,f\3\f399e5d664ca6f547ae76b76430835b6be94ee83
+q
+Asrc/main/java/com/example/cruisecompany/servlets/AddNewAdmin.java,a\3\a3531cc6f5ece3847e4d0eba1493de8e62f09871
