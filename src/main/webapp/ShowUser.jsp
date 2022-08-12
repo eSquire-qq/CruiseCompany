@@ -1,25 +1,21 @@
-<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/xml" prefix="x" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%@page import="com.example.cruisecompany.servlets.ShowUser" %>
-
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <meta charset="UTF-8" />
-    <title>User Info</title>
+    <title>Title</title>
 </head>
 <body>
 <form action="<%= request.getContextPath() %>/ShowUser" method="post">
-<ul>
-    <c:forEach var="user" items="${users}">
-        <li><c:out value="${user}" /></li>
-    </c:forEach>
-</ul>
+
+<label for="id" id="idi">Id</label>
+<input type="text" name="id" id="id"><br/>
+
+<button type="submit" value="Submit" id="button">Search</button>
+
 </form>
+
+<div>${sessionScope.user.toString()}</div>
+
 </body>
 </html>
 

@@ -1,7 +1,6 @@
 package com.example.cruisecompany.dao;
 
 import com.example.cruisecompany.entity.User;
-
 import com.example.cruisecompany.database.DBCPDataSource;
 import com.example.cruisecompany.entity.UserRole;
 

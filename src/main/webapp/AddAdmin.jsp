@@ -7,7 +7,13 @@
 <head>
     <meta charset="ISO-8859-1">
     <title>Admin registration</title>
-    <link rel="stylesheet" href="Style.css">
+
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="bootstrap-gird.css">
+    <link rel="stylesheet" href="bootstrap-reboot.css">
+
+    <link rel="stylesheet" href="bootstrap.bundle.js">
+    <link rel="stylesheet" href="bootstrap.js">
 </head>
 <body>
 <form action="<%= request.getContextPath() %>/AddNewAdmin" method="post">
