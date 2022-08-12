@@ -19,29 +19,32 @@ public class AddNewCruise extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/webapp/HomePage.jsp");
         requestDispatcher.forward(request,response);
-
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String duration = request.getParameter("duration");
         String price = request.getParameter("price");
         String cruiseStartDate = request.getParameter("cruiseStartDate");
         String cruiseEndDate = request.getParameter("cruiseEndDate");
         String cruiseLinerName = request.getParameter("cruiseLinerName");
         String passengerCapacity = request.getParameter("passengerCapacity");
         CruiseStatus status = CruiseStatus.REGISTERED;
+        String duration = request.getParameter("duration");
+        String cruiseName = request.getParameter("cruiseName");
 
         Cruise cruise = new Cruise();
 
-        cruise.setDuration(Integer.valueOf(duration));
         cruise.setPrice(Double.valueOf(price));
         cruise.setCruiseStartDate(LocalDate.parse(cruiseStartDate));
         cruise.setCruiseEndDate(LocalDate.parse(cruiseEndDate));
         cruise.setCruiseLinerName(cruiseLinerName);
         cruise.setPassengerCapacity(Integer.valueOf(passengerCapacity));
         cruise.setStatus(status);
+        cruise.setDuration(Integer.valueOf(duration));
+        cruise.setCruiseName(cruiseName);
+
+        cruiseDAO.create(cruise);
 
     }
 }

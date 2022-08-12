@@ -11,8 +11,8 @@ public class SQLRequests {
     public static final String UPDATE_USER = "UPDATE \"user\" SET name = ?, surname = ?, phone_number = ?, role_id = ?, password = ?, email = ? WHERE passenger_id = ?";
     public static final String DELETE_USER = "DELETE FROM \"user\" WHERE id = ?";
 
-    public static final String CREAT_CRUISE = "INSERT INTO \"cruise\" (duration, price, cruise_start_date, cruise_end_date, cruise_liner_name,passenger_capacity,status)\" +\n" +
-            "                                 \" VALUES (?,?,?,?,?,?,?)";
+    public static final String CREAT_CRUISE = "INSERT INTO \"cruise\" (duration, price, cruise_start_date, cruise_end_date, cruise_liner_name,passenger_capacity,status, cruise_name)\" +\n" +
+            "                                 \" VALUES (?,?,?,?,?,?,?,?)";
     public static final String READ_CRUISE = "SELECT duration, price, cruise_start_date, cruise_end_date, cruise_liner_name,passenger_capacity,status FROM \"cruise\" WHERE id = ?";
     public static final String UPDATE_CRUISE = "UPDATE \"cruise\" SET duration = ?, price = ?, cruise_start_date = ?, cruise_end_date = ?, cruise_liner_name = ?, passenger_capacity = ?,status = ? WHERE id = ? ";
     public static final String DELETE_CRUISE = "DELETE FROM \"cruise\" WHERE id = ?";

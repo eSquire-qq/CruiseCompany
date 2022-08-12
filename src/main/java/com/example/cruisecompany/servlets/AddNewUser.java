@@ -31,9 +31,9 @@ public class AddNewUser extends HttpServlet {
         String password = request.getParameter("password");
         String email = request.getParameter("email");
 
-        HttpSession httpSession = request.getSession();
-        httpSession.setAttribute("id",name);
-        System.out.println(httpSession.getAttribute("id"));
+//        HttpSession httpSession = request.getSession();
+//        httpSession.setAttribute("id",name);
+//        System.out.println(httpSession.getAttribute("id"));
 
         User user = new User();
 
@@ -44,6 +44,7 @@ public class AddNewUser extends HttpServlet {
         user.setPassword(password);
         user.setEmail(email);
 
+        userDAO.create(user);
     }
 
 }
