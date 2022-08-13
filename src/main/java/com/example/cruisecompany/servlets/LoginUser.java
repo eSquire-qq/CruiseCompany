@@ -7,6 +7,8 @@ import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 
+import static com.example.cruisecompany.database.PasswordHashCode.hashPassword;
+
 @WebServlet(name = "LoginUser", value = "/LoginUser")
 public class LoginUser extends HttpServlet {
 
@@ -25,7 +27,7 @@ public class LoginUser extends HttpServlet {
         String phoneNumber = request.getParameter("phoneNumber");
         String password = request.getParameter("password");
 
-        if(UserLoginDAO.getUserLoginInstance().dataVerification(phoneNumber,password)){
+        if(UserLoginDAO.getUserLoginInstance().dataVerification(phoneNumber,hashPassword(password))){
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("HomePage.jsp");
             requestDispatcher.forward(request,response);
         }

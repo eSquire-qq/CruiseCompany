@@ -10,6 +10,8 @@ import java.io.IOException;
 
 import com.example.cruisecompany.entity.User;
 
+import static com.example.cruisecompany.database.PasswordHashCode.hashPassword;
+
 @WebServlet(name = "AddNewUser", value = "/AddNewUser")
 public class AddNewUser extends HttpServlet {
 
@@ -41,7 +43,7 @@ public class AddNewUser extends HttpServlet {
         user.setSurname(surname);
         user.setPhoneNumber(phoneNumber);
         user.setRole(role);
-        user.setPassword(password);
+        user.setPassword(hashPassword(password));
         user.setEmail(email);
 
         userDAO.create(user);

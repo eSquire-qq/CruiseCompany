@@ -9,6 +9,8 @@ import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 
+import static com.example.cruisecompany.database.PasswordHashCode.hashPassword;
+
 @WebServlet(name = "AddNewAdmin", value = "/AddNewAdmin")
 public class AddNewAdmin extends HttpServlet {
 
@@ -36,7 +38,7 @@ public class AddNewAdmin extends HttpServlet {
         user.setSurname(surname);
         user.setPhoneNumber(phoneNumber);
         user.setRole(role);
-        user.setPassword(password);
+        user.setPassword(hashPassword(password));
         user.setEmail(email);
 
     }
