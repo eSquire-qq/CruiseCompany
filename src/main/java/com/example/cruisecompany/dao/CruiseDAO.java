@@ -5,7 +5,6 @@ import com.example.cruisecompany.entity.Cruise;
 import com.example.cruisecompany.entity.CruiseStatus;
 
 import java.sql.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -31,13 +30,13 @@ public class CruiseDAO {
         try(Connection connection = dataSource.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(CREAT_CRUISE)){
 
-            preparedStatement.setDouble(1,cruise.getPrice());
-            preparedStatement.setDate(2, Date.valueOf(cruise.getCruiseStartDate()));
-            preparedStatement.setDate(3, Date.valueOf(cruise.getCruiseEndDate()));
-            preparedStatement.setString(4,cruise.getCruiseLinerName());
-            preparedStatement.setInt(5,cruise.getPassengerCapacity());
-            preparedStatement.setInt(6,cruise.getStatus().ordinal());
-            preparedStatement.setInt(7,cruise.getDuration());
+            preparedStatement.setInt(1,cruise.getDuration());
+            preparedStatement.setDouble(2,cruise.getPrice());
+            preparedStatement.setDate(3, (Date) cruise.getCruiseStartDate());
+            preparedStatement.setDate(4, (Date) cruise.getCruiseEndDate());
+            preparedStatement.setString(5,cruise.getCruiseLinerName());
+            preparedStatement.setInt(6,cruise.getPassengerCapacity());
+            preparedStatement.setInt(7,cruise.getStatus().ordinal());
             preparedStatement.setString(8,cruise.getCruiseName());
 
             preparedStatement.executeQuery();
@@ -61,7 +60,7 @@ public class CruiseDAO {
             ResultSet resultSet = preparedStatement.getResultSet();
 
             if(resultSet.next()) {
-                cruise = new Cruise(resultSet.getLong("id"),resultSet.getDouble("price"),resultSet.getDate("cruise_start_date").toLocalDate(),resultSet.getDate("cruise_end_date").toLocalDate(),resultSet.getString("cruise_liner_name"),resultSet.getInt("passenger_capacity"), CruiseStatus.values()[resultSet.getInt("cruise_status")],resultSet.getInt("duration"),resultSet.getString("cruise_name"));
+                cruise = new Cruise(resultSet.getLong("id"),resultSet.getDouble("price"),resultSet.getDate("cruise_start_date"),resultSet.getDate("cruise_end_date"),resultSet.getString("cruise_liner_name"),resultSet.getInt("passenger_capacity"), CruiseStatus.values()[resultSet.getInt("cruise_status")],resultSet.getInt("duration"),resultSet.getString("cruise_name"));
             }
 
             }catch (SQLException e){
@@ -80,7 +79,7 @@ public class CruiseDAO {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while(resultSet.next()){
-                cruiseList.add(new Cruise(resultSet.getLong("id"),resultSet.getDouble("price"),resultSet.getDate("cruise_start_date").toLocalDate(),resultSet.getDate("cruise_end_date").toLocalDate(),resultSet.getString("cruise_liner_name"),resultSet.getInt("passenger_capacity"), CruiseStatus.values()[resultSet.getInt("cruise_status")],resultSet.getInt("duration"),resultSet.getString("cruise_name")));
+                cruiseList.add(new Cruise(resultSet.getLong("id"),resultSet.getDouble("price"),resultSet.getDate("cruise_start_date"),resultSet.getDate("cruise_end_date"),resultSet.getString("cruise_liner_name"),resultSet.getInt("passenger_capacity"), CruiseStatus.values()[resultSet.getInt("cruise_status")],resultSet.getInt("duration"),resultSet.getString("cruise_name")));
             }
 
         }catch (SQLException e) {
@@ -96,12 +95,13 @@ public class CruiseDAO {
 
             preparedStatement.setInt(1,cruise.getDuration());
             preparedStatement.setDouble(2,cruise.getPrice());
-            preparedStatement.setDate(3, Date.valueOf(cruise.getCruiseStartDate()));
-            preparedStatement.setDate(4, Date.valueOf(cruise.getCruiseEndDate()));
+            preparedStatement.setDate(3, (Date) cruise.getCruiseStartDate());
+            preparedStatement.setDate(4, (Date) cruise.getCruiseEndDate());
             preparedStatement.setString(5,cruise.getCruiseLinerName());
             preparedStatement.setInt(6,cruise.getPassengerCapacity());
             preparedStatement.setInt(7,cruise.getStatus().ordinal());
             preparedStatement.setString(8,cruise.getCruiseName());
+
 
             preparedStatement.executeUpdate();
 
