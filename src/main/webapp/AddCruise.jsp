@@ -24,10 +24,10 @@
         <input type="text" name="price" id="price"><br/>
 
         <label  for="cruiseStartDate" id="csd">Cruise end date:</label>
-        <input type="text" name="cruiseStartDate" id="cruiseStartDate"><br/>
+        <input type="date" name="cruiseStartDate" id="cruiseStartDate"><br/>
 
         <label  for="cruiseEndDate" id="ced">Cruise end date:</label>
-        <input type="text" name="cruiseEndDate" id="cruiseEndDate"><br/>
+        <input type="date" name="cruiseEndDate" id="cruiseEndDate"><br/>
 
 
         <label  for="cruiseLinerName" id="cln">Cruise liner name:</label>

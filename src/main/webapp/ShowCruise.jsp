@@ -1,5 +1,10 @@
+<%--suppress ALL --%>
+<%@ page import="java.util.List" %>
+<%@ page import="com.example.cruisecompany.dao.CruiseDAO" %>
+<%@ page import="com.example.cruisecompany.servlets.ShowCruise" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,11 +17,19 @@
 
 <div>
     <c:forEach var="cruise" items="${cruises}">
-        <p>
-        <td>
-                ${cruise.getCruiseLinerName()}
-        </td>
-        </p>
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <h4>${cruise.getCruiseName}</h4>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+                    <td> ${cruise.getPrice()} </td>
+                    <td> ${cruise.getCruiseStartDate()} </td>
+                    <td> ${cruise.getCruiseStartDate()} </td>
+                </div>
+            </div>
+        </div>
     </c:forEach>
 </div>
 

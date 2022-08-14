@@ -22,7 +22,7 @@
                 <div class="col-12 col-md-9 col-lg-7 col-xl-6">
                     <div class="card" style="border-radius: 15px;">
                         <div class="card-body p-5">
-                            <h2 class="text-uppercase text-center mb-5">Sing in</h2>
+                            <h2 class="text-uppercase text-center mb-5">Log in</h2>
 
                             <form action="<%= request.getContextPath() %>/LoginUser " method="post">
 
@@ -45,11 +45,11 @@
 
                                 <div class="d-flex justify-content-center">
                                     <button type="submit" value="Submit"
-                                            class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
+                                            class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Log in</button>
                                 </div>
 
                                 <p class="text-center text-muted mt-5 mb-0">Don't have an account? <a href="AddUser.jsp"
-                                                                                                        class="fw-bold text-body"><u>Register</u></a></p>
+                                                                                                        class="fw-bold text-body"><u>Sing up</u></a></p>
                             </form>
 
                         </div>
