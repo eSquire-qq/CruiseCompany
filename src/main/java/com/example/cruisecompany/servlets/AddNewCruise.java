@@ -11,7 +11,6 @@ import jakarta.servlet.annotation.*;
 import java.io.IOException;
 
 import java.sql.Date;
-import java.time.LocalDate;
 
 @WebServlet(name = "AddNewCruise", value = "/AddNewCruise")
 public class AddNewCruise extends HttpServlet {
@@ -25,7 +24,7 @@ public class AddNewCruise extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
 
         String duration = request.getParameter("duration");
         String price = request.getParameter("price");

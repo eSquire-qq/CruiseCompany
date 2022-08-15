@@ -25,13 +25,9 @@ public class ShowUser extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         Long id = Long.valueOf(Integer.valueOf(request.getParameter("id")));
-
         Optional<User> user = userDAO.read(id);
 
-        System.out.println(user);
-
         HttpSession httpSession = request.getSession();
-
         httpSession.setAttribute("user",user.get());
 
         response.sendRedirect( request.getContextPath() + "/ShowUser.jsp");

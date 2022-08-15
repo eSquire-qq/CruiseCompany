@@ -60,10 +60,9 @@ public class UserDAO  {
             ResultSet resultSet = preparedStatement.getResultSet();
 
             if(resultSet.next()) {
-
                 user = new User(id, resultSet.getString("name"), resultSet.getString("surname"), resultSet.getString("phone_number"), UserRole.values()[resultSet.getInt("role_id")], " ",resultSet.getString("email"));
-
             }
+
         }catch (SQLException e){
             e.printStackTrace();
         }

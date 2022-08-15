@@ -19,16 +19,16 @@ public class ShowCruise extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        List<Cruise> cruises = cruiseDAO.readAll();
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/ShowCruise.jsp");
-        request.setAttribute("cruises",cruises);
-        requestDispatcher.forward(request,response);
+
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
+        List<Cruise> cruises = cruiseDAO.readAll();
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/ShowCruise.jsp");
+        request.setAttribute("cruises",cruises);
+        requestDispatcher.forward(request,response);
 
     }
 }

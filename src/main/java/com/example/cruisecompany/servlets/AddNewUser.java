@@ -19,8 +19,6 @@ public class AddNewUser extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/webapp/HomePage.jsp");
-        requestDispatcher.forward(request,response);
     }
 
     @Override
@@ -33,10 +31,6 @@ public class AddNewUser extends HttpServlet {
         String password = request.getParameter("password");
         String email = request.getParameter("email");
 
-//        HttpSession httpSession = request.getSession();
-//        httpSession.setAttribute("id",name);
-//        System.out.println(httpSession.getAttribute("id"));
-
         User user = new User();
 
         user.setName(name);
@@ -47,6 +41,10 @@ public class AddNewUser extends HttpServlet {
         user.setEmail(email);
 
         userDAO.create(user);
+
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("HomePage.jsp");
+        requestDispatcher.forward(request,response);
+
     }
 
 }
