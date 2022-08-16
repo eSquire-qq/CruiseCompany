@@ -18,7 +18,7 @@ public class AddNewAdmin extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/webapp/HomePage.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/AddAdmin.jsp");
         requestDispatcher.forward(request,response);
     }
 
@@ -40,6 +40,8 @@ public class AddNewAdmin extends HttpServlet {
         user.setRole(role);
         user.setPassword(hashPassword(password));
         user.setEmail(email);
+
+        response.sendRedirect("/HomePage.jsp");
 
     }
 }
