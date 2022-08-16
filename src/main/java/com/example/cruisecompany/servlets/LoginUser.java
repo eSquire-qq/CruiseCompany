@@ -5,6 +5,7 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
+import javax.jms.Session;
 import java.io.IOException;
 
 import static com.example.cruisecompany.database.PasswordHashCode.hashPassword;
@@ -17,7 +18,7 @@ public class LoginUser extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/webapp/HomePage.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/LoginUser.jsp");
         requestDispatcher.forward(request,response);
     }
 
@@ -28,12 +29,10 @@ public class LoginUser extends HttpServlet {
         String password = request.getParameter("password");
 
         if(UserLoginDAO.getUserLoginInstance().dataVerification(phoneNumber,hashPassword(password))){
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("HomePage.jsp");
-            requestDispatcher.forward(request,response);
+            HttpSession session = null;
+            session.setAttribute("users",phoneNumber);
+            response.sendRedirect("/HomePage.jsp");
         }
-
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("LoginUser.jsp");
-        requestDispatcher.forward(request,response);
 
     }
 }
