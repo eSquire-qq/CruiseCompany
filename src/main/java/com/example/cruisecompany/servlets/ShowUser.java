@@ -16,9 +16,8 @@ public class ShowUser extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
-
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/ShowUser.jsp");
+        requestDispatcher.forward(request,response);
     }
 
     @Override
@@ -31,6 +30,8 @@ public class ShowUser extends HttpServlet {
         httpSession.setAttribute("user",user.get());
 
         response.sendRedirect( request.getContextPath() + "/ShowUser.jsp");
+
+        // TODO must be servlet
 
     }
 }

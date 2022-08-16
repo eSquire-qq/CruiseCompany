@@ -90,6 +90,7 @@ public class UserDAO  {
         }
     }
 
+
     public void delete(Long id) {
 
         try(Connection connection = dataSource.getConnection();
@@ -104,5 +105,36 @@ public class UserDAO  {
         }
     }
 
+
+    public boolean register(String phoneNumber, String email){
+
+        boolean ok = false;
+
+        try(Connection connection = dataSource.getConnection();
+
+            PreparedStatement preparedStatement = connection.prepareStatement(DATA_FOR_REGISTER)){
+
+            preparedStatement.setString(1,phoneNumber);
+            preparedStatement.setString(2,email);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()){
+                if(resultSet.getString(1).equals(phoneNumber)){
+                    ok = false;
+                }else if(resultSet.getString(2).equals(email)){
+                    ok = false;
+                }
+                ok = true;
+            }
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+        return ok;
+    }
+
 }
+
 

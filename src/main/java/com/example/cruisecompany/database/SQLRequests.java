@@ -29,8 +29,10 @@ public class SQLRequests {
     public static final String UPDATE_ADMIN = "UPDATE \"user\" SET name = ?, surname = ?, phone_number = ?, role_id = ?, password = ?, email = ? WHERE passenger_id = ?";
     public static final String DELETE_ADMIN = "DELETE FROM \"user\" WHERE id = ?";
 
+
     public static final String DATA_VERIFICATION = "SELECT phone_number, password FROM \"user\" WHERE phone_number = ? AND password = ? ";
 
+    public static final String DATA_FOR_REGISTER = "SELECT phone_number, email FROM \"user\" WHERE phone_number = ?, email = ?";
 
 
 
