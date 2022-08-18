@@ -9,7 +9,7 @@ import jakarta.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "ShowCruise", value = "/ShowAllCruise")
+@WebServlet(name = "ShowCruise", value = "/Cruises")
 public class ShowCruise extends HttpServlet {
 
     CruiseDAO cruiseDAO = CruiseDAO.getCruiseInstance();

@@ -34,6 +34,7 @@ public class AddNewCruise extends HttpServlet {
         String passengerCapacity = request.getParameter("passengerCapacity");
         CruiseStatus status = CruiseStatus.REGISTERED;
         String cruiseName = request.getParameter("cruiseName");
+        String destination = request.getParameter("destination");
 
         Cruise cruise = new Cruise();
 
@@ -45,6 +46,7 @@ public class AddNewCruise extends HttpServlet {
         cruise.setPassengerCapacity(Integer.valueOf(passengerCapacity));
         cruise.setStatus(status);
         cruise.setCruiseName(cruiseName);
+        cruise.setDestination(destination);
 
         cruiseDAO.create(cruise);
 

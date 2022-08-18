@@ -38,6 +38,7 @@ public class CruiseDAO {
             preparedStatement.setInt(6,cruise.getPassengerCapacity());
             preparedStatement.setInt(7,cruise.getStatus().ordinal());
             preparedStatement.setString(8,cruise.getCruiseName());
+            preparedStatement.setString(9,cruise.getDestination());
 
             preparedStatement.executeQuery();
 
@@ -60,7 +61,10 @@ public class CruiseDAO {
             ResultSet resultSet = preparedStatement.getResultSet();
 
             if(resultSet.next()) {
-                cruise = new Cruise(resultSet.getLong("id"),resultSet.getDouble("price"),resultSet.getDate("cruise_start_date"),resultSet.getDate("cruise_end_date"),resultSet.getString("cruise_liner_name"),resultSet.getInt("passenger_capacity"), CruiseStatus.values()[resultSet.getInt("cruise_status")],resultSet.getInt("duration"),resultSet.getString("cruise_name"));
+                cruise = new Cruise(resultSet.getLong("id"),resultSet.getDouble("price"),resultSet.getDate("cruise_start_date"),
+                        resultSet.getDate("cruise_end_date"),resultSet.getString("cruise_liner_name"),
+                        resultSet.getInt("passenger_capacity"), CruiseStatus.values()[resultSet.getInt("cruise_status")],
+                        resultSet.getInt("duration"),resultSet.getString("cruise_name"),resultSet.getString("destination"));
             }
 
             }catch (SQLException e){
@@ -79,14 +83,16 @@ public class CruiseDAO {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while(resultSet.next()){
-                cruiseList.add(new Cruise(resultSet.getLong("id"),resultSet.getDouble("price"),resultSet.getDate("cruise_start_date"),resultSet.getDate("cruise_end_date"),resultSet.getString("cruise_liner_name"),resultSet.getInt("passenger_capacity"), CruiseStatus.values()[resultSet.getInt("status")],resultSet.getInt("duration"),resultSet.getString("cruise_name")));
+                cruiseList.add(new Cruise(resultSet.getLong("id"),resultSet.getDouble("price"),resultSet.getDate("cruise_start_date"),
+                        resultSet.getDate("cruise_end_date"),resultSet.getString("cruise_liner_name"),
+                        resultSet.getInt("passenger_capacity"), CruiseStatus.values()[resultSet.getInt("status")],
+                        resultSet.getInt("duration"),resultSet.getString("cruise_name"),resultSet.getString("destination")));
             }
 
         }catch (SQLException e) {
             e.printStackTrace();
         }
 
-        System.out.println(cruiseList);
         return cruiseList;
     }
 
@@ -102,7 +108,7 @@ public class CruiseDAO {
             preparedStatement.setInt(6,cruise.getPassengerCapacity());
             preparedStatement.setInt(7,cruise.getStatus().ordinal());
             preparedStatement.setString(8,cruise.getCruiseName());
-
+            preparedStatement.setString(9,cruise.getDestination());
 
             preparedStatement.executeUpdate();
 
