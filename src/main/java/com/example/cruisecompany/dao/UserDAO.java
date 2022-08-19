@@ -24,7 +24,7 @@ public class UserDAO  {
         return USER_INSTANCE;
     }
 
-    private final DBCPDataSource dataSource = DBCPDataSource.getInstance();
+    private static final DBCPDataSource dataSource = DBCPDataSource.getInstance();
 
     public void create(User user){
 
@@ -38,6 +38,7 @@ public class UserDAO  {
             preparedStatement.setInt(4, user.getRole().ordinal());
             preparedStatement.setString(5,user.getPassword());
             preparedStatement.setString(6,user.getEmail());
+            preparedStatement.setInt(7,0);
 
             preparedStatement.executeQuery();
 
@@ -60,7 +61,9 @@ public class UserDAO  {
             ResultSet resultSet = preparedStatement.getResultSet();
 
             if(resultSet.next()) {
-                user = new User(id, resultSet.getString("name"), resultSet.getString("surname"), resultSet.getString("phone_number"), UserRole.values()[resultSet.getInt("role_id")], " ",resultSet.getString("email"));
+                user = new User(id, resultSet.getString("name"), resultSet.getString("surname"),
+                        resultSet.getString("phone_number"), UserRole.values()[resultSet.getInt("role_id")],
+                        " ",resultSet.getString("email"), resultSet.getInt("balance"));
             }
 
         }catch (SQLException e){
@@ -82,8 +85,9 @@ public class UserDAO  {
             preparedStatement.setInt(4,user.getRole().ordinal());
             preparedStatement.setString(5,user.getPassword());
             preparedStatement.setString(6,user.getEmail());
+            preparedStatement.setInt(7, user.getBalance());
 
-            preparedStatement.execute();
+            preparedStatement.executeUpdate();
 
         }catch (SQLException e){
             e.printStackTrace();
@@ -135,6 +139,25 @@ public class UserDAO  {
         return ok;
     }
 
+
+    public static int addBalance(int balance, Long id, int newBalance){
+
+        int prepared;
+
+        try(Connection connection = dataSource.getConnection();
+
+            PreparedStatement preparedStatement = connection.prepareStatement(ADD_BALANCE)) {
+
+            preparedStatement.setInt(1, (balance + newBalance));
+            preparedStatement.setLong(2, id);
+
+            prepared = preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return prepared;
+    }
+
 }
-
-
