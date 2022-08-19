@@ -61,7 +61,9 @@ public class AdminDAO {
 
             if(resultSet.next()) {
 
-                user = new User(resultSet.getLong("id"), resultSet.getString("name"), resultSet.getString("surname"), resultSet.getString("phone_number"), UserRole.values()[resultSet.getInt("role_id")], resultSet.getString("password"),resultSet.getString("e-mail"));
+                user = new User(resultSet.getLong("id"), resultSet.getString("name"), resultSet.getString("surname"),
+                        resultSet.getString("phone_number"), UserRole.values()[resultSet.getInt("role_id")],
+                        resultSet.getString("password"),resultSet.getString("e-mail"),resultSet.getInt("balance"));
 
             }
         }catch (SQLException e){
@@ -83,6 +85,7 @@ public class AdminDAO {
             preparedStatement.setInt(4,user.getRole().ordinal());
             preparedStatement.setString(5,user.getPassword());
             preparedStatement.setString(6,user.getEmail());
+            preparedStatement.setInt(7,0);
 
             preparedStatement.executeUpdate();
 

@@ -31,6 +31,7 @@ public class AddNewUser extends HttpServlet {
         UserRole role = UserRole.USER;
         String password = request.getParameter("password");
         String email = request.getParameter("email");
+        Integer balance = Integer.valueOf(request.getParameter("balance"));
 
         User user = new User();
 
@@ -40,17 +41,15 @@ public class AddNewUser extends HttpServlet {
         user.setRole(role);
         user.setPassword(hashPassword(password));
         user.setEmail(email);
+        user.setBalance(balance);
 
         if(!userDAO.register(phoneNumber,email)) {
             response.getWriter().print("email or password already exist");
-
         }
 
         userDAO.create(user);
 
         response.sendRedirect("/HomePage.jsp");
-
-        // TODO must be servlet
 
     }
 }
