@@ -22,6 +22,14 @@
         <p>Already have an account? <a href="LoginUser.jsp">Sign in</a>.</p>
     </div>
 
+    <div class="container signin">
+        <p><a href="Profile.jsp">Account</a>.</p>
+    </div>
+
+    <div class="container signin">
+        <p><a href="ShowAllCruise.jsp">Catalog</a>.</p>
+    </div>
+
 </form>
 </body>
 </html>
