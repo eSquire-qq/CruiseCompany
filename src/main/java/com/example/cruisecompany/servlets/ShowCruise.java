@@ -22,7 +22,8 @@ public class ShowCruise extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        CruiseDAO cruiseDAO = CruiseDAO.getCruiseInstance();
         List<Cruise> cruises = cruiseDAO.readAll();
-        request.setAttribute("cruises",cruises);
+        request.getSession().setAttribute("cruise", cruises );
     }
 }

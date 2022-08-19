@@ -1,35 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Insert title here</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <!-- Bootstrap Bundle JS (jsDelivr CDN) -->
-    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-<form action="<%= request.getContextPath() %>/HomePage.jsp" method="post">
-    <div class="container">
-        Home page
-    </div>
 
-    <div>
-        <a class="AddUser.jsp" href="#">  </a>
-        <p>Don't have an account yet?<a href="AddUser.jsp">Create new account</a>.</p>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand">NorwegianCruiseLine</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Page 1-1</a></li>
+                    <li><a href="#">Page 1-2</a></li>
+                    <li><a href="#">Page 1-3</a></li>
+                </ul>
+            </li>
+            <li><a href="ShowAllCruise.jsp">Catalog</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="AddUser.jsp"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href="LoginUser.jsp"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ul>
     </div>
+</nav>
 
-    <div class="container signin">
-        <p>Already have an account? <a href="LoginUser.jsp">Sign in</a>.</p>
-    </div>
+<div class = "container">
+    <h2>The NCL Difference</h2>
+</div>
 
-    <div class="container signin">
-        <p><a href="Profile.jsp">Account</a>.</p>
-    </div>
+<div class="container">
+    <h3>Feel Free</h3>
+    <p><h4>No timetables. No stipulations. Just award-winning entertainment and diverse dining options from the only cruise line built for versatile holidaying.</h4></p>
+</div>
+<div class="container">
+    <h3>NCL's Free at Sea</h3>
+    <p><h4>Enjoy the most inclusive cruise holiday with NCL's Free at Sea. Upgrade your cruise and Choose 2 Offers, like Open Bar, and Speciality Dining, to customise your holiday to any destination, any time of year.</h4></p>
+</div>
+<div class="container">
+    <h3>Holiday Your Way</h3>
+    <p><h4>Our award-winning ships are designed for you to enjoy as you choose whilst cruising to beautiful destinations around the world. Add a wide range of superb dining options and spectacular entertainment and you'll experience your best holiday ever.</h4></p>
+</div>
 
-    <div class="container signin">
-        <p><a href="ShowAllCruise.jsp">Catalog</a>.</p>
-    </div>
-
-</form>
 </body>
 </html>
+
