@@ -11,8 +11,9 @@ public class User {
     private String password;
 
     private String email;
+    private Integer balance;
 
-    public User(Long id, String name, String surname, String phoneNumber, UserRole role, String password, String email) {
+    public User(Long id, String name, String surname, String phoneNumber, UserRole role, String password, String email, Integer balance) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -20,6 +21,7 @@ public class User {
         this.role = role;
         this.password = password;
         this.email = email;
+        this.balance = balance;
     }
 
     public User() {
@@ -82,6 +84,14 @@ public class User {
         this.email = email;
     }
 
+    public Integer getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Integer balance) {
+        this.balance = balance;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -92,20 +102,20 @@ public class User {
                 ", role=" + role +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
+                ", balance=" + balance +
                 '}';
     }
 
     @Override
     public boolean equals(Object o) {
-
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(id, user.id) && Objects.equals(name, user.name) && Objects.equals(surname, user.surname) && Objects.equals(phoneNumber, user.phoneNumber) && role == user.role && Objects.equals(password, user.password) && Objects.equals(email, user.email);
+        return Objects.equals(id, user.id) && Objects.equals(name, user.name) && Objects.equals(surname, user.surname) && Objects.equals(phoneNumber, user.phoneNumber) && role == user.role && Objects.equals(password, user.password) && Objects.equals(email, user.email) && Objects.equals(balance, user.balance);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, surname, phoneNumber, role, password, email);
+        return Objects.hash(id, name, surname, phoneNumber, role, password, email, balance);
     }
 }
