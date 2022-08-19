@@ -6,16 +6,21 @@ public class SQLRequests {
 
     }
 
-    public static final String CREAT_USER = "INSERT INTO \"user\" (name, surname, phone_number, role_id, password, email) VALUES (?,?,?,?,?,?)";
-    public static final String READ_USER = "SELECT name, surname, phone_number, role_id, email FROM \"user\" WHERE id = ?";
-    public static final String UPDATE_USER = "UPDATE \"user\" SET name = ?, surname = ?, phone_number = ?, role_id = ?, password = ?, email = ? WHERE passenger_id = ?";
+    public static final String CREAT_USER = "INSERT INTO \"user\" (name, surname, phone_number, role_id, password, email, balance) VALUES (?,?,?,?,?,?,?)";
+    public static final String READ_USER = "SELECT name, surname, phone_number, role_id, email, balance FROM \"user\" WHERE id = ?";
+    public static final String UPDATE_USER = "UPDATE \"user\" SET name = ?, surname = ?, phone_number = ?, role_id = ?, password = ?, email = ? WHERE id = ?";
     public static final String DELETE_USER = "DELETE FROM \"user\" WHERE id = ?";
+
+    public static final String ADD_BALANCE = "UPDATE \"user\" SET balance = ?  WHERE id = ? ";
+
 
     public static final String CREAT_CRUISE = "INSERT INTO \"cruise\" (duration, price, cruise_start_date, cruise_end_date, cruise_liner_name,passenger_capacity,status, cruise_name, destination) VALUES (?,?,?::date,?::date,?,?,?,?,?)";
     public static final String READ_CRUISE = "SELECT duration, price, cruise_start_date, cruise_end_date, cruise_liner_name,passenger_capacity,status, destination FROM \"cruise\" WHERE id = ?";
     public static final String UPDATE_CRUISE = "UPDATE \"cruise\" SET duration = ?, price = ?, cruise_start_date = ?, cruise_end_date = ?, cruise_liner_name = ?, passenger_capacity = ?,status = ?, cruise_name = ?, destination = ? WHERE id = ? ";
     public static final String DELETE_CRUISE = "DELETE FROM \"cruise\" WHERE id = ?";
     public static final String READ_ALL_CRUISE = "SELECT * FROM \"cruise\"";
+
+    public static final String SHOW_CRUISE_INFORMATION = "SELECT * FROM \"cruises\"";
 
 
     public static final String CREATE_USER_CRUISE = "INSERT INTO \"user_cruise\" (ticket_id, cabinNumber, cruise_id, user_id, status_id ) VALUES (?,?,?,?,?)";
@@ -30,9 +35,9 @@ public class SQLRequests {
     public static final String DELETE_ADMIN = "DELETE FROM \"user\" WHERE id = ?";
 
 
-    public static final String DATA_VERIFICATION = "SELECT phone_number, password FROM \"user\" WHERE phone_number = ? AND password = ? ";
+    public static final String DATA_VERIFICATION = "SELECT * FROM \"user\" WHERE phone_number = ? AND password = ? ";
 
-    public static final String DATA_FOR_REGISTER = "SELECT phone_number, email FROM \"user\" WHERE phone_number = ?, email = ?";
+    public static final String DATA_FOR_REGISTER = "SELECT * FROM \"user\" WHERE phone_number = ?, password = ?";
 
 
 
