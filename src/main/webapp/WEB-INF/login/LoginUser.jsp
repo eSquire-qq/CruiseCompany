@@ -10,7 +10,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>User registration</title>
+    <title>Log in</title>
     <link rel="stylesheet" href="css/Style.css">
 </head>
 <body>
@@ -27,7 +27,7 @@
                             <form action="<%= request.getContextPath() %>/LoginUser " method="post">
 
                                 <div class="form-outline mb-4">
-                                    <input type="email" required = "required" placeholder="Email" id="form3Example3cg" class="form-control form-control-lg" name = "email" />
+                                    <input type="text" required = "required" placeholder="Phone number" id="form3Example3cg" class="form-control form-control-lg" name = "phoneNumber" />
                                     <label class="form-label" for="form3Example3cg"></label>
                                 </div>
 
@@ -37,7 +37,7 @@
                                 </div>
 
                                 <div class="form-check d-flex justify-content-center mb-5">
-                                    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" />
+                                    <input class="form-check-input me-2" type="checkbox" required = "required" value="" id="form2Example3cg" />
                                     <label class="form-check-label" for="form3Example3cg">
                                         I agree all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>
                                     </label>
@@ -45,10 +45,10 @@
 
                                 <div class="d-flex justify-content-center">
                                     <button type="submit" value="Submit"
-                                            class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Log in</button>
+                                            class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Log in</button> <!-- SET PARAMETERS -->
                                 </div>
 
-                                <p class="text-center text-muted mt-5 mb-0">Don't have an account? <a href="AddUser.jsp"
+                                <p class="text-center text-muted mt-5 mb-0">Don't have an account? <a href="AddNewUser"
                                                                                                         class="fw-bold text-body"><u>Sing up</u></a></p>
                             </form>
 

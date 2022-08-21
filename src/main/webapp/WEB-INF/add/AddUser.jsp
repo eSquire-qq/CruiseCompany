@@ -10,7 +10,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>User registration</title>
+    <title>Sing up</title>
     <link rel="stylesheet" href="css/Style.css">
 </head>
 <body>
@@ -63,7 +63,7 @@
                                             class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Sing up</button>
                                 </div>
 
-                                <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="LoginUser.jsp"
+                                <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="LoginUser"
                                                                                                         class="fw-bold text-body"><u>Log in</u></a></p>
                             </form>
 
