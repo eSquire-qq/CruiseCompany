@@ -1,11 +1,14 @@
 package com.example.cruisecompany.servlets;
 
 import com.example.cruisecompany.dao.AdminDAO;
+import com.example.cruisecompany.dao.UserDAO;
 import com.example.cruisecompany.entity.User;
 import com.example.cruisecompany.entity.UserRole;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
@@ -14,11 +17,11 @@ import static com.example.cruisecompany.database.PasswordHashCode.hashPassword;
 @WebServlet(name = "AddNewAdmin", value = "/AddNewAdmin")
 public class AddNewAdmin extends HttpServlet {
 
-    AdminDAO adminDAO = AdminDAO.getAdminInstance();
+    private static final Logger logger = LoggerFactory.getLogger(AddNewAdmin.class);
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/AddAdmin.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/add/AddAdmin.jsp");
         requestDispatcher.forward(request,response);
     }
 
@@ -32,16 +35,25 @@ public class AddNewAdmin extends HttpServlet {
         String password = request.getParameter("password");
         String email = request.getParameter("email");
 
-        User user = new User();
+        try {
+            if (UserDAO.getUserInstance().isExistingLogin(phoneNumber, email)) {
 
-        user.setName(name);
-        user.setSurname(surname);
-        user.setPhoneNumber(phoneNumber);
-        user.setRole(role);
-        user.setPassword(hashPassword(password));
-        user.setEmail(email);
+                User user = new User();
 
-        response.sendRedirect("/HomePage.jsp");
+                user.setName(name);
+                user.setSurname(surname);
+                user.setPhoneNumber(phoneNumber);
+                user.setRole(role);
+                user.setPassword(hashPassword(password));
+                user.setEmail(email);
 
+                response.sendRedirect("/HomePage");
+
+                request.getSession().setAttribute("user", user);
+
+            }
+        }catch (Exception e){
+            throw new IOException();
+        }
     }
 }

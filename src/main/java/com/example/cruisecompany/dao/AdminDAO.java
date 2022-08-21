@@ -63,7 +63,7 @@ public class AdminDAO {
 
                 user = new User(resultSet.getLong("id"), resultSet.getString("name"), resultSet.getString("surname"),
                         resultSet.getString("phone_number"), UserRole.values()[resultSet.getInt("role_id")],
-                        resultSet.getString("password"),resultSet.getString("e-mail"),resultSet.getInt("balance"));
+                        resultSet.getString("password"),resultSet.getString("e-mail"),resultSet.getDouble("balance"));
 
             }
         }catch (SQLException e){
