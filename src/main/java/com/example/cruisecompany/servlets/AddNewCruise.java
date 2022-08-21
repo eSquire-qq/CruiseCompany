@@ -7,6 +7,7 @@ import com.example.cruisecompany.entity.CruiseStatus;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
+import service.CruiseDataTime;
 
 import java.io.IOException;
 
@@ -19,12 +20,12 @@ public class AddNewCruise extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/AddCruise.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/add/AddCruise.jsp");
         requestDispatcher.forward(request,response);
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         String duration = request.getParameter("duration");
         String price = request.getParameter("price");
@@ -36,19 +37,22 @@ public class AddNewCruise extends HttpServlet {
         String cruiseName = request.getParameter("cruiseName");
         String destination = request.getParameter("destination");
 
-        Cruise cruise = new Cruise();
+        if(CruiseDataTime.getInstance().equalsTwoDate(cruiseEndDate)) {
 
-        cruise.setDuration(Integer.valueOf(duration));
-        cruise.setPrice(Double.valueOf(price));
-        cruise.setCruiseStartDate(cruiseStartDate);
-        cruise.setCruiseEndDate(cruiseEndDate);
-        cruise.setCruiseLinerName(cruiseLinerName);
-        cruise.setPassengerCapacity(Integer.valueOf(passengerCapacity));
-        cruise.setStatus(status);
-        cruise.setCruiseName(cruiseName);
-        cruise.setDestination(destination);
+            Cruise cruise = new Cruise();
 
-        cruiseDAO.create(cruise);
+            cruise.setDuration(Integer.valueOf(duration));
+            cruise.setPrice(Double.valueOf(price));
+            cruise.setCruiseStartDate(cruiseStartDate);
+            cruise.setCruiseEndDate(cruiseEndDate);
+            cruise.setCruiseLinerName(cruiseLinerName);
+            cruise.setPassengerCapacity(Integer.valueOf(passengerCapacity));
+            cruise.setStatus(status);
+            cruise.setCruiseName(cruiseName);
+            cruise.setDestination(destination);
+
+            cruiseDAO.create(cruise);
+        }
 
     }
 }

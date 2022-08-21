@@ -80,6 +80,7 @@ public class CruiseDAO {
         try(Connection connection = dataSource.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(READ_ALL_CRUISE)) {
 
+            preparedStatement.setInt(1,CruiseStatus.REGISTERED.ordinal());
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while(resultSet.next()){

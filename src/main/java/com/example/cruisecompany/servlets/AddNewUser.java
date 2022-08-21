@@ -19,37 +19,42 @@ public class AddNewUser extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/AddUser.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/add/AddUser.jsp");
         requestDispatcher.forward(request,response);
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
         String name = request.getParameter("name");
         String surname = request.getParameter("surname");
         String phoneNumber = request.getParameter("phoneNumber");
         UserRole role = UserRole.USER;
         String password = request.getParameter("password");
         String email = request.getParameter("email");
-        Integer balance = Integer.valueOf(request.getParameter("balance"));
+        Double balance = Double.valueOf(request.getParameter("balance"));
 
-        User user = new User();
+        if(UserDAO.getUserInstance().isExistingLogin(phoneNumber,email)) {
 
-        user.setName(name);
-        user.setSurname(surname);
-        user.setPhoneNumber(phoneNumber);
-        user.setRole(role);
-        user.setPassword(hashPassword(password));
-        user.setEmail(email);
-        user.setBalance(balance);
+            User user = new User();
 
-        if(!userDAO.register(phoneNumber,email)) {
-            response.getWriter().print("email or password already exist");
+            user.setName(name);
+            user.setSurname(surname);
+            user.setPhoneNumber(phoneNumber);
+            user.setRole(role);
+            user.setPassword(hashPassword(password));
+            user.setEmail(email);
+            user.setBalance(balance);
+
+            userDAO.create(user);
+
+            request.getSession().setAttribute("user",user);
+            response.sendRedirect("/LoginUser");
+
         }
-
-        userDAO.create(user);
-
-        response.sendRedirect("/HomePage.jsp");
+        else{
+            response.sendRedirect("AddNewUser");
+        }
 
     }
 }

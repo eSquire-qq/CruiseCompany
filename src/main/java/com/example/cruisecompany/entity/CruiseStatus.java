@@ -1,5 +1,5 @@
 package com.example.cruisecompany.entity;
 
 public enum CruiseStatus {
-    REGISTERED,PAID,CANCELED
+    REGISTERED,PAID,CANCELED,COMPLETED
 }
