@@ -11,9 +11,9 @@ public class User {
     private String password;
 
     private String email;
-    private Integer balance;
+    private Double balance;
 
-    public User(Long id, String name, String surname, String phoneNumber, UserRole role, String password, String email, Integer balance) {
+    public User(Long id, String name, String surname, String phoneNumber, UserRole role, String password, String email, Double balance) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -84,11 +84,11 @@ public class User {
         this.email = email;
     }
 
-    public Integer getBalance() {
+    public Double getBalance() {
         return balance;
     }
 
-    public void setBalance(Integer balance) {
+    public void setBalance(Double balance) {
         this.balance = balance;
     }
 
