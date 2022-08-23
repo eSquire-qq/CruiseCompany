@@ -37,22 +37,22 @@ public class AddNewCruise extends HttpServlet {
         String cruiseName = request.getParameter("cruiseName");
         String destination = request.getParameter("destination");
 
-        if(CruiseDataTime.getInstance().equalsTwoDate(cruiseEndDate)) {
 
-            Cruise cruise = new Cruise();
+        Cruise cruise = new Cruise();
 
-            cruise.setDuration(Integer.valueOf(duration));
-            cruise.setPrice(Double.valueOf(price));
-            cruise.setCruiseStartDate(cruiseStartDate);
-            cruise.setCruiseEndDate(cruiseEndDate);
-            cruise.setCruiseLinerName(cruiseLinerName);
-            cruise.setPassengerCapacity(Integer.valueOf(passengerCapacity));
-            cruise.setStatus(status);
-            cruise.setCruiseName(cruiseName);
-            cruise.setDestination(destination);
+        cruise.setDuration(Integer.valueOf(duration));
+        cruise.setPrice(Double.valueOf(price));
+        cruise.setCruiseStartDate(cruiseStartDate);
+        cruise.setCruiseEndDate(cruiseEndDate);
+        cruise.setCruiseLinerName(cruiseLinerName);
+        cruise.setPassengerCapacity(Integer.valueOf(passengerCapacity));
+        cruise.setStatus(status);
+        cruise.setCruiseName(cruiseName);
+        cruise.setDestination(destination);
 
-            cruiseDAO.create(cruise);
-        }
+        cruiseDAO.create(cruise);
+
+        response.sendRedirect("/Catalog");
 
     }
 }
