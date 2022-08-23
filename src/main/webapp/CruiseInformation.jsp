@@ -64,13 +64,13 @@
             <div class="post-preview">
                 <a>
                     <h2 class="post-title"><%= cruise.getCruiseName()%></h2>
-                    <h3 class="post-subtitle"><b>Destination</b>: <%= cruise.getDestination()%></h3>
-                    <h3 class="post-subtitle"><b>Date:</b><%= cruise.getCruiseStartDate()%> - <%= cruise.getCruiseEndDate()%></h3>
-                    <h3 class="post-subtitle"><b>Price:</b> <%= cruise.getPrice()%></h3>
-                    <h3 class="post-subtitle"><b>Liner:</b> <%= cruise.getCruiseLinerName()%></h3>
-                    <h3 class="post-subtitle"><b>Passenger capacity:</b> <%= cruise.getPassengerCapacity()%></h3>
-                    <a href="Orders?id=<%= cruise.getId()%>" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;">Buy</a>
-                    <a href="Cruises" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;">Go back</a>
+                    <h3 class="post-subtitle"><strong>Destination</strong>: <%= cruise.getDestination()%></h3>
+                    <h3 class="post-subtitle"><strong>Date:</strong><%= cruise.getCruiseStartDate()%> - <%= cruise.getCruiseEndDate()%></h3>
+                    <h3 class="post-subtitle"><strong>Price:</strong> <%= cruise.getPrice()%></h3>
+                    <h3 class="post-subtitle"><strong>Liner:</strong> <%= cruise.getCruiseLinerName()%></h3>
+                    <h3 class="post-subtitle"><strong>Passenger capacity:</strong> <%= cruise.getPassengerCapacity()%></h3>
+                    <a href="UserOrder?id=<%= cruise.getId()%>" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;">Buy</a>
+                    <a href="Catalog" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;">Go back</a>
                 </a>
             </div>
             <hr class="my-4" />
@@ -78,14 +78,13 @@
     </div>
 </div>
 
-<!-- Footer-->
 <footer class="border-top">
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <ul class="list-inline text-center">
                     <li class="list-inline-item">
-                        <a href="#!">
+                        <a href="https://www.facebook.com/profile.php?id=100047603651889">
                                     <span class="fa-stack fa-lg">
                                         <i class="fas fa-circle fa-stack-2x"></i>
                                         <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
@@ -93,7 +92,7 @@
                         </a>
                     </li>
                     <li class="list-inline-item">
-                        <a href="#!">
+                        <a href="https://twitter.com/eSquire_11">
                                     <span class="fa-stack fa-lg">
                                         <i class="fas fa-circle fa-stack-2x"></i>
                                         <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
@@ -101,7 +100,7 @@
                         </a>
                     </li>
                     <li class="list-inline-item">
-                        <a href="#!">
+                        <a href="https://github.com/eSquire-qq">
                                     <span class="fa-stack fa-lg">
                                         <i class="fas fa-circle fa-stack-2x"></i>
                                         <i class="fab fa-github fa-stack-1x fa-inverse"></i>
