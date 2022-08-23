@@ -9,14 +9,14 @@ import jakarta.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "ShowCruise", value = "/Cruises")
-public class ShowCruise extends HttpServlet {
+@WebServlet(name = "Catalog", value = "/Catalog")
+public class Catalog extends HttpServlet {
 
     CruiseDAO cruiseDAO = CruiseDAO.getCruiseInstance();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/ShowAllCruise.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/main/Catalog.jsp");
         requestDispatcher.forward(request,response);
     }
 
@@ -24,6 +24,6 @@ public class ShowCruise extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         CruiseDAO cruiseDAO = CruiseDAO.getCruiseInstance();
         List<Cruise> cruises = cruiseDAO.readAll();
-        request.getSession().setAttribute("cruise", cruises );
+        request.getSession().setAttribute("cruise", cruises);
     }
 }
