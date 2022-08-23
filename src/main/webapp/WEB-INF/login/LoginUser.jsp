@@ -27,7 +27,7 @@
                             <form action="<%= request.getContextPath() %>/LoginUser " method="post">
 
                                 <div class="form-outline mb-4">
-                                    <input type="text" required = "required" placeholder="Phone number" id="form3Example3cg" class="form-control form-control-lg" name = "phoneNumber" />
+                                    <input type="text" required = "required" placeholder="Email" id="form3Example3cg" class="form-control form-control-lg" name = "email" />
                                     <label class="form-label" for="form3Example3cg"></label>
                                 </div>
 

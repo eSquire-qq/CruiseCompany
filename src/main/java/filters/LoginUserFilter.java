@@ -11,9 +11,11 @@ import java.io.IOException;
 @WebFilter(filterName = "LoginUserFilter", urlPatterns = "/UserProfile/*")
 public class LoginUserFilter implements Filter {
 
+    @Override
     public void init(FilterConfig config) throws ServletException {
     }
 
+    @Override
     public void destroy() {
     }
 
