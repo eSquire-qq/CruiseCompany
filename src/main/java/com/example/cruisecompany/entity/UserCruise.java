@@ -6,16 +6,20 @@ public class UserCruise {
 
     private Long ticketId;
     private Integer cabinNumber;
-    private Cruise cruise;
-    private User user;
+    private Long cruiseId;
+    private Long userId;
     private Integer statusId;
 
-    public UserCruise(Long ticketId, Integer cabinNumber, Cruise cruise, User user, Integer statusId) {
+    public UserCruise(Long ticketId, Integer cabinNumber, Long cruiseId, Long userId, Integer statusId) {
         this.ticketId = ticketId;
         this.cabinNumber = cabinNumber;
-        this.cruise = cruise;
-        this.user = user;
+        this.cruiseId = cruiseId;
+        this.userId = userId;
         this.statusId = statusId;
+    }
+
+    public UserCruise() {
+
     }
 
     public Long getTicketId() {
@@ -34,20 +38,20 @@ public class UserCruise {
         this.cabinNumber = cabinNumber;
     }
 
-    public Cruise getCruise() {
-        return cruise;
+    public Long getCruiseId() {
+        return cruiseId;
     }
 
-    public void setCruise(Cruise cruise) {
-        this.cruise = cruise;
+    public void setCruiseId(Long cruiseId) {
+        this.cruiseId = cruiseId;
     }
 
-    public User getUser() {
-        return user;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public Integer getStatusId() {
@@ -61,10 +65,10 @@ public class UserCruise {
     @Override
     public String toString() {
         return "UserCruise{" +
-                "ticket_id=" + ticketId +
+                "ticketId=" + ticketId +
                 ", cabinNumber=" + cabinNumber +
-                ", cruise=" + cruise +
-                ", user=" + user +
+                ", cruiseId=" + cruiseId +
+                ", userId=" + userId +
                 ", statusId=" + statusId +
                 '}';
     }
@@ -74,11 +78,11 @@ public class UserCruise {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserCruise that = (UserCruise) o;
-        return Objects.equals(ticketId, that.ticketId) && Objects.equals(cabinNumber, that.cabinNumber) && Objects.equals(cruise, that.cruise) && Objects.equals(user, that.user) && Objects.equals(statusId, that.statusId);
+        return Objects.equals(ticketId, that.ticketId) && Objects.equals(cabinNumber, that.cabinNumber) && Objects.equals(cruiseId, that.cruiseId) && Objects.equals(userId, that.userId) && Objects.equals(statusId, that.statusId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(ticketId, cabinNumber, cruise, user, statusId);
+        return Objects.hash(ticketId, cabinNumber, cruiseId, userId, statusId);
     }
 }

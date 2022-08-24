@@ -2,12 +2,15 @@ package com.example.cruisecompany.dao;
 
 import com.example.cruisecompany.database.DBCPDataSource;
 import com.example.cruisecompany.entity.Cruise;
+import com.example.cruisecompany.entity.CruiseStatus;
 import com.example.cruisecompany.entity.UserCruise;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.example.cruisecompany.database.SQLRequests.*;
 
@@ -29,12 +32,11 @@ public class UserCruiseDAO {
         try(Connection connection = dataSource.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(CREATE_USER_CRUISE)){
 
-            preparedStatement.setInt(1,userCruise.getCabinNumber());
-            preparedStatement.setInt(2,Math.toIntExact(userCruise.getCruise().getId()));
-            preparedStatement.setInt(3,Math.toIntExact(userCruise.getUser().getId()));
-            preparedStatement.setInt(4,userCruise.getStatusId());
+            preparedStatement.setLong(1,userCruise.getCruiseId());
+            preparedStatement.setLong(2,userCruise.getUserId());
+            preparedStatement.setInt(3, CruiseStatus.ACTIVE.ordinal());
 
-            preparedStatement.execute();
+            preparedStatement.executeQuery();
 
         }catch (SQLException e){
             e.printStackTrace();
@@ -60,8 +62,8 @@ public class UserCruiseDAO {
             PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_USER_CRUISE)){
 
             preparedStatement.setInt(1,userCruise.getCabinNumber());
-            preparedStatement.setInt(2,Math.toIntExact(userCruise.getCruise().getId()));
-            preparedStatement.setInt(3, Math.toIntExact(userCruise.getUser().getId()));
+            preparedStatement.setLong(2,userCruise.getCruiseId());
+            preparedStatement.setLong(3,userCruise.getUserId());
             preparedStatement.setInt(4,userCruise.getStatusId());
 
             preparedStatement.execute();
@@ -94,6 +96,9 @@ public class UserCruiseDAO {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if(resultSet.next()){
+
+                cruise.setId(resultSet.getLong("id"));
+
                 cruise.setPrice(resultSet.getDouble("price"));
                 cruise.setCruiseStartDate(resultSet.getDate("cruise_start_date"));
                 cruise.setCruiseEndDate(resultSet.getDate("cruise_end_date"));
@@ -108,6 +113,26 @@ public class UserCruiseDAO {
             e.printStackTrace();
         }
         return cruise;
+    }
+
+    public List<UserCruise> showOnProfile(){
+        List<UserCruise> userCruiseList = new ArrayList<>();
+
+        try(Connection connection = dataSource.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(SHOW_ON_PROFILE)){
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()){
+                userCruiseList.add(new UserCruise(resultSet.getLong("ticket_id"), resultSet.getInt("cabin_number"),
+                        resultSet.getLong("cruise_id"), resultSet.getLong("user_id"),resultSet.getInt("status_id")));
+            }
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+        return userCruiseList;
     }
 
 }
