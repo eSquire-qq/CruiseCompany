@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-@WebFilter(filterName = "OrderFilter", urlPatterns = "/")
+@WebFilter(filterName = "OrderFilter", urlPatterns = "/Booking/*")
 public class OrderFilter implements Filter {
     public void init(FilterConfig config) throws ServletException {
     }
