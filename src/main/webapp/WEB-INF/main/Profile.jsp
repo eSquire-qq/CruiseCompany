@@ -2,9 +2,16 @@
 <%@ page import="com.example.cruisecompany.entity.Cruise" %>
 <%@ page import="com.example.cruisecompany.dao.UserCruiseDAO" %>
 <%@ page import="com.example.cruisecompany.entity.User" %>
+<%@ page import="com.example.cruisecompany.entity.UserCruise" %>
+<%@ page import="java.util.List" %>
 <% Cruise cruise = (Cruise) session.getAttribute("cruise"); %>
 
 <% User user = (User) session.getAttribute("user"); %>
+
+<%
+    UserCruiseDAO userCruiseDao = UserCruiseDAO.getUserCruiseInstance();
+    List<UserCruise> userCruiseList = userCruiseDao.showOnProfile();
+%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -72,6 +79,32 @@
         </div>
     </div>
 </div>
+
+<%
+    if (!userCruiseList.isEmpty()){
+        for (UserCruise userCruise : userCruiseList){
+%>
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+            <!-- Post preview-->
+            <div class="post-preview">
+                <a>
+                    <h2 class="post-title"><%=userCruise.getCabinNumber()%> </h2>
+                    <h3 class="post-subtitle"><strong>Email:</strong> <%=userCruise.getTicketId()%></h3>
+                    <h3 class="post-subtitle"><strong>Phone number: </strong><%=userCruise.getStatusId()%> </h3>
+                    <h3 class="post-subtitle"><strong>Balance: </strong> <%=userCruise.getCruiseId()%> $</h3>
+                    <a href="Payment" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;">Pay</a>
+                </a>
+            </div>
+            <hr class="my-4" />
+        </div>
+    </div>
+</div>
+<%
+        }
+    }
+%>
 
 <footer class="border-top">
     <div class="container px-4 px-lg-5">
