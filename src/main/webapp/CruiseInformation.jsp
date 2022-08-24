@@ -1,6 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="com.example.cruisecompany.entity.Cruise" %>
 <%@ page import="com.example.cruisecompany.dao.UserCruiseDAO" %>
+<%@ page import="com.example.cruisecompany.entity.User" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.example.cruisecompany.dao.CruiseDAO" %>
 <% Cruise cruise = (Cruise) session.getAttribute("cruise"); %>
 
 <%
@@ -9,6 +12,10 @@
     userCruiseDao.addToOrder(id);
 
     cruise = userCruiseDao.addToOrder(id);
+
+    CruiseDAO cruiseDAO = CruiseDAO.getCruiseInstance();
+    List<Cruise> cruises = cruiseDAO.readAll();
+
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -69,7 +76,7 @@
                     <h3 class="post-subtitle"><strong>Price:</strong> <%= cruise.getPrice()%></h3>
                     <h3 class="post-subtitle"><strong>Liner:</strong> <%= cruise.getCruiseLinerName()%></h3>
                     <h3 class="post-subtitle"><strong>Passenger capacity:</strong> <%= cruise.getPassengerCapacity()%></h3>
-                    <a href="UserOrder?id=<%= cruise.getId()%>" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;">Buy</a>
+                    <a href="Booking?id=<%= cruise.getId()%>" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;">Booking</a>
                     <a href="Catalog" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;">Go back</a>
                 </a>
             </div>

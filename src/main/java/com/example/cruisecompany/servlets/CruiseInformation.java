@@ -19,11 +19,18 @@ public class CruiseInformation extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        HttpSession session = request.getSession();
+
         Long id = Long.valueOf(request.getParameter("id"));
         UserCruiseDAO userCruiseDao = UserCruiseDAO.getUserCruiseInstance();
         userCruiseDao.addToOrder(id);
 
         Cruise cruise = userCruiseDao.addToOrder(id);
         request.getSession().setAttribute("cruise",cruise);
+
+        session.setAttribute("cruise_id", id);
+
+        System.out.println(id);
+
     }
 }
