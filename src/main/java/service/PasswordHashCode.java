@@ -1,5 +1,4 @@
-package com.example.cruisecompany.database;
-
+package service;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
