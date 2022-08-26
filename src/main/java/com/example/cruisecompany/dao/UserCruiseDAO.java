@@ -73,12 +73,13 @@ public class UserCruiseDAO {
         }
     }
 
-    public void delete(Integer ticketId){
+    public void delete(Long ticketId){
         try(Connection connection = dataSource.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(DELETE_USER_CRUISE)){
 
             preparedStatement.setLong(1,ticketId);
-            preparedStatement.execute();
+
+            preparedStatement.executeUpdate();
 
         }catch (SQLException e){
             e.printStackTrace();
@@ -115,11 +116,13 @@ public class UserCruiseDAO {
         return cruise;
     }
 
-    public List<UserCruise> showOnProfile(){
+    public List<UserCruise> showOnProfile(Long id){
         List<UserCruise> userCruiseList = new ArrayList<>();
 
         try(Connection connection = dataSource.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(SHOW_ON_PROFILE)){
+
+            preparedStatement.setLong(1,id);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -133,6 +136,39 @@ public class UserCruiseDAO {
         }
 
         return userCruiseList;
+    }
+
+    public List<UserCruise> showOrderForAdmin(){
+        List<UserCruise> userOrders = new ArrayList<>();
+
+        try(Connection connection = dataSource.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(SHOW_USERS_ORDERS)){
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()){
+                userOrders.add(new UserCruise(resultSet.getLong("ticket_id"), resultSet.getInt("cabin_number"),
+                        resultSet.getLong("cruise_id"), resultSet.getLong("user_id"),resultSet.getInt("status_id")));
+            }
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+        return userOrders;
+    }
+
+    public void confirmUserOrder(Long id){
+        try(Connection connection = dataSource.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(CONFIRM_USER_ORDER)){
+
+            preparedStatement.setInt(1,CruiseStatus.PAID.ordinal());
+            preparedStatement.setLong(2,id);
+            preparedStatement.executeQuery();
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
     }
 
 }
