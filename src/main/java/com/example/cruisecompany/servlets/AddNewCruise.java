@@ -7,7 +7,6 @@ import com.example.cruisecompany.entity.CruiseStatus;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
-import service.CruiseDataTime;
 
 import java.io.IOException;
 
@@ -36,7 +35,6 @@ public class AddNewCruise extends HttpServlet {
         CruiseStatus status = CruiseStatus.REGISTERED;
         String cruiseName = request.getParameter("cruiseName");
         String destination = request.getParameter("destination");
-
 
         Cruise cruise = new Cruise();
 

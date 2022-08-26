@@ -16,8 +16,6 @@ public class Booking extends HttpServlet {
         Long id = Long.valueOf(request.getParameter("id"));
         User user = (User) request.getSession().getAttribute("user");
 
-        System.out.println(id);
-
         UserCruiseDAO userCruiseDAO = UserCruiseDAO.getUserCruiseInstance();
         UserCruise userCruise = new UserCruise();
 

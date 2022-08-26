@@ -1,6 +1,5 @@
 package com.example.cruisecompany.servlets;
 
-import com.example.cruisecompany.dao.AdminDAO;
 import com.example.cruisecompany.dao.UserDAO;
 import com.example.cruisecompany.entity.User;
 import com.example.cruisecompany.entity.UserRole;
@@ -12,7 +11,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
-import static com.example.cruisecompany.database.PasswordHashCode.hashPassword;
+import static service.PasswordHashCode.hashPassword;
 
 @WebServlet(name = "AddNewAdmin", value = "/AddNewAdmin")
 public class AddNewAdmin extends HttpServlet {
