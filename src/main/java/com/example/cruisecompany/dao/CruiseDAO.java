@@ -96,6 +96,28 @@ public class CruiseDAO {
         return cruiseList;
     }
 
+    public List<Cruise> readAllForAdmin(){
+        List<Cruise> cruiseList = new ArrayList<>();
+
+        try(Connection connection = dataSource.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(READ_ALL_CRUISE_FOR_ADMIN)) {
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()){
+                cruiseList.add(new Cruise(resultSet.getLong("id"),resultSet.getDouble("price"),resultSet.getDate("cruise_start_date"),
+                        resultSet.getDate("cruise_end_date"),resultSet.getString("cruise_liner_name"),
+                        resultSet.getInt("passenger_capacity"), CruiseStatus.values()[resultSet.getInt("status")],
+                        resultSet.getInt("duration"),resultSet.getString("cruise_name"),resultSet.getString("destination")));
+            }
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return cruiseList;
+    }
+
     public void update(Cruise cruise){
         try(Connection connection = dataSource.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_CRUISE)){

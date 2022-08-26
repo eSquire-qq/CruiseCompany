@@ -40,8 +40,7 @@ public class LoginUser extends HttpServlet {
                     response.sendRedirect("/UserProfile");
                 }
             }else{
-                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/LoginUser");
-                requestDispatcher.forward(request,response);
+                response.sendRedirect("/LoginUser");
             }
 
         }catch (Exception e){
