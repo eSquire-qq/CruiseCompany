@@ -18,6 +18,7 @@ public class SQLRequests {
     public static final String UPDATE_CRUISE = "UPDATE \"cruise\" SET duration = ?, price = ?, cruise_start_date = ?, cruise_end_date = ?, cruise_liner_name = ?, passenger_capacity = ?,status = ?, cruise_name = ?, destination = ? WHERE id = ? ";
     public static final String DELETE_CRUISE = "DELETE FROM \"cruise\" WHERE id = ?";
     public static final String READ_ALL_CRUISE = "SELECT * FROM \"cruise\" WHERE status = 0 AND cruise_end_date >= current_date";
+    public static final String READ_ALL_CRUISE_FOR_ADMIN = "SELECT * FROM \"cruise\" WHERE status = 0";
 
     public static final String SHOW_CRUISE_INFORMATION = "SELECT * FROM \"cruises\"";
 
@@ -44,6 +45,9 @@ public class SQLRequests {
     public static final String ADD_TO_ORDER = "INSERT INTO \"user_cruise\" () VALUE";
     public static final String ADD_CRUISE_ID_TO_ORDER = "SELECT * FROM \"cruise\" WHERE id = ?";
 
-    public static final String SHOW_ON_PROFILE =  "SELECT * FROM \"user_cruise\"";
+    public static final String SHOW_ON_PROFILE =  "SELECT * FROM \"user_cruise\" WHERE user_id = ?";
+    public static final String SHOW_USERS_ORDERS =  "SELECT * FROM \"user_cruise\"";
+
+    public static final String CONFIRM_USER_ORDER = "UPDATE \"user_cruise\" SET status_id = ? WHERE ticket_id = ?";
 
 }
