@@ -30,7 +30,5 @@ public class CruiseInformation extends HttpServlet {
 
         session.setAttribute("cruise_id", id);
 
-        System.out.println(id);
-
     }
 }
