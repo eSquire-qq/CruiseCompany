@@ -7,13 +7,18 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import com.example.cruisecompany.entity.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import static service.PasswordHashCode.hashPassword;
 
 @WebServlet(name = "AddNewUser", value = "/AddNewUser")
 public class AddNewUser extends HttpServlet {
+
+    private static final Logger logger = LoggerFactory.getLogger(AddNewUser.class);
 
      UserDAO userDAO = UserDAO.getUserInstance();
 
@@ -34,26 +39,29 @@ public class AddNewUser extends HttpServlet {
         String email = request.getParameter("email");
         Double balance = Double.valueOf(request.getParameter("balance"));
 
-        if(UserDAO.getUserInstance().isExistingLogin(phoneNumber,email)) {
+        try {
+            if (UserDAO.getUserInstance().isExistingLogin(phoneNumber, email)) {
 
-            User user = new User();
+                User user = new User();
 
-            user.setName(name);
-            user.setSurname(surname);
-            user.setPhoneNumber(phoneNumber);
-            user.setRole(role);
-            user.setPassword(hashPassword(password));
-            user.setEmail(email);
-            user.setBalance(balance);
+                user.setName(name);
+                user.setSurname(surname);
+                user.setPhoneNumber(phoneNumber);
+                user.setRole(role);
+                user.setPassword(hashPassword(password));
+                user.setEmail(email);
+                user.setBalance(balance);
 
-            userDAO.create(user);
+                userDAO.create(user);
 
-            request.getSession().setAttribute("user",user);
-            response.sendRedirect("/LoginUser");
+                request.getSession().setAttribute("user", user);
+                response.sendRedirect("/LoginUser");
 
-        }
-        else{
-            response.sendRedirect("AddNewUser");
+            } else {
+                response.sendRedirect("AddNewUser");
+            }
+        }catch (IOException e){
+            logger.error("The user is not registered");
         }
 
     }

@@ -27,7 +27,7 @@ public class DBCPDataSource {
         try {
             return dataSource.getConnection();
         } catch (SQLException e) {
-            logger.info("Connection successfully", e);
+            logger.info("Connection successfully");
             return dataSource.getConnection();
         }
 

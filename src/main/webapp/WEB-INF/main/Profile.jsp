@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="com.example.cruisecompany.entity.Cruise" %>
 <%@ page import="com.example.cruisecompany.dao.UserCruiseDAO" %>
@@ -10,7 +11,7 @@
 
 <%
     UserCruiseDAO userCruiseDao = UserCruiseDAO.getUserCruiseInstance();
-    List<UserCruise> userCruiseList = userCruiseDao.showOnProfile();
+    List<UserCruise> userCruiseList = userCruiseDao.showOnProfile(user.getId());
 %>
 
 <!DOCTYPE html>
@@ -68,14 +69,15 @@
             <!-- Post preview-->
             <div class="post-preview">
                 <a>
-                    <h2 class="post-title"><%=user.getName()%> <%=user.getSurname()%></h2>
-                    <h3 class="post-subtitle"><strong>Email:</strong> <%=user.getEmail()%></h3>
-                    <h3 class="post-subtitle"><strong>Phone number: </strong><%=user.getPhoneNumber()%> </h3>
-                    <h3 class="post-subtitle"><strong>Balance: </strong> <%=user.getBalance()%> $</h3>
+                    <h2 class="post-title">${user.getName()} ${user.getSurname()}</h2>
+                    <h3 class="post-subtitle"><strong>Email:</strong> ${user.getEmail()}</h3>
+                    <h3 class="post-subtitle"><strong>Phone number: </strong> ${user.getPhoneNumber()} </h3>
+                    <h3 class="post-subtitle"><strong>Balance: </strong> ${user.getBalance()} $</h3>
                     <a href="AddBalance" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;">Add balance</a>
                 </a>
             </div>
             <hr class="my-4" />
+            <p><h2 class="post-title">Your tickets</h2></p>
         </div>
     </div>
 </div>
@@ -90,11 +92,12 @@
             <!-- Post preview-->
             <div class="post-preview">
                 <a>
-                    <h2 class="post-title"><%=userCruise.getCabinNumber()%> </h2>
-                    <h3 class="post-subtitle"><strong>Email:</strong> <%=userCruise.getTicketId()%></h3>
+                    <h3 class="post-subtitle"><strong>Cabin number:</strong><%=userCruise.getCabinNumber()%> </h3>
+                    <h3 class="post-subtitle"><strong>Ticket number:</strong> <%=userCruise.getTicketId()%></h3>
                     <h3 class="post-subtitle"><strong>Phone number: </strong><%=userCruise.getStatusId()%> </h3>
-                    <h3 class="post-subtitle"><strong>Balance: </strong> <%=userCruise.getCruiseId()%> $</h3>
+                    <h3 class="post-subtitle"><strong>Cruise number:</strong> <%=userCruise.getCruiseId()%></h3>
                     <a href="Payment" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;">Pay</a>
+                    <a href="RemoveBooking?ticketId=<%=userCruise.getTicketId()%>" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;">Remove</a>
                 </a>
             </div>
             <hr class="my-4" />
