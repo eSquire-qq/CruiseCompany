@@ -1,13 +1,15 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.example.cruisecompany.dao.CruiseDAO" %>
 <%@ page import="com.example.cruisecompany.servlets.Catalog" %>
 <%@ page import="com.example.cruisecompany.entity.Cruise" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<%
-    CruiseDAO cruiseDAO = CruiseDAO.getCruiseInstance();
-    List<Cruise> cruises = cruiseDAO.readAllForAdmin();
-%>
+<%--<%--%>
+<%--    CruiseDAO cruiseDAO = CruiseDAO.getCruiseInstance();--%>
+<%--    List<Cruise> cruises = cruiseDAO.readAllForAdmin();--%>
+<%--    request.getSession().setAttribute("cruises",cruises);--%>
+<%--%>--%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -55,11 +57,7 @@
         </div>
     </div>
 </header>
-
-<%
-    if (!cruises.isEmpty()){
-        for (Cruise cruise : cruises){
-%>
+<c:forEach items="${sessionScope.cruises}" var="cruise">
 <!-- Main Content-->
 <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
@@ -67,21 +65,21 @@
             <!-- Post preview-->
             <div class="post-preview">
                 <a>
-                    <h2 class="post-title"><%= cruise.getCruiseName()%></h2>
-                    <h3 class="post-subtitle"><strong>Destination:</strong> <%= cruise.getDestination()%></h3>
-                    <h3 class="post-subtitle"><strong>Date:</strong> <%= cruise.getCruiseStartDate()%> - <%= cruise.getCruiseEndDate()%></h3>
-                    <a href="Information?id=<%= cruise.getId()%>" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;">More</a>
-                    <a href="UpdateCruise?cruise=<%=%>" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;">Edit</a>
+
+                    <h2 class="post-title">${cruise.getCruiseName()}</h2>
+                    <h3 class="post-subtitle"><strong>Destination:</strong> ${cruise.getDestination()}</h3>
+                    <h3 class="post-subtitle"><strong>Date:</strong> ${cruise.getCruiseStartDate()} - ${cruise.getCruiseEndDate()}</h3>
+                    <a href="Information?id=${cruise.getId()}" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;">More</a>
+                    <a href="UpdateCruise?id=${cruise.getId()}" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;">Edit</a>
+                    <a href="DeleteCruise?id=${cruise.getId()}" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;">Remove</a>
+
                 </a>
             </div>
             <hr class="my-4" />
         </div>
     </div>
 </div>
-<%
-        }
-    }
-%>
+</c:forEach>
 <!-- Footer-->
 <footer class="border-top">
     <div class="container px-4 px-lg-5">

@@ -1,6 +1,7 @@
 package com.example.cruisecompany.database;
 
-import org.apache.commons.dbcp2.BasicDataSource;
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -11,7 +12,7 @@ public class DBCPDataSource {
 
     private static final Logger logger = LoggerFactory.getLogger(DBCPDataSource.class);
 
-    private final static BasicDataSource dataSource = new BasicDataSource();
+    private final HikariDataSource dataSource;
 
     private static final DBCPDataSource dbcp;
 
@@ -38,13 +39,8 @@ public class DBCPDataSource {
     }
 
     private DBCPDataSource() throws ClassNotFoundException {
-        Class.forName("org.postgresql.Driver");
-        dataSource.setUrl("jdbc:postgresql://localhost:5432/CruiseCompany");
-        dataSource.setUsername("postgres");
-        dataSource.setPassword("eSquire021840984");
-        dataSource.setMinIdle(5);
-        dataSource.setMaxIdle(10);
-        dataSource.setMaxOpenPreparedStatements(100);
+        HikariConfig config = new HikariConfig("D:\\Java projects\\Repos\\Learn\\CruiseCompany\\src\\main\\resources\\DBConnect.properties");
+        dataSource = new HikariDataSource(config);
     }
 
 }

@@ -62,7 +62,7 @@
                                 </div>
 
                                 <div class="form-outline mb-4">
-                                    <input type="text" required = "required" placeholder="Destination" id="form3Example8cg" class="form-control form-control-lg" name = "cruiseLinerName"/>
+                                    <input type="text" required = "required" placeholder="Liner name" id="form3Example8cg" class="form-control form-control-lg" name = "cruiseLinerName"/>
                                     <label class="form-label" for="form3Example1cg"></label>
                                 </div>
 

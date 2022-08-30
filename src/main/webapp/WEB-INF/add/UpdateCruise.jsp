@@ -27,42 +27,42 @@
               <form action="<%= request.getContextPath() %>/UpdateCruise" method="post">
 
                 <div class="form-outline mb-4">
-                  <input type="text" required = "required" placeholder="Cruise name" id="form3Example1cg" class="form-control form-control-lg" name="cruiseName" />
+                  <input type="text" required = "required" placeholder="Cruise name" id="form3Example1cg" class="form-control form-control-lg" name="cruiseName" value="${cruise.getCruiseName()}" />
                   <label class="form-label" for="form3Example1cg"></label>
                 </div>
 
                 <div class="form-outline mb-4">
-                  <input type="text" required = "required" placeholder="Price" id="form3Example2cg" class="form-control form-control-lg" name = "price" />
+                  <input type="text" required = "required" placeholder="Price" id="form3Example2cg" class="form-control form-control-lg" name = "price" value="${cruise.getPrice()}" />
                   <label class="form-label" for="form3Example1cg"></label>
                 </div>
 
                 <div class="form-outline mb-4">
-                  <input type="text" required = "required" placeholder="Duration" id="form3Example3cg" class="form-control form-control-lg" name = "duration" />
+                  <input type="text" required = "required" placeholder="Duration" id="form3Example3cg" class="form-control form-control-lg" name = "duration" value="${cruise.getDuration()}" />
                   <label class="form-label" for="form3Example3cg"></label>
                 </div>
 
                 <div class="form-outline mb-4">
-                  <input type="date" required = "required" placeholder="Cruise start date" id="form3Example4cg" class="form-control form-control-lg" name = "cruiseStartDate" />
+                  <input type="date" required = "required" placeholder="Cruise start date" id="form3Example4cg" class="form-control form-control-lg" name = "cruiseStartDate" value="${cruise.getCruiseStartDate()}" />
                   <label class="form-label" for="form3Example4cg"></label>
                 </div>
 
                 <div class="form-outline mb-4">
-                  <input type="date" required = "required" placeholder="Cruise end date" id="form3Example5cg" class="form-control form-control-lg" name = "cruiseEndDate"/>
+                  <input type="date" required = "required" placeholder="Cruise end date" id="form3Example5cg" class="form-control form-control-lg" name = "cruiseEndDate" value="${cruise.getCruiseEndDate()}" />
                   <label class="form-label" for="form3Example1cg"></label>
                 </div>
 
                 <div class="form-outline mb-4">
-                  <input type="text" required = "required" placeholder="Passenger capacity" id="form3Example6cg" class="form-control form-control-lg" name = "passengerCapacity"/>
+                  <input type="text" required = "required" placeholder="Passenger capacity" id="form3Example6cg" class="form-control form-control-lg" name = "passengerCapacity" value="${cruise.getPassengerCapacity()}" />
                   <label class="form-label" for="form3Example1cg"></label>
                 </div>
 
                 <div class="form-outline mb-4">
-                  <input type="text" required = "required" placeholder="Destination" id="form3Example7cg" class="form-control form-control-lg" name = "destination"/>
+                  <input type="text" required = "required" placeholder="Destination" id="form3Example7cg" class="form-control form-control-lg" name = "destination" value="${cruise.getDestination()}" />
                   <label class="form-label" for="form3Example1cg"></label>
                 </div>
 
                 <div class="form-outline mb-4">
-                  <input type="text" required = "required" placeholder="Destination" id="form3Example8cg" class="form-control form-control-lg" name = "cruiseLinerName"/>
+                  <input type="text" required = "required" placeholder="Destination" id="form3Example8cg" class="form-control form-control-lg" name = "cruiseLinerName" value="${cruise.getCruiseLinerName()}" />
                   <label class="form-label" for="form3Example1cg"></label>
                 </div>
 

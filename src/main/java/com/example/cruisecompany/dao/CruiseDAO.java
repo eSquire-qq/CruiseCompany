@@ -48,7 +48,7 @@ public class CruiseDAO {
 
     }
 
-    public Optional<Cruise> read(int id){
+    public Optional<Cruise> read(Long id){
 
         Cruise cruise = null;
 
@@ -63,7 +63,7 @@ public class CruiseDAO {
             if(resultSet.next()) {
                 cruise = new Cruise(resultSet.getLong("id"),resultSet.getDouble("price"),resultSet.getDate("cruise_start_date"),
                         resultSet.getDate("cruise_end_date"),resultSet.getString("cruise_liner_name"),
-                        resultSet.getInt("passenger_capacity"), CruiseStatus.values()[resultSet.getInt("cruise_status")],
+                        resultSet.getInt("passenger_capacity"), CruiseStatus.values()[resultSet.getInt("status")],
                         resultSet.getInt("duration"),resultSet.getString("cruise_name"),resultSet.getString("destination"));
             }
 
@@ -139,7 +139,7 @@ public class CruiseDAO {
         }
     }
 
-    public void delete(int id){
+    public void delete(Long id){
         try(Connection connection = dataSource.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(DELETE_CRUISE)){
 

@@ -75,10 +75,10 @@
                     <h2 class="post-title"><%= cruise.getCruiseName()%></h2>
                     <h3 class="post-subtitle"><strong>Destination</strong>: <%= cruise.getDestination()%></h3>
                     <h3 class="post-subtitle"><strong>Date:</strong><%= cruise.getCruiseStartDate()%> - <%= cruise.getCruiseEndDate()%></h3>
-                    <h3 class="post-subtitle"><strong>Price:</strong> <%= cruise.getPrice()%></h3>
+                    <h3 class="post-subtitle"><strong>Price:</strong> <%= cruise.getPrice()%> $</h3>
                     <h3 class="post-subtitle"><strong>Liner:</strong> <%= cruise.getCruiseLinerName()%></h3>
                     <h3 class="post-subtitle"><strong>Passenger capacity:</strong> <%= cruise.getPassengerCapacity()%></h3>
-                    <a href="Booking?id=<%= cruise.getId()%>" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;">Booking</a>
+                    <a href="Booking?id=<%= cruise.getId()%>&name=<%=cruise.getCruiseName()%>&cruise_start_date=<%=cruise.getCruiseStartDate()%>&cruise_end_date=<%=cruise.getCruiseEndDate()%>" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;">Booking</a>
                     <a href="Catalog" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;">Go back</a>
                 </a>
             </div>

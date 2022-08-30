@@ -1,5 +1,6 @@
 package com.example.cruisecompany.entity;
 
+import java.util.Date;
 import java.util.Objects;
 
 public class UserCruise {
@@ -9,13 +10,19 @@ public class UserCruise {
     private Long cruiseId;
     private Long userId;
     private Integer statusId;
+    private String nameOfCruise;
+    private Date cruiseStartDate;
+    private Date cruiseEndDate;
 
-    public UserCruise(Long ticketId, Integer cabinNumber, Long cruiseId, Long userId, Integer statusId) {
+    public UserCruise(Long ticketId, Integer cabinNumber, Long cruiseId, Long userId, Integer statusId, String nameOfCruise, Date cruiseStartDate, Date cruiseEndDate) {
         this.ticketId = ticketId;
         this.cabinNumber = cabinNumber;
         this.cruiseId = cruiseId;
         this.userId = userId;
         this.statusId = statusId;
+        this.nameOfCruise = nameOfCruise;
+        this.cruiseStartDate = cruiseStartDate;
+        this.cruiseEndDate = cruiseEndDate;
     }
 
     public UserCruise() {
@@ -62,6 +69,30 @@ public class UserCruise {
         this.statusId = statusId;
     }
 
+    public String getNameOfCruise() {
+        return nameOfCruise;
+    }
+
+    public void setNameOfCruise(String nameOfCruise) {
+        this.nameOfCruise = nameOfCruise;
+    }
+
+    public Date getCruiseStartDate() {
+        return cruiseStartDate;
+    }
+
+    public void setCruiseStartDate(Date cruiseStartDate) {
+        this.cruiseStartDate = cruiseStartDate;
+    }
+
+    public Date getCruiseEndDate() {
+        return cruiseEndDate;
+    }
+
+    public void setCruiseEndDate(Date cruiseEndDate) {
+        this.cruiseEndDate = cruiseEndDate;
+    }
+
     @Override
     public String toString() {
         return "UserCruise{" +
@@ -70,6 +101,9 @@ public class UserCruise {
                 ", cruiseId=" + cruiseId +
                 ", userId=" + userId +
                 ", statusId=" + statusId +
+                ", nameOfCruise='" + nameOfCruise + '\'' +
+                ", cruiseStartDate=" + cruiseStartDate +
+                ", cruiseEndDate=" + cruiseEndDate +
                 '}';
     }
 
@@ -78,11 +112,11 @@ public class UserCruise {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserCruise that = (UserCruise) o;
-        return Objects.equals(ticketId, that.ticketId) && Objects.equals(cabinNumber, that.cabinNumber) && Objects.equals(cruiseId, that.cruiseId) && Objects.equals(userId, that.userId) && Objects.equals(statusId, that.statusId);
+        return Objects.equals(ticketId, that.ticketId) && Objects.equals(cabinNumber, that.cabinNumber) && Objects.equals(cruiseId, that.cruiseId) && Objects.equals(userId, that.userId) && Objects.equals(statusId, that.statusId) && Objects.equals(nameOfCruise, that.nameOfCruise) && Objects.equals(cruiseStartDate, that.cruiseStartDate) && Objects.equals(cruiseEndDate, that.cruiseEndDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(ticketId, cabinNumber, cruiseId, userId, statusId);
+        return Objects.hash(ticketId, cabinNumber, cruiseId, userId, statusId, nameOfCruise, cruiseStartDate, cruiseEndDate);
     }
 }

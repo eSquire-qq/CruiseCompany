@@ -5,10 +5,7 @@ import com.example.cruisecompany.entity.Cruise;
 import com.example.cruisecompany.entity.CruiseStatus;
 import com.example.cruisecompany.entity.UserCruise;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,6 +32,9 @@ public class UserCruiseDAO {
             preparedStatement.setLong(1,userCruise.getCruiseId());
             preparedStatement.setLong(2,userCruise.getUserId());
             preparedStatement.setInt(3, CruiseStatus.ACTIVE.ordinal());
+            preparedStatement.setString(4, userCruise.getNameOfCruise());
+            preparedStatement.setDate(5, (Date) userCruise.getCruiseStartDate());
+            preparedStatement.setDate(6, (Date) userCruise.getCruiseEndDate());
 
             preparedStatement.executeQuery();
 
@@ -108,6 +108,10 @@ public class UserCruiseDAO {
                 cruise.setDuration(resultSet.getInt("duration"));
                 cruise.setCruiseName(resultSet.getString("cruise_name"));
                 cruise.setDestination(resultSet.getString("destination"));
+                cruise.setDestination(resultSet.getString("name_of_cruise"));
+                cruise.setCruiseStartDate(resultSet.getDate("cruise_start_date"));
+                cruise.setCruiseStartDate(resultSet.getDate("cruise_end_date"));
+
             }
 
         }catch (SQLException e){
@@ -128,7 +132,9 @@ public class UserCruiseDAO {
 
             while(resultSet.next()){
                 userCruiseList.add(new UserCruise(resultSet.getLong("ticket_id"), resultSet.getInt("cabin_number"),
-                        resultSet.getLong("cruise_id"), resultSet.getLong("user_id"),resultSet.getInt("status_id")));
+                        resultSet.getLong("cruise_id"), resultSet.getLong("user_id"),resultSet.getInt("status_id"),
+                        resultSet.getString("name_of_cruise"),resultSet.getDate("cruise_start_date"),
+                        resultSet.getDate("cruise_end_date")));
             }
 
         }catch (SQLException e){
@@ -148,7 +154,9 @@ public class UserCruiseDAO {
 
             while(resultSet.next()){
                 userOrders.add(new UserCruise(resultSet.getLong("ticket_id"), resultSet.getInt("cabin_number"),
-                        resultSet.getLong("cruise_id"), resultSet.getLong("user_id"),resultSet.getInt("status_id")));
+                        resultSet.getLong("cruise_id"), resultSet.getLong("user_id"),resultSet.getInt("status_id"),
+                        resultSet.getString("name_of_cruise"),resultSet.getDate("cruise_start_date"),
+                        resultSet.getDate("cruise_end_date")));
             }
 
         }catch (SQLException e){

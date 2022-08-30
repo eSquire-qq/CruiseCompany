@@ -14,8 +14,6 @@ public class RemoveBooking extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Long ticketId = Long.valueOf(request.getParameter("ticketId"));
 
-        System.out.println(ticketId);
-
         UserCruiseDAO userCruiseDAO = UserCruiseDAO.getUserCruiseInstance();
         UserCruise userCruise = new UserCruise();
 

@@ -7,11 +7,11 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 import com.example.cruisecompany.entity.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import service.ValidationForm;
 
 import static service.PasswordHashCode.hashPassword;
 
@@ -31,34 +31,39 @@ public class AddNewUser extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
+        request.getSession().removeAttribute("userError");
+
         String name = request.getParameter("name");
         String surname = request.getParameter("surname");
         String phoneNumber = request.getParameter("phoneNumber");
         UserRole role = UserRole.USER;
         String password = request.getParameter("password");
         String email = request.getParameter("email");
-        Double balance = Double.valueOf(request.getParameter("balance"));
+
+        User user = new User();
+
+        user.setName(name);
+        user.setSurname(surname);
+        user.setPhoneNumber(phoneNumber);
+        user.setRole(role);
+        user.setPassword(hashPassword(password));
+        user.setEmail(email);
 
         try {
-            if (UserDAO.getUserInstance().isExistingLogin(phoneNumber, email)) {
+            if (ValidationForm.validate(user)) {
+                if (UserDAO.getUserInstance().isExistingLogin(phoneNumber, email)) {
 
-                User user = new User();
+                    userDAO.create(user);
 
-                user.setName(name);
-                user.setSurname(surname);
-                user.setPhoneNumber(phoneNumber);
-                user.setRole(role);
-                user.setPassword(hashPassword(password));
-                user.setEmail(email);
-                user.setBalance(balance);
+                    request.getSession().setAttribute("user", user);
+                    response.sendRedirect("/LoginUser");
 
-                userDAO.create(user);
-
-                request.getSession().setAttribute("user", user);
-                response.sendRedirect("/LoginUser");
-
-            } else {
-                response.sendRedirect("AddNewUser");
+                } else {
+                    response.sendRedirect("AddNewUser");
+                }
+            }else{
+                request.getSession().setAttribute("userError", "Validation error");
+                request.getRequestDispatcher("/WEB-INF/add/AddUser.jsp");
             }
         }catch (IOException e){
             logger.error("The user is not registered");

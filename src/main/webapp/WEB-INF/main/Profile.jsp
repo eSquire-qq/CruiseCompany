@@ -74,6 +74,7 @@
                     <h3 class="post-subtitle"><strong>Phone number: </strong> ${user.getPhoneNumber()} </h3>
                     <h3 class="post-subtitle"><strong>Balance: </strong> ${user.getBalance()} $</h3>
                     <a href="AddBalance" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;">Add balance</a>
+                    <a href="LogOutUser" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;">Log out</a>
                 </a>
             </div>
             <hr class="my-4" />
@@ -94,9 +95,12 @@
                 <a>
                     <h3 class="post-subtitle"><strong>Cabin number:</strong><%=userCruise.getCabinNumber()%> </h3>
                     <h3 class="post-subtitle"><strong>Ticket number:</strong> <%=userCruise.getTicketId()%></h3>
-                    <h3 class="post-subtitle"><strong>Phone number: </strong><%=userCruise.getStatusId()%> </h3>
+                    <h3 class="post-subtitle"><strong>Booking status: </strong><%=userCruise.getStatusId()%> </h3>
                     <h3 class="post-subtitle"><strong>Cruise number:</strong> <%=userCruise.getCruiseId()%></h3>
-                    <a href="Payment" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;">Pay</a>
+                    <h3 class="post-subtitle"><strong>Cruise name:</strong> <%=userCruise.getNameOfCruise()%></h3>
+                    <h3 class="post-subtitle"><strong>Cruise start date:</strong> <%=userCruise.getCruiseStartDate()%></h3>
+                    <h3 class="post-subtitle"><strong>Cruise end date:</strong> <%=userCruise.getCruiseEndDate()%></h3>
+                    <a href="Payments" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;">Pay</a>
                     <a href="RemoveBooking?ticketId=<%=userCruise.getTicketId()%>" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;">Remove</a>
                 </a>
             </div>

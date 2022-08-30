@@ -39,7 +39,6 @@ public class UserDAO  {
             preparedStatement.setInt(4, user.getRole().ordinal());
             preparedStatement.setString(5,user.getPassword());
             preparedStatement.setString(6,user.getEmail());
-            preparedStatement.setDouble(7,user.getBalance());
 
             preparedStatement.executeQuery();
 

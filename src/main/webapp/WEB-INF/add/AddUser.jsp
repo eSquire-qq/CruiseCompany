@@ -37,7 +37,7 @@
                                 </div>
 
                                 <div class="form-outline mb-4">
-                                    <input type="email" required = "required" placeholder="Email" id="form3Example3cg" class="form-control form-control-lg" name = "email" />
+                                    <input type="text" required = "required" placeholder="Email" id="form3Example3cg" class="form-control form-control-lg" name = "email" />
                                     <label class="form-label" for="form3Example3cg"></label>
                                 </div>
 
@@ -62,6 +62,8 @@
                                     <button type="submit" value="Submit"
                                             class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Sing up</button>
                                 </div>
+
+                                <p>${sessionScope.userError}</p>
 
                                 <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="LoginUser"
                                                                                                         class="fw-bold text-body"><u>Log in</u></a></p>
