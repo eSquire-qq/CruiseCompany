@@ -24,7 +24,7 @@
             <div class="card-body p-5">
               <h2 class="text-uppercase text-center mb-5">Update cruise</h2>
 
-              <form action="<%= request.getContextPath() %>/UpdateCruise" method="post">
+              <form action="<%= request.getContextPath() %>/EditCruiseForm?id=<%= request.getParameter("id")%>" method="post">
 
                 <div class="form-outline mb-4">
                   <input type="text" required = "required" placeholder="Cruise name" id="form3Example1cg" class="form-control form-control-lg" name="cruiseName" value="${cruise.getCruiseName()}" />
@@ -66,9 +66,14 @@
                   <label class="form-label" for="form3Example1cg"></label>
                 </div>
 
+                <div class="form-outline mb-4">
+                  <input type="text" required = "required" placeholder="Departure" id="form3Example9cg" class="form-control form-control-lg" name = "departure" value="${cruise.getDeparture()}" />
+                  <label class="form-label" for="form3Example1cg"></label>
+                </div>
+
                 <div class="d-flex justify-content-center">
                   <button type="submit" value="Submit"
-                          class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Add cruise</button>
+                          class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Update</button>
                 </div>
 
               </form>

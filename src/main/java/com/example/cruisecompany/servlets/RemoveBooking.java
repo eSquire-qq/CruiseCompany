@@ -18,7 +18,6 @@ public class RemoveBooking extends HttpServlet {
         UserCruise userCruise = new UserCruise();
 
         userCruise.setTicketId(ticketId);
-
         userCruiseDAO.delete(ticketId);
 
         response.sendRedirect("/UserProfile");

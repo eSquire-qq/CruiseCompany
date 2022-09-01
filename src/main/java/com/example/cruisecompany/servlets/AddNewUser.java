@@ -11,9 +11,9 @@ import java.io.IOException;
 import com.example.cruisecompany.entity.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import service.ValidationForm;
+import com.example.cruisecompany.service.ValidationForm;
 
-import static service.PasswordHashCode.hashPassword;
+import static com.example.cruisecompany.service.PasswordHashCode.hashPassword;
 
 @WebServlet(name = "AddNewUser", value = "/AddNewUser")
 public class AddNewUser extends HttpServlet {
@@ -31,7 +31,7 @@ public class AddNewUser extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-        request.getSession().removeAttribute("userError");
+        request.getSession().removeAttribute("Error");
 
         String name = request.getParameter("name");
         String surname = request.getParameter("surname");
@@ -50,23 +50,29 @@ public class AddNewUser extends HttpServlet {
         user.setEmail(email);
 
         try {
-            if (ValidationForm.validate(user)) {
-                if (UserDAO.getUserInstance().isExistingLogin(phoneNumber, email)) {
 
-                    userDAO.create(user);
+            if(!UserDAO.getUserInstance().userEmailEquals(email)
+            && !UserDAO.getUserInstance().userPhoneEquals(phoneNumber)){
 
-                    request.getSession().setAttribute("user", user);
+                if(ValidationForm.validate(user)){
+                    UserDAO.getUserInstance().create(user);
+
                     response.sendRedirect("/LoginUser");
 
-                } else {
-                    response.sendRedirect("AddNewUser");
+                }else{
+                    request.getSession().setAttribute("Error","Validation error");
+                    request.getRequestDispatcher("/WEB-INF/add/AddUser.jsp").forward(request,response);
                 }
+
             }else{
-                request.getSession().setAttribute("userError", "Validation error");
-                request.getRequestDispatcher("/WEB-INF/add/AddUser.jsp");
+                request.getSession().setAttribute("Error","Its number or email already exist");
+                request.getRequestDispatcher("/WEB-INF/add/AddUser.jsp").forward(request,response);
             }
+
         }catch (IOException e){
             logger.error("The user is not registered");
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
         }
 
     }

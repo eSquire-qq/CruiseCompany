@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
-import static service.PasswordHashCode.hashPassword;
+import static com.example.cruisecompany.service.PasswordHashCode.hashPassword;
 
 @WebServlet(name = "AddNewAdmin", value = "/AddNewAdmin")
 public class AddNewAdmin extends HttpServlet {
@@ -35,7 +35,8 @@ public class AddNewAdmin extends HttpServlet {
         String email = request.getParameter("email");
 
         try {
-            if (UserDAO.getUserInstance().isExistingLogin(phoneNumber, email)) {
+            if (UserDAO.getUserInstance().userPhoneEquals(phoneNumber)
+                && UserDAO.getUserInstance().userEmailEquals(email)){
 
                 User user = new User();
 

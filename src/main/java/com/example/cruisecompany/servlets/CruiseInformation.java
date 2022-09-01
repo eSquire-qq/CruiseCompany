@@ -12,12 +12,6 @@ import java.io.IOException;
 public class CruiseInformation extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/CruiseInformation.jsp");
-        requestDispatcher.forward(request,response);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         HttpSession session = request.getSession();
 
@@ -29,6 +23,14 @@ public class CruiseInformation extends HttpServlet {
         request.getSession().setAttribute("cruise",cruise);
 
         session.setAttribute("cruise_id", id);
+
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/CruiseInformation.jsp");
+        requestDispatcher.forward(request,response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 
     }
 }

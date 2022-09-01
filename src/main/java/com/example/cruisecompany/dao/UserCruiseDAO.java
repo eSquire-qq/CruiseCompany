@@ -78,7 +78,6 @@ public class UserCruiseDAO {
             PreparedStatement preparedStatement = connection.prepareStatement(DELETE_USER_CRUISE)){
 
             preparedStatement.setLong(1,ticketId);
-
             preparedStatement.executeUpdate();
 
         }catch (SQLException e){
@@ -132,7 +131,7 @@ public class UserCruiseDAO {
 
             while(resultSet.next()){
                 userCruiseList.add(new UserCruise(resultSet.getLong("ticket_id"), resultSet.getInt("cabin_number"),
-                        resultSet.getLong("cruise_id"), resultSet.getLong("user_id"),resultSet.getInt("status_id"),
+                        resultSet.getLong("cruise_id"), resultSet.getLong("user_id"), resultSet.getInt("status_id"),
                         resultSet.getString("name_of_cruise"),resultSet.getDate("cruise_start_date"),
                         resultSet.getDate("cruise_end_date")));
             }
@@ -154,7 +153,7 @@ public class UserCruiseDAO {
 
             while(resultSet.next()){
                 userOrders.add(new UserCruise(resultSet.getLong("ticket_id"), resultSet.getInt("cabin_number"),
-                        resultSet.getLong("cruise_id"), resultSet.getLong("user_id"),resultSet.getInt("status_id"),
+                        resultSet.getLong("cruise_id"), resultSet.getLong("user_id"), resultSet.getInt("status_id"),
                         resultSet.getString("name_of_cruise"),resultSet.getDate("cruise_start_date"),
                         resultSet.getDate("cruise_end_date")));
             }

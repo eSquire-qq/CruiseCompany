@@ -139,24 +139,41 @@ public class UserDAO  {
         return ok;
     }
 
-    public boolean isExistingLogin(String phoneNumber, String email) throws IOException {
+    public boolean userEmailEquals(String email) throws IOException {
 
-        boolean equalsUser;
+        boolean equalsUser = false;
 
         try(Connection connection = dataSource.getConnection();
 
-            PreparedStatement preparedStatement = connection.prepareStatement(USER_DATA_EQUALS)){
+            PreparedStatement preparedStatement = connection.prepareStatement(USER_EMAIL_EQUALS)){
 
             preparedStatement.setString(1,email);
-            preparedStatement.setString(2,phoneNumber);
-
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if(resultSet.next()){
-                resultSet.getString(1).equals(email);
-                resultSet.getString(2).equals(phoneNumber);
-                equalsUser = false;
-            }else{
+                equalsUser = true;
+            }
+
+        } catch (SQLException e) {
+            throw new IOException(e);
+        }
+
+        return equalsUser;
+
+    }
+
+    public boolean userPhoneEquals(String phoneNumber) throws IOException {
+
+        boolean equalsUser = false;
+
+        try(Connection connection = dataSource.getConnection();
+
+            PreparedStatement preparedStatement = connection.prepareStatement(USER_PHONE_EQUALS)){
+
+            preparedStatement.setString(1,phoneNumber);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if(resultSet.next()){
                 equalsUser = true;
             }
 

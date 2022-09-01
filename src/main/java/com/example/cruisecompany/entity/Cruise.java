@@ -15,8 +15,9 @@ public class Cruise {
     private Integer duration;
     private String cruiseName;
     private String destination;
+    private String departure;
 
-    public Cruise(Long id, Double price, Date cruiseStartDate, Date cruiseEndDate, String cruiseLinerName, Integer passengerCapacity, CruiseStatus status, Integer duration, String cruiseName, String destination) {
+    public Cruise(Long id, Double price, Date cruiseStartDate, Date cruiseEndDate, String cruiseLinerName, Integer passengerCapacity, CruiseStatus status, Integer duration, String cruiseName, String destination, String departure) {
         this.id = id;
         this.price = price;
         this.cruiseStartDate = cruiseStartDate;
@@ -27,6 +28,7 @@ public class Cruise {
         this.duration = duration;
         this.cruiseName = cruiseName;
         this.destination = destination;
+        this.departure = departure;
     }
 
     public Cruise() {
@@ -113,9 +115,16 @@ public class Cruise {
         this.destination = destination;
     }
 
+    public String getDeparture() {
+        return departure;
+    }
+
+    public void setDeparture(String departure) {
+        this.departure = departure;
+    }
+
     @Override
-    public String
-    toString() {
+    public String toString() {
         return "Cruise{" +
                 "id=" + id +
                 ", price=" + price +
@@ -127,6 +136,7 @@ public class Cruise {
                 ", duration=" + duration +
                 ", cruiseName='" + cruiseName + '\'' +
                 ", destination='" + destination + '\'' +
+                ", departure='" + departure + '\'' +
                 '}';
     }
 
@@ -135,11 +145,11 @@ public class Cruise {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Cruise cruise = (Cruise) o;
-        return Objects.equals(id, cruise.id) && Objects.equals(price, cruise.price) && Objects.equals(cruiseStartDate, cruise.cruiseStartDate) && Objects.equals(cruiseEndDate, cruise.cruiseEndDate) && Objects.equals(cruiseLinerName, cruise.cruiseLinerName) && Objects.equals(passengerCapacity, cruise.passengerCapacity) && status == cruise.status && Objects.equals(duration, cruise.duration) && Objects.equals(cruiseName, cruise.cruiseName) && Objects.equals(destination, cruise.destination);
+        return Objects.equals(id, cruise.id) && Objects.equals(price, cruise.price) && Objects.equals(cruiseStartDate, cruise.cruiseStartDate) && Objects.equals(cruiseEndDate, cruise.cruiseEndDate) && Objects.equals(cruiseLinerName, cruise.cruiseLinerName) && Objects.equals(passengerCapacity, cruise.passengerCapacity) && status == cruise.status && Objects.equals(duration, cruise.duration) && Objects.equals(cruiseName, cruise.cruiseName) && Objects.equals(destination, cruise.destination) && Objects.equals(departure, cruise.departure);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, price, cruiseStartDate, cruiseEndDate, cruiseLinerName, passengerCapacity, status, duration, cruiseName, destination);
+        return Objects.hash(id, price, cruiseStartDate, cruiseEndDate, cruiseLinerName, passengerCapacity, status, duration, cruiseName, destination, departure);
     }
 }

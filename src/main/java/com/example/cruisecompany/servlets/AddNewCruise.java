@@ -35,6 +35,7 @@ public class AddNewCruise extends HttpServlet {
         CruiseStatus status = CruiseStatus.REGISTERED;
         String cruiseName = request.getParameter("cruiseName");
         String destination = request.getParameter("destination");
+        String departure = request.getParameter("departure");
 
         Cruise cruise = new Cruise();
 
@@ -47,10 +48,11 @@ public class AddNewCruise extends HttpServlet {
         cruise.setStatus(status);
         cruise.setCruiseName(cruiseName);
         cruise.setDestination(destination);
+        cruise.setDeparture(departure);
 
         cruiseDAO.create(cruise);
 
-        response.sendRedirect("/Catalog");
+        response.sendRedirect("/AdminCatalog");
 
     }
 }

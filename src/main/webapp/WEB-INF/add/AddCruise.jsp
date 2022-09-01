@@ -66,6 +66,11 @@
                                     <label class="form-label" for="form3Example1cg"></label>
                                 </div>
 
+                                <div class="form-outline mb-4">
+                                    <input type="text" required = "required" placeholder="Departure" id="form3Example9cg" class="form-control form-control-lg" name = "departure"/>
+                                    <label class="form-label" for="form3Example1cg"></label>
+                                </div>
+
                                 <div class="d-flex justify-content-center">
                                     <button type="submit" value="Submit"
                                             class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Add cruise</button>

@@ -13,9 +13,9 @@ public class SQLRequests {
 
     public static final String ADD_BALANCE = "UPDATE \"user\" SET balance = ? WHERE id = ?";
 
-    public static final String CREAT_CRUISE = "INSERT INTO \"cruise\" (duration, price, cruise_start_date, cruise_end_date, cruise_liner_name, passenger_capacity, status, cruise_name, destination) VALUES (?,?,?::date,?::date,?,?,?,?,?)";
-    public static final String READ_CRUISE = "SELECT id, duration, cruise_name, price, cruise_start_date, cruise_end_date, cruise_liner_name,passenger_capacity,status, destination FROM \"cruise\" WHERE id = ?";
-    public static final String UPDATE_CRUISE = "UPDATE \"cruise\" SET duration = ?, price = ?, cruise_start_date = ?, cruise_end_date = ?, cruise_liner_name = ?, passenger_capacity = ?,status = ?, cruise_name = ?, destination = ? WHERE id = ? ";
+    public static final String CREAT_CRUISE = "INSERT INTO \"cruise\" (duration, price, cruise_start_date, cruise_end_date, cruise_liner_name, passenger_capacity, status, cruise_name, destination, departure) VALUES (?,?,?::date,?::date,?,?,?,?,?,?)";
+    public static final String READ_CRUISE = "SELECT id, duration, cruise_name, price, cruise_start_date, cruise_end_date, cruise_liner_name,passenger_capacity,status, destination, departure FROM \"cruise\" WHERE id = ?";
+    public static final String UPDATE_CRUISE = "UPDATE \"cruise\" SET duration = ?, price = ?, cruise_start_date = ?, cruise_end_date = ?, cruise_liner_name = ?, passenger_capacity = ?,status = ?, cruise_name = ?, destination = ?, departure = ? WHERE id = ? ";
     public static final String DELETE_CRUISE = "DELETE FROM \"cruise\" WHERE id = ?";
     public static final String READ_ALL_CRUISE = "SELECT * FROM \"cruise\" WHERE status = 0 AND cruise_end_date >= current_date";
     public static final String READ_ALL_CRUISE_FOR_ADMIN = "SELECT * FROM \"cruise\" WHERE status = 0";
@@ -37,7 +37,8 @@ public class SQLRequests {
 
     public static final String DATA_VERIFICATION = "SELECT * FROM \"user\" WHERE email = ? AND password = ? ";
     public static final String USER_ADMIN_VERIFICATION = "SELECT role_id FROM  \"user\" WHERE email = ? AND password = ? ";
-    public static final String USER_DATA_EQUALS = "SELECT email, phone_number FROM \"user\" WHERE email = ? AND phone_number = ?";
+    public static final String USER_PHONE_EQUALS = "SELECT phone_number FROM \"user\" WHERE phone_number = ? ";
+    public static final String USER_EMAIL_EQUALS = "SELECT email FROM \"user\" WHERE email = ? ";
     public static final String DATA_FOR_REGISTER = "SELECT * FROM \"user\" WHERE phone_number = ?, password = ?";
     public static final String DATE_VERIFICATION = "SELECT cruise_end_date FROM \"cruise\" where cruise_end_date = ? ";
     public static final String DATE_UPDATE = "UPDATE \"cruise\" SET cruise_end_date = ?";

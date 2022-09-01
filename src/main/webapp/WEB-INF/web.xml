@@ -22,4 +22,14 @@
         <location>/505.html</location>
     </error-page>
 
+    <filter>
+        <filter-name>LoginUserFilter</filter-name>
+        <filter-class>com.example.cruisecompany.filtres.LoginUserFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LoginUserFilter</filter-name>
+        <url-pattern>/UserProfile</url-pattern>
+        <url-pattern>/Booking</url-pattern>
+    </filter-mapping>
+
 </web-app>

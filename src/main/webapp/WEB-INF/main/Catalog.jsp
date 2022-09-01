@@ -69,6 +69,7 @@
             <div class="post-preview">
                 <a>
                     <h2 class="post-title"><%= cruise.getCruiseName()%></h2>
+                    <h3 class="post-subtitle"><strong>Departure:</strong> <%= cruise.getDeparture()%></h3>
                     <h3 class="post-subtitle"><strong>Destination:</strong> <%= cruise.getDestination()%></h3>
                     <h3 class="post-subtitle"><strong>Date:</strong> <%= cruise.getCruiseStartDate()%> - <%= cruise.getCruiseEndDate()%></h3>
                     <a href="Information?id=<%= cruise.getId()%>" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;">More</a>
