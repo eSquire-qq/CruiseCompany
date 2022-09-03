@@ -27,10 +27,4 @@ public class CruiseInformation extends HttpServlet {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/CruiseInformation.jsp");
         requestDispatcher.forward(request,response);
     }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
-    }
 }

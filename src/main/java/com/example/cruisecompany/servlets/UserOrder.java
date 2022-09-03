@@ -12,10 +12,6 @@ import java.util.List;
 
 @WebServlet(name = "UserOrder", value = "/Order")
 public class UserOrder extends HttpServlet {
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

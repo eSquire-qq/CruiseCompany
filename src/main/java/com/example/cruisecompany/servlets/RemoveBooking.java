@@ -23,9 +23,4 @@ public class RemoveBooking extends HttpServlet {
         response.sendRedirect("/UserProfile");
     }
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
-    }
 }

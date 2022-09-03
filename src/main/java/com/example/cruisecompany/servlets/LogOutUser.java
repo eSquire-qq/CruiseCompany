@@ -12,15 +12,9 @@ public class LogOutUser extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         request.getSession(false);
-
         request.getSession(false).invalidate();
-
         request.getSession(false);
 
         response.sendRedirect("/HomePage");
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     }
 }

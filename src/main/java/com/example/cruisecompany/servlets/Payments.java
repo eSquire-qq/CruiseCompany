@@ -14,8 +14,4 @@ public class Payments extends HttpServlet {
         requestDispatcher.forward(request,response);
     }
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
 }

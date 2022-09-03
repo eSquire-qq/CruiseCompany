@@ -13,9 +13,4 @@ public class AdminHomePage extends HttpServlet {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/main/AdminHomePage.jsp");
         requestDispatcher.forward(request,response);
     }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
 }

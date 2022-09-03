@@ -20,8 +20,4 @@ public class AdminCatalog extends HttpServlet {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/main/AdminCatalog.jsp");
         requestDispatcher.forward(request,response);
     }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    }
 }

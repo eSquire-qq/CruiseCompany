@@ -38,8 +38,6 @@ public class LoginAdmin extends HttpServlet {
                 if(UserLoginDAO.userVerification(email, password).equals(String.valueOf(2))){
                     response.sendRedirect("/AdminHomePage");
 
-                }else{
-
                 }
             }
 
