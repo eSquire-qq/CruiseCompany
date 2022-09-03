@@ -22,8 +22,4 @@ public class DeleteCruise extends HttpServlet {
 //        request.setAttribute("cruise",cruise);
     }
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
 }
