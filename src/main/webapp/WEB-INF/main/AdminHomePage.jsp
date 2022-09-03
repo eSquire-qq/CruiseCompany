@@ -1,5 +1,10 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page isELIgnored="false"%>
+
 <!DOCTYPE html>
-<html lang="en">
+<html language = "${param.lang}">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -16,19 +21,23 @@
   <link href="css/styles.css" rel="stylesheet" />
 </head>
 <body>
+<fmt:setLocale value="${param.language}"/>
+<fmt:setBundle basename="language"/>
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
   <div class="container px-4 px-lg-5">
-    <a class="navbar-brand">Cruise company</a>
+    <a class="navbar-brand"><fmt:message key="label.header"/></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       Menu
       <i class="fas fa-bars"></i>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ms-auto py-4 py-lg-0">
-        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="AdminCatalog">Catalog</a></li>
-        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="Orders">Orders</a></li>
-        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="AddNewCruise">Add cruise</a></li>
+        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="AdminCatalog"><fmt:message key="label.catalogADMIN"/></a></li>
+        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="Orders"><fmt:message key="label.titleADMINOrder"/></a></li>
+        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="AddNewCruise"><fmt:message key="label.addCruiseButton"/></a></li>
+        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="?language=uk"><fmt:setLocale value="uk"/>UK</a></li>
+        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="?language=en"><fmt:setLocale value="en"/>EN</a></li>
       </ul>
     </div>
   </div>
@@ -39,8 +48,8 @@
     <div class="row gx-4 gx-lg-5 justify-content-center">
       <div class="col-md-10 col-lg-8 col-xl-7">
         <div class="site-heading">
-          <h1>Norwegian Cruise Line</h1>
-          <span class="subheading">The Evolution of Innovation</span>
+          <h1><fmt:message key="label.title"/></h1>
+          <span class="subheading"><fmt:message key="label.smalltitle"/></span>
         </div>
       </div>
     </div>
@@ -53,8 +62,8 @@
       <!-- Post preview-->
       <div class="post-preview">
         <a>
-          <h2 class="post-title">Feel Free</h2>
-          <h3 class="post-subtitle">No timetables. No stipulations. Just award-winning entertainment and diverse dining options from the only cruise line built for versatile holidaying.</h3>
+          <h2 class="post-title"><fmt:message key="label.description1"/></h2>
+          <h3 class="post-subtitle"><fmt:message key="label.description2"/></h3>
         </a>
       </div>
       <!-- Divider-->
@@ -62,8 +71,8 @@
       <!-- Post preview-->
       <div class="post-preview">
         <a>
-          <h2 class="post-title">NCL's Free at Sea</h2>
-          <h3 class="post-subtitle">Enjoy the most inclusive cruise holiday with NCL's Free at Sea. Upgrade your cruise and Choose 2 Offers, like Open Bar, and Speciality Dining, to customise your holiday to any destination, any time of year.</h3>
+          <h2 class="post-title"><fmt:message key="label.description3"/></h2>
+          <h3 class="post-subtitle"><fmt:message key="label.description4"/></h3>
         </a>
       </div>
       <!-- Divider-->
@@ -71,8 +80,8 @@
       <!-- Post preview-->
       <div class="post-preview">
         <a>
-          <h2 class="post-title">Holiday Your Way</h2>
-          <h5 class="post-subtitle">Our award-winning ships are designed for you to enjoy as you choose whilst cruising to beautiful destinations around the world. Add a wide range of superb dining options and spectacular entertainment and you'll experience your best holiday ever.</h5>
+          <h2 class="post-title"><fmt:message key="label.description5"/></h2>
+          <h5 class="post-subtitle"><fmt:message key="label.description6"/></h5>
         </a>
       </div>
       <!-- Divider-->

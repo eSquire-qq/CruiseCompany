@@ -1,9 +1,10 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@page import="com.example.cruisecompany.dao.CruiseDAO" %>
-<%@page import="com.example.cruisecompany.entity.Cruise" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page isELIgnored="false"%>
 
 <!DOCTYPE html>
-<html>
+<html language = "${param.lang}">
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <!-- Bootstrap Bundle JS (jsDelivr CDN) -->
@@ -14,6 +15,8 @@
     <link rel="stylesheet" href="css/Style.css">
 </head>
 <body>
+<fmt:setLocale value="${param.language}"/>
+<fmt:setBundle basename="language"/>
 <section class="vh-100 bg-image"
          style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
     <div class="mask d-flex align-items-center h-100 gradient-custom-3">

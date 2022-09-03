@@ -22,9 +22,4 @@ public class ConfirmOrder extends HttpServlet {
         }
         response.sendRedirect("/Orders");
     }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
 }

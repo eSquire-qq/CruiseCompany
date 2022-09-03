@@ -1,10 +1,11 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="com.example.cruisecompany.entity.Cruise" %>
 <%@ page import="com.example.cruisecompany.dao.UserCruiseDAO" %>
 <%@ page import="com.example.cruisecompany.entity.User" %>
 <%@ page import="com.example.cruisecompany.entity.UserCruise" %>
 <%@ page import="java.util.List" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page isELIgnored="false"%>
 <% Cruise cruise = (Cruise) session.getAttribute("cruise"); %>
 
 <% User user = (User) session.getAttribute("user"); %>
@@ -15,7 +16,7 @@
 %>
 
 <!DOCTYPE html>
-<html lang="en">
+<html language = "${param.lang}">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -32,18 +33,20 @@
     <link href="css/styles.css" rel="stylesheet" />
 </head>
 <body>
+<fmt:setLocale value="${param.language}"/>
+<fmt:setBundle basename="language"/>
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
     <div class="container px-4 px-lg-5">
-        <a class="navbar-brand">Cruise company</a>
+        <a class="navbar-brand"><fmt:message key="label.header"/></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             Menu
             <i class="fas fa-bars"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto py-4 py-lg-0">
-                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="HomePage">Home</a></li>
-                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="Catalog">Catalog</a></li>
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="HomePage"><fmt:message key="label.home"/></a></li>
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="Catalog"><fmt:message key="label.catalog"/></a></li>
             </ul>
         </div>
     </div>
@@ -54,8 +57,8 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
-                    <h1>Profile</h1>
-                    <span class="subheading">Choose Your Own Adventure</span>
+                    <h1><fmt:message key="label.profile"/></h1>
+                    <span class="subheading"><fmt:message key="label.subtitle"/></span>
                 </div>
             </div>
         </div>
@@ -70,15 +73,15 @@
             <div class="post-preview">
                 <a>
                     <h2 class="post-title">${user.getName()} ${user.getSurname()}</h2>
-                    <h3 class="post-subtitle"><strong>Email:</strong> ${user.getEmail()}</h3>
-                    <h3 class="post-subtitle"><strong>Phone number: </strong> ${user.getPhoneNumber()} </h3>
-                    <h3 class="post-subtitle"><strong>Balance: </strong> ${user.getBalance()} $</h3>
-                    <a href="AddBalance" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;">Add balance</a>
-                    <a href="LogOutUser" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;">Log out</a>
+                    <h3 class="post-subtitle"><strong><fmt:message key="label.emailPlace"/>:</strong> ${user.getEmail()}</h3>
+                    <h3 class="post-subtitle"><strong><fmt:message key="label.phone"/>: </strong> ${user.getPhoneNumber()} </h3>
+                    <h3 class="post-subtitle"><strong><fmt:message key="label.balance"/>: </strong> ${user.getBalance()} $</h3>
+                    <a href="AddBalance" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;"><fmt:message key="label.addBalance"/></a>
+                    <a href="LogOutUser" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;"><fmt:message key="label.logOut"/></a>
                 </a>
             </div>
             <hr class="my-4" />
-            <p><h2 class="post-title">Your tickets</h2></p>
+            <p><h2 class="post-title"><fmt:message key="label.ticket"/></h2></p>
         </div>
     </div>
 </div>
@@ -93,15 +96,15 @@
             <!-- Post preview-->
             <div class="post-preview">
                 <a>
-                    <h3 class="post-subtitle"><strong>Cabin number:</strong><%=userCruise.getCabinNumber()%> </h3>
-                    <h3 class="post-subtitle"><strong>Ticket number:</strong> <%=userCruise.getTicketId()%></h3>
-                    <h3 class="post-subtitle"><strong>Booking status: </strong><%=userCruise.getStatusId()%> </h3>
-                    <h3 class="post-subtitle"><strong>Cruise number:</strong> <%=userCruise.getCruiseId()%></h3>
-                    <h3 class="post-subtitle"><strong>Cruise name:</strong> <%=userCruise.getNameOfCruise()%></h3>
-                    <h3 class="post-subtitle"><strong>Cruise start date:</strong> <%=userCruise.getCruiseStartDate()%></h3>
-                    <h3 class="post-subtitle"><strong>Cruise end date:</strong> <%=userCruise.getCruiseEndDate()%></h3>
-                    <a href="Payments" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;">Pay</a>
-                    <a href="RemoveBooking?ticketId=<%=userCruise.getTicketId()%>" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;">Remove</a>
+                    <h3 class="post-subtitle"><strong><fmt:message key="label.cabin"/>:</strong><%=userCruise.getCabinNumber()%> </h3>
+                    <h3 class="post-subtitle"><strong><fmt:message key="label.ticketNumber"/>:</strong> <%=userCruise.getTicketId()%></h3>
+                    <h3 class="post-subtitle"><strong><fmt:message key="label.booking"/>: </strong><%=userCruise.getStatusId()%> </h3>
+                    <h3 class="post-subtitle"><strong><fmt:message key="label.cruiseNumber"/>:</strong> <%=userCruise.getCruiseId()%></h3>
+                    <h3 class="post-subtitle"><strong><fmt:message key="label.cruiseName"/>:</strong> <%=userCruise.getNameOfCruise()%></h3>
+                    <h3 class="post-subtitle"><strong><fmt:message key="label.startDate"/>:</strong> <%=userCruise.getCruiseStartDate()%></h3>
+                    <h3 class="post-subtitle"><strong><fmt:message key="label.endDate"/>:</strong> <%=userCruise.getCruiseEndDate()%></h3>
+                    <a href="Payments" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;"><fmt:message key="label.pay"/></a>
+                    <a href="RemoveBooking?ticketId=<%=userCruise.getTicketId()%>" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;"><fmt:message key="label.remove"/></a>
                 </a>
             </div>
             <hr class="my-4" />
