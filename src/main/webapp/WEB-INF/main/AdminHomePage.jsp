@@ -21,7 +21,7 @@
   <link href="css/styles.css" rel="stylesheet" />
 </head>
 <body>
-<fmt:setLocale value="${param.language}"/>
+<fmt:setLocale value="${sessionScope.language}"/>
 <fmt:setBundle basename="language"/>
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">

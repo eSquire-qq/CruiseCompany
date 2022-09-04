@@ -32,4 +32,16 @@
         <url-pattern>/Booking</url-pattern>
     </filter-mapping>
 
+    <filter>
+        <filter-name>SecureFilter</filter-name>
+        <filter-class>com.example.cruisecompany.filtres.SecureFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>SecureFilter</filter-name>
+        <url-pattern>/AdminHomePage</url-pattern>
+        <url-pattern>/Orders</url-pattern>
+        <url-pattern>/AdminCatalog</url-pattern>
+        <url-pattern>/AddNewCruise</url-pattern>
+    </filter-mapping>
+
 </web-app>

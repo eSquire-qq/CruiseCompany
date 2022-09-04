@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="css/Style.css">
 </head>
 <body>
-<fmt:setLocale value="${param.language}"/>
+<fmt:setLocale value="${sessionScope.language}"/>
 <fmt:setBundle basename="language"/>
 <section class="vh-100 bg-image"
          style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">

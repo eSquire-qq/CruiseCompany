@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="css/Style.css">
 </head>
 <body>
-<fmt:setLocale value="${param.language}"/>
+<fmt:setLocale value="${sessionScope.language}"/>
 <fmt:setBundle basename="language"/>
 <section class="vh-100 bg-image"
          style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
@@ -41,7 +41,7 @@
 
                                 <div class="d-flex justify-content-center">
                                     <button type="submit" value="Submit"
-                                            class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"><fmt:message key="label.signUP"/></button> <!-- SET PARAMETERS -->
+                                            class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"><fmt:message key="label.logIn"/></button> <!-- SET PARAMETERS -->
                                 </div>
 
                             </form>

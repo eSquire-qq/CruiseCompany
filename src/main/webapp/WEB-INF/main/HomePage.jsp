@@ -4,7 +4,7 @@
 <%@ page isELIgnored="false"%>
 
 <!DOCTYPE html>
-<html language = "${param.lang}">
+<html language = "${param.language}">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -21,7 +21,7 @@
     <link href="css/styles.css" rel="stylesheet" />
 </head>
 <body>
-<fmt:setLocale value="${param.language}"/>
+<fmt:setLocale value="${sessionScope.language}"/>
 <fmt:setBundle basename="language"/>
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
@@ -35,8 +35,8 @@
             <ul class="navbar-nav ms-auto py-4 py-lg-0">
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="Catalog"><fmt:message key="label.catalog"/></a></li>
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="UserProfile"><fmt:message key="label.profile"/></a></li>
-                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="?language=uk"><fmt:setLocale value="uk"/>UK</a></li>
-                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="?language=en"><fmt:setLocale value="en"/>EN</a></li>
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="Language?language=uk"><fmt:setLocale value="uk"/>UK</a></li>
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="Language?language=en"><fmt:setLocale value="en"/>EN</a></li>
             </ul>
         </div>
     </div>
