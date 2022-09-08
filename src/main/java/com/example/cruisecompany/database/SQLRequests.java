@@ -13,14 +13,14 @@ public class SQLRequests {
 
     public static final String ADD_BALANCE = "UPDATE \"user\" SET balance = ? WHERE id = ?";
 
-    public static final String CREAT_CRUISE = "INSERT INTO \"cruise\" (duration, price, cruise_start_date, cruise_end_date, cruise_liner_name, passenger_capacity, status, cruise_name, destination, departure) VALUES (?,?,?::date,?::date,?,?,?,?,?,?)";
-    public static final String READ_CRUISE = "SELECT id, duration, cruise_name, price, cruise_start_date, cruise_end_date, cruise_liner_name,passenger_capacity,status, destination, departure FROM \"cruise\" WHERE id = ?";
-    public static final String UPDATE_CRUISE = "UPDATE \"cruise\" SET duration = ?, price = ?, cruise_start_date = ?, cruise_end_date = ?, cruise_liner_name = ?, passenger_capacity = ?,status = ?, cruise_name = ?, destination = ?, departure = ? WHERE id = ? ";
+    public static final String CREAT_CRUISE = "INSERT INTO \"cruise\" (price, cruise_start_date, cruise_end_date, cruise_liner_name, passenger_capacity, status, cruise_name, destination, departure) VALUES (?,?::date,?::date,?,?,?,?,?,?)";
+    public static final String READ_CRUISE = "SELECT id, cruise_name, price, cruise_start_date, cruise_end_date, cruise_liner_name,passenger_capacity,status, destination, departure FROM \"cruise\" WHERE id = ?";
+    public static final String UPDATE_CRUISE = "UPDATE \"cruise\" SET price = ?, cruise_start_date = ?, cruise_end_date = ?, cruise_liner_name = ?, passenger_capacity = ?,status = ?, cruise_name = ?, destination = ?, departure = ? WHERE id = ? ";
     public static final String DELETE_CRUISE = "DELETE FROM \"cruise\" WHERE id = ?";
     public static final String READ_ALL_CRUISE = "SELECT * FROM \"cruise\" WHERE status = 0 AND cruise_end_date >= current_date";
     public static final String READ_ALL_CRUISE_FOR_ADMIN = "SELECT * FROM \"cruise\" WHERE status = 0";
 
-    public static final String SHOW_CRUISE_INFORMATION = "SELECT * FROM \"cruises\"";
+    public static final String SHOW_ONE_CRUISE = "SELECT * FROM \"cruise\" WHERE id = ?";
 
 
     public static final String CREATE_USER_CRUISE = "INSERT INTO \"user_cruise\" (cruise_id, user_id, status_id,name_of_cruise, cruise_start_date, cruise_end_date) VALUES (?,?,?,?,?,?)";
@@ -50,5 +50,9 @@ public class SQLRequests {
     public static final String SHOW_USERS_ORDERS =  "SELECT * FROM \"user_cruise\"";
 
     public static final String CONFIRM_USER_ORDER = "UPDATE \"user_cruise\" SET status_id = ? WHERE ticket_id = ?";
+    public static final String REFUTE_USER_ORDER = "UPDATE \"user_cruise\" SET status_id = ? WHERE ticket_id = ?";
+    public static final String ACTIVE_USER_ORDER = "UPDATE \"user_cruise\" SET status_id = ? WHERE ticket_id = ?";
+
+    public static final String PAY_ORDER = "UPDATE \"user\" SET balance = balance - ? WHERE id = ? ";
 
 }
