@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-@WebFilter(filterName = "LoginUserFilter")
+@WebFilter(filterName = "LoginUserFilter", urlPatterns = {"/UserProfile/*","/Booking/*"})
 public class LoginUserFilter implements Filter {
 
     @Override
@@ -31,7 +31,7 @@ public class LoginUserFilter implements Filter {
             httpServletResponse.sendRedirect("LoginUser");
         }
         else{
-            chain.doFilter(request, response);
+            chain.doFilter(httpServletRequest, httpServletResponse);
         }
 
     }
