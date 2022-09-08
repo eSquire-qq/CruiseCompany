@@ -31,7 +31,7 @@ public class UserCruiseDAO {
 
             preparedStatement.setLong(1,userCruise.getCruiseId());
             preparedStatement.setLong(2,userCruise.getUserId());
-            preparedStatement.setInt(3, CruiseStatus.ACTIVE.ordinal());
+            preparedStatement.setInt(3, CruiseStatus.REGISTERED.ordinal());
             preparedStatement.setString(4, userCruise.getNameOfCruise());
             preparedStatement.setDate(5, (Date) userCruise.getCruiseStartDate());
             preparedStatement.setDate(6, (Date) userCruise.getCruiseEndDate());
@@ -104,7 +104,6 @@ public class UserCruiseDAO {
                 cruise.setCruiseEndDate(resultSet.getDate("cruise_end_date"));
                 cruise.setCruiseLinerName(resultSet.getString("cruise_liner_name"));
                 cruise.setPassengerCapacity(resultSet.getInt("passenger_capacity"));
-                cruise.setDuration(resultSet.getInt("duration"));
                 cruise.setCruiseName(resultSet.getString("cruise_name"));
                 cruise.setDestination(resultSet.getString("destination"));
                 cruise.setDestination(resultSet.getString("name_of_cruise"));
@@ -133,7 +132,7 @@ public class UserCruiseDAO {
                 userCruiseList.add(new UserCruise(resultSet.getLong("ticket_id"), resultSet.getInt("cabin_number"),
                         resultSet.getLong("cruise_id"), resultSet.getLong("user_id"), resultSet.getInt("status_id"),
                         resultSet.getString("name_of_cruise"),resultSet.getDate("cruise_start_date"),
-                        resultSet.getDate("cruise_end_date")));
+                        resultSet.getDate("cruise_end_date"), resultSet.getString("document")));
             }
 
         }catch (SQLException e){
@@ -155,7 +154,7 @@ public class UserCruiseDAO {
                 userOrders.add(new UserCruise(resultSet.getLong("ticket_id"), resultSet.getInt("cabin_number"),
                         resultSet.getLong("cruise_id"), resultSet.getLong("user_id"), resultSet.getInt("status_id"),
                         resultSet.getString("name_of_cruise"),resultSet.getDate("cruise_start_date"),
-                        resultSet.getDate("cruise_end_date")));
+                        resultSet.getDate("cruise_end_date"),resultSet.getString("document")));
             }
 
         }catch (SQLException e){
@@ -169,12 +168,52 @@ public class UserCruiseDAO {
         try(Connection connection = dataSource.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(CONFIRM_USER_ORDER)){
 
-            preparedStatement.setInt(1,CruiseStatus.PAID.ordinal());
+            preparedStatement.setInt(1,CruiseStatus.CONFIRM.ordinal());
             preparedStatement.setLong(2,id);
             preparedStatement.executeQuery();
 
         }catch (SQLException e){
             e.printStackTrace();
+        }
+    }
+
+    public void refuteUserOrder(Long id){
+        try(Connection connection = dataSource.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(REFUTE_USER_ORDER)){
+
+            preparedStatement.setInt(1,CruiseStatus.CANCELED.ordinal());
+            preparedStatement.setLong(2,id);
+            preparedStatement.executeQuery();
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void activeUserOrder(Long id){
+        try(Connection connection = dataSource.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(ACTIVE_USER_ORDER)){
+
+            preparedStatement.setInt(1,CruiseStatus.ACTIVE.ordinal());
+            preparedStatement.setLong(2,id);
+            preparedStatement.executeQuery();
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void changeBalance(Double price,Long id){
+        try(Connection connection = dataSource.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(PAY_ORDER)){
+
+            preparedStatement.setDouble(1,price);
+            preparedStatement.setLong(2,id);
+
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 
