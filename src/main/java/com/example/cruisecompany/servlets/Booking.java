@@ -29,7 +29,6 @@ public class Booking extends HttpServlet {
         userCruise.setCruiseEndDate(cruise_end_date);
         userCruise.setUserId(user.getId());
 
-
         userCruiseDAO.create(userCruise);
 
         response.sendRedirect("/UserProfile");
