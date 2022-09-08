@@ -1,4 +1,4 @@
-package com.example.cruisecompany.servlets;
+package com.example.cruisecompany.servlets.user;
 
 import com.example.cruisecompany.dao.UserCruiseDAO;
 import com.example.cruisecompany.entity.UserCruise;
