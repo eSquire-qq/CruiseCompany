@@ -30,16 +30,15 @@ public class CruiseDAO {
         try(Connection connection = dataSource.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(CREAT_CRUISE)){
 
-            preparedStatement.setInt(1,cruise.getDuration());
-            preparedStatement.setDouble(2,cruise.getPrice());
-            preparedStatement.setDate(3, (Date) cruise.getCruiseStartDate());
-            preparedStatement.setDate(4, (Date) cruise.getCruiseEndDate());
-            preparedStatement.setString(5,cruise.getCruiseLinerName());
-            preparedStatement.setInt(6,cruise.getPassengerCapacity());
-            preparedStatement.setInt(7,cruise.getStatus().ordinal());
-            preparedStatement.setString(8,cruise.getCruiseName());
-            preparedStatement.setString(9,cruise.getDestination());
-            preparedStatement.setString(10,cruise.getDeparture());
+            preparedStatement.setDouble(1,cruise.getPrice());
+            preparedStatement.setDate(2, (Date) cruise.getCruiseStartDate());
+            preparedStatement.setDate(3, (Date) cruise.getCruiseEndDate());
+            preparedStatement.setString(4,cruise.getCruiseLinerName());
+            preparedStatement.setInt(5,cruise.getPassengerCapacity());
+            preparedStatement.setInt(6,cruise.getStatus().ordinal());
+            preparedStatement.setString(7,cruise.getCruiseName());
+            preparedStatement.setString(8,cruise.getDestination());
+            preparedStatement.setString(9,cruise.getDeparture());
 
             preparedStatement.executeQuery();
 
@@ -65,7 +64,7 @@ public class CruiseDAO {
                 cruise = new Cruise(resultSet.getLong("id"),resultSet.getDouble("price"),resultSet.getDate("cruise_start_date"),
                         resultSet.getDate("cruise_end_date"),resultSet.getString("cruise_liner_name"),
                         resultSet.getInt("passenger_capacity"), CruiseStatus.values()[resultSet.getInt("status")],
-                        resultSet.getInt("duration"),resultSet.getString("cruise_name"),resultSet.getString("destination"),
+                        resultSet.getString("cruise_name"),resultSet.getString("destination"),
                         resultSet.getString("departure"));
             }
 
@@ -88,7 +87,7 @@ public class CruiseDAO {
                 cruiseList.add(new Cruise(resultSet.getLong("id"),resultSet.getDouble("price"),resultSet.getDate("cruise_start_date"),
                         resultSet.getDate("cruise_end_date"),resultSet.getString("cruise_liner_name"),
                         resultSet.getInt("passenger_capacity"), CruiseStatus.values()[resultSet.getInt("status")],
-                        resultSet.getInt("duration"),resultSet.getString("cruise_name"),resultSet.getString("destination"),
+                        resultSet.getString("cruise_name"),resultSet.getString("destination"),
                         resultSet.getString("departure")));
             }
 
@@ -111,7 +110,7 @@ public class CruiseDAO {
                 cruiseList.add(new Cruise(resultSet.getLong("id"),resultSet.getDouble("price"),resultSet.getDate("cruise_start_date"),
                         resultSet.getDate("cruise_end_date"),resultSet.getString("cruise_liner_name"),
                         resultSet.getInt("passenger_capacity"), CruiseStatus.values()[resultSet.getInt("status")],
-                        resultSet.getInt("duration"),resultSet.getString("cruise_name"),resultSet.getString("destination"),
+                        resultSet.getString("cruise_name"),resultSet.getString("destination"),
                         resultSet.getString("departure")));
             }
 
@@ -126,17 +125,16 @@ public class CruiseDAO {
         try(Connection connection = dataSource.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_CRUISE)){
 
-            preparedStatement.setInt(1,cruise.getDuration());
-            preparedStatement.setDouble(2,cruise.getPrice());
-            preparedStatement.setDate(3, (Date) cruise.getCruiseStartDate());
-            preparedStatement.setDate(4, (Date) cruise.getCruiseEndDate());
-            preparedStatement.setString(5,cruise.getCruiseLinerName());
-            preparedStatement.setInt(6,cruise.getPassengerCapacity());
-            preparedStatement.setInt(7,cruise.getStatus().ordinal());
-            preparedStatement.setString(8,cruise.getCruiseName());
-            preparedStatement.setString(9,cruise.getDestination());
-            preparedStatement.setString(10,cruise.getDeparture());
-            preparedStatement.setLong(11,id);
+            preparedStatement.setDouble(1,cruise.getPrice());
+            preparedStatement.setDate(2, (Date) cruise.getCruiseStartDate());
+            preparedStatement.setDate(3, (Date) cruise.getCruiseEndDate());
+            preparedStatement.setString(4,cruise.getCruiseLinerName());
+            preparedStatement.setInt(5,cruise.getPassengerCapacity());
+            preparedStatement.setInt(6,cruise.getStatus().ordinal());
+            preparedStatement.setString(7,cruise.getCruiseName());
+            preparedStatement.setString(8,cruise.getDestination());
+            preparedStatement.setString(9,cruise.getDeparture());
+            preparedStatement.setLong(10,id);
 
             preparedStatement.executeUpdate();
 
@@ -156,6 +154,30 @@ public class CruiseDAO {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public Cruise readOneCruise(Long id){
+        Cruise cruise = null;
+        try(Connection connection = dataSource.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(SHOW_ONE_CRUISE)){
+
+            preparedStatement.setLong(1,id);
+            preparedStatement.executeQuery();
+
+            ResultSet resultSet = preparedStatement.getResultSet();
+
+            if(resultSet.next()) {
+                cruise = new Cruise(resultSet.getLong("id"),resultSet.getDouble("price"),resultSet.getDate("cruise_start_date"),
+                        resultSet.getDate("cruise_end_date"),resultSet.getString("cruise_liner_name"),
+                        resultSet.getInt("passenger_capacity"), CruiseStatus.values()[resultSet.getInt("status")],
+                        resultSet.getString("cruise_name"),resultSet.getString("destination"),
+                        resultSet.getString("departure"));
+            }
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return cruise;
     }
 
 }
