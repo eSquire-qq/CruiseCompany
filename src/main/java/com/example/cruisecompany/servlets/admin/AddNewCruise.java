@@ -1,4 +1,4 @@
-package com.example.cruisecompany.servlets;
+package com.example.cruisecompany.servlets.admin;
 
 import com.example.cruisecompany.dao.CruiseDAO;
 import com.example.cruisecompany.entity.Cruise;
@@ -26,7 +26,6 @@ public class AddNewCruise extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-        String duration = request.getParameter("duration");
         String price = request.getParameter("price");
         Date cruiseStartDate = Date.valueOf(request.getParameter("cruiseStartDate"));
         Date cruiseEndDate = Date.valueOf(request.getParameter("cruiseEndDate"));
@@ -39,7 +38,6 @@ public class AddNewCruise extends HttpServlet {
 
         Cruise cruise = new Cruise();
 
-        cruise.setDuration(Integer.valueOf(duration));
         cruise.setPrice(Double.valueOf(price));
         cruise.setCruiseStartDate(cruiseStartDate);
         cruise.setCruiseEndDate(cruiseEndDate);

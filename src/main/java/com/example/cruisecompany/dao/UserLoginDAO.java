@@ -74,13 +74,10 @@ public class UserLoginDAO {
             while(resultSet.next()) {
                 role = resultSet.getString("role_id");
             }
-
         }catch (Exception e){
             e.printStackTrace();
         }
-
         return role;
-
     }
 
 }

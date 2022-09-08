@@ -1,4 +1,4 @@
-package com.example.cruisecompany.servlets;
+package com.example.cruisecompany.servlets.user;
 
 import com.example.cruisecompany.dao.UserDAO;
 import com.example.cruisecompany.entity.User;
@@ -21,13 +21,16 @@ public class AddBalance extends HttpServlet {
         User user = (User) request.getSession().getAttribute("user");
 
         try {
-
             Long id = user.getId();
             double balance = user.getBalance();
             int newBalance = Integer.parseInt(request.getParameter("balance"));
 
-            UserDAO.addBalance(balance, id, newBalance);
+            if(newBalance < 0) {
+                throw new RuntimeException();
+            }
 
+            UserDAO.addBalance(balance, id, newBalance);
+            user.setBalance(user.getBalance() + newBalance);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

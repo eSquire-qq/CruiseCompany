@@ -1,4 +1,4 @@
-package com.example.cruisecompany.servlets;
+package com.example.cruisecompany.servlets.admin;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;

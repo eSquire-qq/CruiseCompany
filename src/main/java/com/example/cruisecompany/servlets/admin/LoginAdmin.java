@@ -1,19 +1,15 @@
-package com.example.cruisecompany.servlets;
+package com.example.cruisecompany.servlets.admin;
 
 import com.example.cruisecompany.dao.UserLoginDAO;
 import com.example.cruisecompany.entity.User;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
 @WebServlet(name = "LoginAdmin", value = "/LoginAdmin")
 public class LoginAdmin extends HttpServlet {
-
-    private static final Logger logger = LoggerFactory.getLogger(LoginAdmin.class);
 
     public LoginAdmin() {
     }
@@ -30,17 +26,17 @@ public class LoginAdmin extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-
         try{
-
-            User user = UserLoginDAO.dataVerification(email,password);
-            if(user != null){
+            User admin = UserLoginDAO.dataVerification(email,password);
+            if(admin != null){
                 if(UserLoginDAO.userVerification(email, password).equals(String.valueOf(2))){
+                    request.getSession().setAttribute("admin",admin);
                     response.sendRedirect("/AdminHomePage");
-
                 }
+            }else {
+                request.getSession().setAttribute("LoginError","Incorrect email or password");
+                response.sendRedirect("/LoginAdmin");
             }
-
         }catch (Exception e){
             e.printStackTrace();
         }

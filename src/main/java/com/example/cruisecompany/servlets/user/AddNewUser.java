@@ -1,4 +1,4 @@
-package com.example.cruisecompany.servlets;
+package com.example.cruisecompany.servlets.user;
 
 import com.example.cruisecompany.dao.UserDAO;
 import com.example.cruisecompany.entity.UserRole;
@@ -19,8 +19,6 @@ import static com.example.cruisecompany.service.PasswordHashCode.hashPassword;
 public class AddNewUser extends HttpServlet {
 
     private static final Logger logger = LoggerFactory.getLogger(AddNewUser.class);
-
-     UserDAO userDAO = UserDAO.getUserInstance();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -60,12 +58,12 @@ public class AddNewUser extends HttpServlet {
                     response.sendRedirect("/LoginUser");
 
                 }else{
-                    request.getSession().setAttribute("Error","Validation error");
+                    request.getSession().setAttribute("AddUserError","Validation error");
                     request.getRequestDispatcher("/WEB-INF/add/AddUser.jsp").forward(request,response);
                 }
 
             }else{
-                request.getSession().setAttribute("Error","Its number or email already exist");
+                request.getSession().setAttribute("AddUserError","Its number or email already exist");
                 request.getRequestDispatcher("/WEB-INF/add/AddUser.jsp").forward(request,response);
             }
 
