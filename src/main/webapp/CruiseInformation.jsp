@@ -37,8 +37,19 @@
     <link href="css/styles.css" rel="stylesheet" />
 </head>
 <body>
+<%
+    if(session.getAttribute("language") != null){
+%>
 <fmt:setLocale value="${sessionScope.language}"/>
 <fmt:setBundle basename="language"/>
+<%
+}else{
+%>
+<fmt:setLocale value="en"/>
+<fmt:setBundle basename="language"/>
+<%
+    }
+%>
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
     <div class="container px-4 px-lg-5">

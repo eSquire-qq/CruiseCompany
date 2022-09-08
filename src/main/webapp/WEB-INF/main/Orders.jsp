@@ -35,8 +35,19 @@
     <link href="css/styles.css" rel="stylesheet" />
 </head>
 <body>
-<fmt:setLocale value="${param.language}"/>
+<%
+    if(session.getAttribute("language") != null){
+%>
+<fmt:setLocale value="${sessionScope.language}"/>
 <fmt:setBundle basename="language"/>
+<%
+}else{
+%>
+<fmt:setLocale value="en"/>
+<fmt:setBundle basename="language"/>
+<%
+    }
+%>
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
     <div class="container px-4 px-lg-5">
@@ -82,8 +93,16 @@
                     <h3 class="post-subtitle"><strong><fmt:message key="label.ticketNumberADMINOrder"/>:</strong> <%=order.getTicketId()%></h3>
                     <h3 class="post-subtitle"><strong><fmt:message key="label.ticketStatusADMINOrder"/>: </strong><%=order.getStatusId()%> </h3>
                     <h3 class="post-subtitle"><strong><fmt:message key="label.cruiseNumber"/>:</strong> <%=order.getCruiseId()%></h3>
+                    <c:if test="<%=order.getStatusId() != 0 %>">
+                        <a href="#" class="btn btn-primary disabled" style="background-color: #448b85; border-color: #448b85;"><fmt:message key="label.confirm"/></a>
+                        <a href="#" class="btn btn-primary disabled" style="background-color: #448b85; border-color: #448b85;"><fmt:message key="label.refute"/></a>
+                    </c:if>
+
+                    <c:if test="<%=order.getStatusId() == 0%>">
+                        <a href="ConfirmOrder?id=<%=order.getTicketId()%>" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;"><fmt:message key="label.confirm"/></a>
+                        <a href="RefuteOrder?id=<%=order.getTicketId()%>" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;"><fmt:message key="label.refute"/></a>
+                    </c:if>
                     <a href="RemoveBooking?ticketId=<%=order.getTicketId()%>" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;"><fmt:message key="label.remove"/></a>
-                    <a href="ConfirmOrder?id=<%=order.getTicketId()%>" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;"><fmt:message key="label.confirm"/></a>
                 </a>
             </div>
             <hr class="my-4" />

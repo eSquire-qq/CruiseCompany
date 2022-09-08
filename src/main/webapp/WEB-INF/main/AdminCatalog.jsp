@@ -32,8 +32,19 @@
     <link href="css/styles.css" rel="stylesheet" />
 </head>
 <body>
+<%
+    if(session.getAttribute("language") != null){
+%>
 <fmt:setLocale value="${sessionScope.language}"/>
 <fmt:setBundle basename="language"/>
+<%
+}else{
+%>
+<fmt:setLocale value="en"/>
+<fmt:setBundle basename="language"/>
+<%
+    }
+%>
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
     <div class="container px-4 px-lg-5">
@@ -44,7 +55,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto py-4 py-lg-0">
-                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="HomePage"><fmt:message key="label.home"/></a></li>
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="AdminHomePage"><fmt:message key="label.home"/></a></li>
             </ul>
         </div>
     </div>

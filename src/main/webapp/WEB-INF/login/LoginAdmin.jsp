@@ -39,6 +39,8 @@
                                     <label class="form-label" for="form3Example4cg"></label>
                                 </div>
 
+                                <p class="" style="color: red" align="center">${sessionScope.LoginError}</p>
+
                                 <div class="d-flex justify-content-center">
                                     <button type="submit" value="Submit"
                                             class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"><fmt:message key="label.logIn"/></button> <!-- SET PARAMETERS -->

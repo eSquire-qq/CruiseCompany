@@ -5,6 +5,7 @@
 <%@ page import="com.example.cruisecompany.entity.UserCruise" %>
 <%@ page import="java.util.List" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page isELIgnored="false"%>
 <% Cruise cruise = (Cruise) session.getAttribute("cruise"); %>
 
@@ -22,7 +23,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Clean Blog - Start Bootstrap Theme</title>
+    <title>Profile</title>
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
@@ -33,8 +34,19 @@
     <link href="css/styles.css" rel="stylesheet" />
 </head>
 <body>
+<%
+    if(session.getAttribute("language") != null){
+%>
 <fmt:setLocale value="${sessionScope.language}"/>
 <fmt:setBundle basename="language"/>
+<%
+    }else{
+%>
+<fmt:setLocale value="en"/>
+<fmt:setBundle basename="language"/>
+<%
+    }
+%>
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
     <div class="container px-4 px-lg-5">
@@ -98,12 +110,20 @@
                 <a>
                     <h3 class="post-subtitle"><strong><fmt:message key="label.cabin"/>:</strong><%=userCruise.getCabinNumber()%> </h3>
                     <h3 class="post-subtitle"><strong><fmt:message key="label.ticketNumber"/>:</strong> <%=userCruise.getTicketId()%></h3>
-                    <h3 class="post-subtitle"><strong><fmt:message key="label.booking"/>: </strong><%=userCruise.getStatusId()%> </h3>
+                    <h3 class="post-subtitle"><strong><fmt:message key="label.booking"/>: </strong><%=userCruise.getStatusId()%></h3>
                     <h3 class="post-subtitle"><strong><fmt:message key="label.cruiseNumber"/>:</strong> <%=userCruise.getCruiseId()%></h3>
                     <h3 class="post-subtitle"><strong><fmt:message key="label.cruiseName"/>:</strong> <%=userCruise.getNameOfCruise()%></h3>
                     <h3 class="post-subtitle"><strong><fmt:message key="label.startDate"/>:</strong> <%=userCruise.getCruiseStartDate()%></h3>
                     <h3 class="post-subtitle"><strong><fmt:message key="label.endDate"/>:</strong> <%=userCruise.getCruiseEndDate()%></h3>
-                    <a href="Payments" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;"><fmt:message key="label.pay"/></a>
+
+                    <c:if test="<%=userCruise.getStatusId() != 0 %>">
+                        <a href="#" class="btn btn-primary disabled" style="background-color: #448b85; border-color: #448b85;"><fmt:message key="label.pay"/></a>
+                    </c:if>
+
+                    <c:if test="<%=userCruise.getStatusId() == 0%>">
+                        <a href="Payments?id=<%=userCruise.getCruiseId()%>&ticketId=<%=userCruise.getTicketId()%>" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;"><fmt:message key="label.pay"/></a>
+                    </c:if>
+
                     <a href="RemoveBooking?ticketId=<%=userCruise.getTicketId()%>" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;"><fmt:message key="label.remove"/></a>
                 </a>
             </div>

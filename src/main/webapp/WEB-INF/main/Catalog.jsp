@@ -32,8 +32,19 @@
     <link href="css/styles.css" rel="stylesheet" />
 </head>
 <body>
+<%
+    if(session.getAttribute("language") != null){
+%>
 <fmt:setLocale value="${sessionScope.language}"/>
 <fmt:setBundle basename="language"/>
+<%
+}else{
+%>
+<fmt:setLocale value="en"/>
+<fmt:setBundle basename="language"/>
+<%
+    }
+%>
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
     <div class="container px-4 px-lg-5">
@@ -62,7 +73,7 @@
         </div>
     </div>
 </header>
-
+<%--<a href="Information" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;"><fmt:message key="label.button"/></a>--%>
 <%
     if (!cruises.isEmpty()){
         for (Cruise cruise : cruises){

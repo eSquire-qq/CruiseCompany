@@ -24,36 +24,30 @@
             <div class="card-body p-5">
               <h2 class="text-uppercase text-center mb-5">Payment</h2>
 
-              <form action="<%= request.getContextPath() %>/AddNewUser" method="post">
+              <form action="Payments" enctype="multipart/form-data" method="post">
 
                 <div class="card">
 
-                  <div>
-                    <div class="py-2  px-3">
-                      <div class="first pl-2 d-flex py-2">
-                        <div class="form-check">
-                          <input type="radio" name="optradio" class="form-check-input mt-3 dot" checked>
-                        </div>
-                        <div class="border-left pl-2"><span class="head">Total amount due</span><div><span class="dollar">$</span><span class="amount">8245</span></div></div>
-                      </div>
+                  <div class="form-outline mb-4">
+                    <input type="text" value="<%=request.getAttribute("cruisePrice")%>" required = "required"  id="form3Example3cg" class="form-control form-control-lg" name = "cruisePrice" readonly="readonly" />
+                    <label class="form-label" for="form3Example3cg"></label>
+                  </div>
+
+                    <div class="ghost" style=" display: none;">
+                      <input type="text" name="ticketId" class="form-control"  value="<%=request.getAttribute("ticketId")%>" readonly>
                     </div>
-                    <div class="py-2  px-3">
-                      <div class="second pl-2 d-flex py-2">
-                        <div class="form-check">
-                          <input type="radio" name="optradio" class="form-check-input mt-3 dot">
-                        </div>
-                        <div class="border-left pl-2"><span class="head">Other amount</span><div class="d-flex"><span class="dollar">$</span><input type="text" name="text" class="form-control ml-1" placeholder="0"></div></div>
-                      </div>
+
+                    <div class="form-outline mb-4">
+                      <label class="form-label" for="form3Example4cg">Завантажте ваші документи</label>
+                      <input type="file" required = "required" id="form3Example4cg" class="form-control form-control-lg" name = "file" />
                     </div>
-                    <div class="d-flex justify-content-between px-3 pt-4 pb-3">
-                      <div><span class="back">Go back</span></div>
-                      <button type="button" class="btn btn-primary button">Pay amount</button>
+
+                    <div class="d-flex justify-content-center">
+                      <button type="submit" value="Submit"
+                              class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Payments</button> <!-- SET PARAMETERS -->
                     </div>
                   </div>
-                </div>
-
               </form>
-
             </div>
           </div>
         </div>

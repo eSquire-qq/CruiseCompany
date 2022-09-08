@@ -17,8 +17,19 @@
     <link rel="stylesheet" href="css/Style.css">
 </head>
 <body>
-<fmt:setLocale value="${param.language}"/>
+<%
+    if(session.getAttribute("language") != null){
+%>
+<fmt:setLocale value="${sessionScope.language}"/>
 <fmt:setBundle basename="language"/>
+<%
+}else{
+%>
+<fmt:setLocale value="en"/>
+<fmt:setBundle basename="language"/>
+<%
+    }
+%>
 <section class="vh-100 bg-image"
          style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
     <div class="mask d-flex align-items-center h-100 gradient-custom-3">
@@ -59,18 +70,16 @@
                                 <div class="form-check d-flex justify-content-center mb-5">
                                     <input required = "required" class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" />
                                     <label class="form-check-label" for="form3Example3cg">
-                                        <fmt:message key="label.state"/><a href="#!" class="text-body"><u><fmt:message key="label.state"/></u></a>
+                                        <fmt:message key="label.state"/><a href="#!" class="text-body"><u><fmt:message key="label.stateConf"/></u></a>
                                     </label>
                                 </div>
 
-                                <p class="" style="color: red" align="center">${sessionScope.Error}</p>
+                                <p class="" style="color: red" align="center">${sessionScope.AddUserError}</p>
 
                                 <div class="d-flex justify-content-center">
                                     <button type="submit" value="Submit"
                                             class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"><fmt:message key="label.signUP"/></button>
                                 </div>
-
-
 
                                 <p class="text-center text-muted mt-5 mb-0"><fmt:message key="label.AlreadyHave"/> <a href="LoginUser"
                                                                                                         class="fw-bold text-body"><u><fmt:message key="label.logIn"/></u></a></p>
