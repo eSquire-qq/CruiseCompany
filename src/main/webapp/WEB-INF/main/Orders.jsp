@@ -93,13 +93,13 @@
                     <h3 class="post-subtitle"><strong><fmt:message key="label.ticketNumberADMINOrder"/>:</strong> <%=order.getTicketId()%></h3>
                     <h3 class="post-subtitle"><strong><fmt:message key="label.ticketStatusADMINOrder"/>: </strong><%=order.getStatusId()%> </h3>
                     <h3 class="post-subtitle"><strong><fmt:message key="label.cruiseNumber"/>:</strong> <%=order.getCruiseId()%></h3>
-                    <img class="card-img-top" src="documents/<%=order.getDocument()%>" style="width: auto; height: 163px" alt="Card image cap">
-                    <c:if test="<%=order.getStatusId() != 0 %>">
+                    <img class="card-img-top" src="\documents\<%=order.getDocument()%>" style="width: auto; height: 163px" alt="Card image cap">
+                    <c:if test="<%=order.getStatusId() != 1 %>">
                         <a href="#" class="btn btn-primary disabled" style="background-color: #448b85; border-color: #448b85;"><fmt:message key="label.confirm"/></a>
                         <a href="#" class="btn btn-primary disabled" style="background-color: #448b85; border-color: #448b85;"><fmt:message key="label.refute"/></a>
                     </c:if>
 
-                    <c:if test="<%=order.getStatusId() == 0%>">
+                    <c:if test="<%=order.getStatusId() == 1%>">
                         <a href="ConfirmOrder?id=<%=order.getTicketId()%>" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;"><fmt:message key="label.confirm"/></a>
                         <a href="RefuteOrder?id=<%=order.getTicketId()%>" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;"><fmt:message key="label.refute"/></a>
                     </c:if>

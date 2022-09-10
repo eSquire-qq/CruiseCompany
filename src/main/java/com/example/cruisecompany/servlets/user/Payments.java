@@ -49,7 +49,7 @@ public class Payments extends HttpServlet {
         String fileName = file.getSubmittedFileName();
 
         for (Part part : request.getParts()) {
-            part.write("documents\\" + fileName);
+            part.write("D:\\Java projects\\Repos\\Learn\\CruiseCompany\\src\\main\\webapp\\documents\\" + fileName);
         }
 
         userCruiseDAO.updateDocument(fileName,ticketId);
