@@ -13,8 +13,9 @@ public class UserCruise {
     private String nameOfCruise;
     private Date cruiseStartDate;
     private Date cruiseEndDate;
+    private String document;
 
-    public UserCruise(Long ticketId, Integer cabinNumber, Long cruiseId, Long userId, Integer statusId, String nameOfCruise, Date cruiseStartDate, Date cruiseEndDate) {
+    public UserCruise(Long ticketId, Integer cabinNumber, Long cruiseId, Long userId, Integer statusId, String nameOfCruise, Date cruiseStartDate, Date cruiseEndDate, String document) {
         this.ticketId = ticketId;
         this.cabinNumber = cabinNumber;
         this.cruiseId = cruiseId;
@@ -23,6 +24,7 @@ public class UserCruise {
         this.nameOfCruise = nameOfCruise;
         this.cruiseStartDate = cruiseStartDate;
         this.cruiseEndDate = cruiseEndDate;
+        this.document = document;
     }
 
     public UserCruise() {
@@ -93,6 +95,14 @@ public class UserCruise {
         this.cruiseEndDate = cruiseEndDate;
     }
 
+    public String getDocument() {
+        return document;
+    }
+
+    public void setDocument(String document) {
+        this.document = document;
+    }
+
     @Override
     public String toString() {
         return "UserCruise{" +
@@ -104,6 +114,7 @@ public class UserCruise {
                 ", nameOfCruise='" + nameOfCruise + '\'' +
                 ", cruiseStartDate=" + cruiseStartDate +
                 ", cruiseEndDate=" + cruiseEndDate +
+                ", document='" + document + '\'' +
                 '}';
     }
 
@@ -112,11 +123,11 @@ public class UserCruise {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserCruise that = (UserCruise) o;
-        return Objects.equals(ticketId, that.ticketId) && Objects.equals(cabinNumber, that.cabinNumber) && Objects.equals(cruiseId, that.cruiseId) && Objects.equals(userId, that.userId) && Objects.equals(statusId, that.statusId) && Objects.equals(nameOfCruise, that.nameOfCruise) && Objects.equals(cruiseStartDate, that.cruiseStartDate) && Objects.equals(cruiseEndDate, that.cruiseEndDate);
+        return Objects.equals(ticketId, that.ticketId) && Objects.equals(cabinNumber, that.cabinNumber) && Objects.equals(cruiseId, that.cruiseId) && Objects.equals(userId, that.userId) && Objects.equals(statusId, that.statusId) && Objects.equals(nameOfCruise, that.nameOfCruise) && Objects.equals(cruiseStartDate, that.cruiseStartDate) && Objects.equals(cruiseEndDate, that.cruiseEndDate) && Objects.equals(document, that.document);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(ticketId, cabinNumber, cruiseId, userId, statusId, nameOfCruise, cruiseStartDate, cruiseEndDate);
+        return Objects.hash(ticketId, cabinNumber, cruiseId, userId, statusId, nameOfCruise, cruiseStartDate, cruiseEndDate, document);
     }
 }

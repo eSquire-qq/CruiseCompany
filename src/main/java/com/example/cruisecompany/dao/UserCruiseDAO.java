@@ -190,11 +190,11 @@ public class UserCruiseDAO {
         }
     }
 
-    public void activeUserOrder(Long id){
+    public void activeUserOrder(Integer id){
         try(Connection connection = dataSource.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(ACTIVE_USER_ORDER)){
+            PreparedStatement preparedStatement = connection.prepareStatement(PAID_USER_ORDER)){
 
-            preparedStatement.setInt(1,CruiseStatus.ACTIVE.ordinal());
+            preparedStatement.setInt(1,CruiseStatus.PAID.ordinal());
             preparedStatement.setLong(2,id);
             preparedStatement.executeQuery();
 
@@ -209,6 +209,20 @@ public class UserCruiseDAO {
 
             preparedStatement.setDouble(1,price);
             preparedStatement.setLong(2,id);
+
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void updateDocument(String fileName,Integer ticketId){
+        try(Connection connection = dataSource.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(UPLOAD_USERS_DOCUMENTS)){
+
+            preparedStatement.setString(1,fileName);
+            preparedStatement.setInt(2,ticketId);
 
             preparedStatement.executeUpdate();
 
