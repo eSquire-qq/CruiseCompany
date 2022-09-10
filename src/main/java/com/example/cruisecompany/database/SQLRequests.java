@@ -20,6 +20,10 @@ public class SQLRequests {
     public static final String READ_ALL_CRUISE = "SELECT * FROM \"cruise\" WHERE status = 0 AND cruise_end_date >= current_date";
     public static final String READ_ALL_CRUISE_FOR_ADMIN = "SELECT * FROM \"cruise\" WHERE status = 0";
 
+    public static final String READ_CRUISE_BY_PRICE = "SELECT * FROM \"cruise\" WHERE status = 0 ORDER BY price DESC";
+    public static final String READ_CRUISE_BY_NAME = "SELECT * FROM \"cruise\" WHERE status = 0 ORDER BY cruise_name DESC";
+    public static final String READ_CRUISE_BY_DATE = "SELECT * FROM \"cruise\" WHERE status = 0 ORDER BY cruise_start_date DESC";
+
     public static final String SHOW_ONE_CRUISE = "SELECT * FROM \"cruise\" WHERE id = ?";
 
 

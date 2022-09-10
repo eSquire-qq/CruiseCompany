@@ -1,18 +1,13 @@
-<%--suppress ALL --%>
-<%@ page import="java.util.List" %>
-<%@ page import="com.example.cruisecompany.dao.CruiseDAO" %>
-<%@ page import="com.example.cruisecompany.servlets.Catalog" %>
-<%@ page import="com.example.cruisecompany.entity.Cruise" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page isELIgnored="false"%>
 
-<%
-    CruiseDAO cruiseDAO = CruiseDAO.getCruiseInstance();
-    List<Cruise> cruises = cruiseDAO.readAll();
-%>
+<%--<%--%>
+<%--    CruiseDAO cruiseDAO = CruiseDAO.getCruiseInstance();--%>
+<%--    List<Cruise> cruises = cruiseDAO.readAll();--%>
+<%--%>--%>
 
 <!DOCTYPE html>
 <html language = "${param.lang}">
@@ -73,33 +68,42 @@
         </div>
     </div>
 </header>
+
+<form>
+    <a href="Catalog?price" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;"><fmt:message key="label.sortPrice"/></a>
+    <a href="Catalog?name" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;"><fmt:message key="label.sortName"/></a>
+    <a href="Catalog?date" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;"><fmt:message key="label.sortDate"/></a>
+</form>
+
 <%--<a href="Information" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;"><fmt:message key="label.button"/></a>--%>
-<%
-    if (!cruises.isEmpty()){
-        for (Cruise cruise : cruises){
-%>
+<%--<%--%>
+<%--    if (!cruises.isEmpty()){--%>
+<%--        for (Cruise cruise : cruises){--%>
+<%--%>--%>
 <!-- Main Content-->
+<c:forEach var="name" items="${cruise}">
 <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-md-10 col-lg-8 col-xl-7">
             <!-- Post preview-->
             <div class="post-preview">
                 <a>
-                    <h2 class="post-title"><%= cruise.getCruiseName()%></h2>
-                    <h3 class="post-subtitle"><strong><fmt:message key="label.departure"/>:</strong> <%= cruise.getDeparture()%></h3>
-                    <h3 class="post-subtitle"><strong><fmt:message key="label.destination"/>:</strong> <%= cruise.getDestination()%></h3>
-                    <h3 class="post-subtitle"><strong><fmt:message key="label.date"/>:</strong> <%= cruise.getCruiseStartDate()%> - <%= cruise.getCruiseEndDate()%></h3>
-                    <a href="Information?id=<%= cruise.getId()%>" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;"><fmt:message key="label.button"/></a>
+                    <h2 class="post-title">${name.getCruiseName()}</h2>
+                    <h3 class="post-subtitle"><strong><fmt:message key="label.departure"/>:</strong> ${name.getDeparture()}</h3>
+                    <h3 class="post-subtitle"><strong><fmt:message key="label.destination"/>:</strong> ${name.getDestination()}</h3>
+                    <h3 class="post-subtitle"><strong><fmt:message key="label.date"/>:</strong> ${name.getCruiseStartDate()} - ${name.getCruiseEndDate()}</h3>
+                    <a href="Information?id=${name.getId()}" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;"><fmt:message key="label.button"/></a>
                 </a>
             </div>
             <hr class="my-4" />
         </div>
     </div>
 </div>
-<%
-        }
-    }
-%>
+</c:forEach>
+<%--<%--%>
+<%--        }--%>
+<%--    }--%>
+<%--%>--%>
 <!-- Footer-->
 <footer class="border-top">
     <div class="container px-4 px-lg-5">

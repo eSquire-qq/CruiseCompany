@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="ownTag" uri="ownTag" %>
-<%@ page isELIgnored="false"%>
+<%@ page isELIgnored="false" %>
 
 <!DOCTYPE html>
 <html language = "${param.language}">
@@ -45,7 +45,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto py-4 py-lg-0">
-                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="Catalog"><fmt:message key="label.catalog"/></a> <ownTag:conversion/> </li>
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="Catalog"><fmt:message key="label.catalog"/></a> </li>
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="UserProfile"><fmt:message key="label.profile"/></a></li>
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="Language?language=uk"><fmt:setLocale value="uk"/>UK</a></li>
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="Language?language=en"><fmt:setLocale value="en"/>EN</a></li>
