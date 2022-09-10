@@ -116,11 +116,11 @@
                     <h3 class="post-subtitle"><strong><fmt:message key="label.startDate"/>:</strong> <%=userCruise.getCruiseStartDate()%></h3>
                     <h3 class="post-subtitle"><strong><fmt:message key="label.endDate"/>:</strong> <%=userCruise.getCruiseEndDate()%></h3>
 
-                    <c:if test="<%=userCruise.getStatusId() != 0 %>">
+                    <c:if test="<%=userCruise.getStatusId() != 5 %>">
                         <a href="#" class="btn btn-primary disabled" style="background-color: #448b85; border-color: #448b85;"><fmt:message key="label.pay"/></a>
                     </c:if>
 
-                    <c:if test="<%=userCruise.getStatusId() == 0%>">
+                    <c:if test="<%=userCruise.getStatusId() == 5%>">
                         <a href="Payments?id=<%=userCruise.getCruiseId()%>&ticketId=<%=userCruise.getTicketId()%>" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;"><fmt:message key="label.pay"/></a>
                     </c:if>
 
