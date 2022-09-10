@@ -51,8 +51,9 @@ public class SQLRequests {
 
     public static final String CONFIRM_USER_ORDER = "UPDATE \"user_cruise\" SET status_id = ? WHERE ticket_id = ?";
     public static final String REFUTE_USER_ORDER = "UPDATE \"user_cruise\" SET status_id = ? WHERE ticket_id = ?";
-    public static final String ACTIVE_USER_ORDER = "UPDATE \"user_cruise\" SET status_id = ? WHERE ticket_id = ?";
+    public static final String PAID_USER_ORDER = "UPDATE \"user_cruise\" SET status_id = ? WHERE ticket_id = ?";
 
     public static final String PAY_ORDER = "UPDATE \"user\" SET balance = balance - ? WHERE id = ? ";
+    public static final String UPLOAD_USERS_DOCUMENTS = "UPDATE \"user_cruise\" SET document = ? WHERE ticket_id = ?";
 
 }
