@@ -4,11 +4,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page isELIgnored="false"%>
 
-<%--<%--%>
-<%--    CruiseDAO cruiseDAO = CruiseDAO.getCruiseInstance();--%>
-<%--    List<Cruise> cruises = cruiseDAO.readAll();--%>
-<%--%>--%>
-
 <!DOCTYPE html>
 <html language = "${param.lang}">
 <head>
@@ -73,13 +68,8 @@
     <a href="Catalog?price" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;"><fmt:message key="label.sortPrice"/></a>
     <a href="Catalog?name" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;"><fmt:message key="label.sortName"/></a>
     <a href="Catalog?date" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;"><fmt:message key="label.sortDate"/></a>
+    <a href="Catalog?" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;"><fmt:message key="label.clearSort"/></a>
 </form>
-
-<%--<a href="Information" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;"><fmt:message key="label.button"/></a>--%>
-<%--<%--%>
-<%--    if (!cruises.isEmpty()){--%>
-<%--        for (Cruise cruise : cruises){--%>
-<%--%>--%>
 <!-- Main Content-->
 <c:forEach var="name" items="${cruise}">
 <div class="container px-4 px-lg-5">
@@ -100,10 +90,7 @@
     </div>
 </div>
 </c:forEach>
-<%--<%--%>
-<%--        }--%>
-<%--    }--%>
-<%--%>--%>
+
 <!-- Footer-->
 <footer class="border-top">
     <div class="container px-4 px-lg-5">

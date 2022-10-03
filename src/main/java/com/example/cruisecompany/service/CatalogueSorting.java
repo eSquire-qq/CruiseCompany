@@ -33,26 +33,37 @@ public class CatalogueSorting {
 
     public static List<Cruise> orderByName(HttpServletRequest request){
 
-        List<Cruise> cruisesByPrice;
+        List<Cruise> cruisesByName;
 
         if(request.getParameter("name") != null){
-            cruisesByPrice = cruiseDAO.readAllOrderByName();
+            cruisesByName = cruiseDAO.readAllOrderByName();
         }else{
-            cruisesByPrice = cruiseDAO.readAll();
+            cruisesByName = cruiseDAO.readAll();
         }
-        return cruisesByPrice;
+        return cruisesByName;
     }
 
     public static List<Cruise> orderByDate(HttpServletRequest request){
 
-        List<Cruise> cruisesByPrice;
+        List<Cruise> cruisesByDate;
 
         if(request.getParameter("date") != null){
-            cruisesByPrice = cruiseDAO.readAllOrderByDate();
+            cruisesByDate = cruiseDAO.readAllOrderByDate();
         }else{
-            cruisesByPrice = cruiseDAO.readAll();
+            cruisesByDate = cruiseDAO.readAll();
         }
-        return cruisesByPrice;
+        return cruisesByDate;
     }
 
+    public static List<Cruise> clearSort(HttpServletRequest request){
+
+        List<Cruise> cruises;
+
+        if(request.getParameter("") != null){
+            cruises = cruiseDAO.readAll();
+        }else{
+            cruises = cruiseDAO.readAll();
+        }
+        return cruises;
+    }
 }

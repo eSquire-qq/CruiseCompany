@@ -141,6 +141,8 @@ public class CruiseDAO {
             e.printStackTrace();
         }
 
+        System.out.println(cruiseList);
+
         return cruiseList;
     }
 

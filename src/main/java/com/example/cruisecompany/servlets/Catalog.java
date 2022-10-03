@@ -18,6 +18,7 @@ public class Catalog extends HttpServlet {
         request.setAttribute("cruise", catalogueSorting.orderByPrice(request));
         request.setAttribute("cruise", catalogueSorting.orderByName(request));
         request.setAttribute("cruise", catalogueSorting.orderByDate(request));
+        request.setAttribute("cruise", catalogueSorting.clearSort(request));
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/main/Catalog.jsp");
         requestDispatcher.forward(request,response);

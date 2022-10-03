@@ -8,12 +8,10 @@
     <tlib-version>1.0</tlib-version>
     <jsp-version>1.2</jsp-version>
     <short-name>simple</short-name>
-    <uri>https://tomcat.apache.org/example-taglib</uri>
+    <uri>http://tomcat.apache.org/example-taglib</uri>
 
     <tag>
-        <name>conversion</name>
-        <tag-class>com.example.cruisecompany.tag.NumberCruises</tag-class>
-        <body-content>empty</body-content>
+        <name>NumberCruise</name>
+        <tag-class>tag.NumberCruises</tag-class>
     </tag>
-
 </taglib>
