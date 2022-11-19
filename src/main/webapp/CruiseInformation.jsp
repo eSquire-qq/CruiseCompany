@@ -94,7 +94,7 @@
                     <h3 class="post-subtitle"><strong><fmt:message key="label.LingerINF"/>:</strong> <%= cruise.getCruiseLinerName()%></h3>
                     <h3 class="post-subtitle"><strong><fmt:message key="label.passengerADMINADD"/>:</strong> <%= cruise.getPassengerCapacity()%></h3>
                     <a href="Booking?id=<%= cruise.getId()%>&name=<%=cruise.getCruiseName()%>&cruise_start_date=<%=cruise.getCruiseStartDate()%>&cruise_end_date=<%=cruise.getCruiseEndDate()%>" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;"><fmt:message key="label.bookingButton"/></a>
-                    <a href="Catalog" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;"><fmt:message key="label.backButton"/></a>
+                    <a href="Catalog?catalog=catalog" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;"><fmt:message key="label.backButton"/></a>
                 </a>
             </div>
             <hr class="my-4" />

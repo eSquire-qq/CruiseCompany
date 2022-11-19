@@ -24,7 +24,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Catalog</title>
+    <title>Orders</title>
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
@@ -94,16 +94,16 @@
                     <h3 class="post-subtitle"><strong><fmt:message key="label.ticketStatusADMINOrder"/>: </strong><%=order.getStatusId()%> </h3>
                     <h3 class="post-subtitle"><strong><fmt:message key="label.cruiseNumber"/>:</strong> <%=order.getCruiseId()%></h3>
                     <img class="card-img-top" src="\documents\<%=order.getDocument()%>" style="width: auto; height: 163px" alt="Card image cap">
-                    <c:if test="<%=order.getStatusId() != 1 %>">
+                    <c:if test="<%=order.getStatusId() < 1 %>">
                         <a href="#" class="btn btn-primary disabled" style="background-color: #448b85; border-color: #448b85;"><fmt:message key="label.confirm"/></a>
                         <a href="#" class="btn btn-primary disabled" style="background-color: #448b85; border-color: #448b85;"><fmt:message key="label.refute"/></a>
                     </c:if>
 
-                    <c:if test="<%=order.getStatusId() == 1%>">
+                    <c:if test="<%=order.getStatusId() == 1 %>">
                         <a href="ConfirmOrder?id=<%=order.getTicketId()%>" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;"><fmt:message key="label.confirm"/></a>
                         <a href="RefuteOrder?id=<%=order.getTicketId()%>" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;"><fmt:message key="label.refute"/></a>
                     </c:if>
-                    <a href="RemoveBooking?ticketId=<%=order.getTicketId()%>" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;"><fmt:message key="label.remove"/></a>
+                    <a href="DeleteOrder?ticketId=<%=order.getTicketId()%>" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;"><fmt:message key="label.remove"/></a>
                 </a>
             </div>
             <hr class="my-4" />

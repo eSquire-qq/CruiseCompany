@@ -47,14 +47,12 @@ public class UserDAO  {
         }
     }
 
-    public Optional<User> read(Long id) {
-
+    public Optional<User> read(Long id){
         User user = null;
 
         try(Connection connection = dataSource.getConnection();
 
             PreparedStatement preparedStatement = connection.prepareStatement(READ_USER)) {
-
             preparedStatement.setLong(1,id);
             preparedStatement.executeQuery();
 
@@ -65,7 +63,6 @@ public class UserDAO  {
                         resultSet.getString("phone_number"), UserRole.values()[resultSet.getInt("role_id")],
                         " ",resultSet.getString("email"),resultSet.getDouble("balance"));
             }
-
         }catch (SQLException e){
             e.printStackTrace();
         }

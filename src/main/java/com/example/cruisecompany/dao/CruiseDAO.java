@@ -3,6 +3,9 @@ package com.example.cruisecompany.dao;
 import com.example.cruisecompany.database.DBCPDataSource;
 import com.example.cruisecompany.entity.Cruise;
 import com.example.cruisecompany.entity.CruiseStatus;
+import com.example.cruisecompany.service.CruiseDataTime;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -12,6 +15,8 @@ import java.util.Optional;
 import static com.example.cruisecompany.database.SQLRequests.*;
 
 public class CruiseDAO {
+
+    private static final Logger logger = LoggerFactory.getLogger(CruiseDAO.class);
 
     private CruiseDAO(){
 
@@ -79,8 +84,8 @@ public class CruiseDAO {
         List<Cruise> cruiseList = new ArrayList<>();
 
         try(Connection connection = dataSource.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(READ_ALL_CRUISE)) {
 
+            PreparedStatement preparedStatement = connection.prepareStatement(READ_ALL_CRUISE)) {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while(resultSet.next()){
@@ -90,16 +95,15 @@ public class CruiseDAO {
                         resultSet.getString("cruise_name"),resultSet.getString("destination"),
                         resultSet.getString("departure")));
             }
-
         }catch (SQLException e) {
-            e.printStackTrace();
+            logger.error("Error reading cruises from database");
         }
 
         return cruiseList;
     }
 
     public List<Cruise> readAllOrderByPrice(){
-        List<Cruise> cruiseList = new ArrayList<>();
+        List<Cruise> cruiseByPrice = new ArrayList<>();
 
         try(Connection connection = dataSource.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(READ_CRUISE_BY_PRICE)) {
@@ -107,7 +111,7 @@ public class CruiseDAO {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while(resultSet.next()){
-                cruiseList.add(new Cruise(resultSet.getLong("id"),resultSet.getDouble("price"),resultSet.getDate("cruise_start_date"),
+                cruiseByPrice.add(new Cruise(resultSet.getLong("id"),resultSet.getDouble("price"),resultSet.getDate("cruise_start_date"),
                         resultSet.getDate("cruise_end_date"),resultSet.getString("cruise_liner_name"),
                         resultSet.getInt("passenger_capacity"), CruiseStatus.values()[resultSet.getInt("status")],
                         resultSet.getString("cruise_name"),resultSet.getString("destination"),
@@ -117,12 +121,11 @@ public class CruiseDAO {
         }catch (SQLException e) {
             e.printStackTrace();
         }
-
-        return cruiseList;
+        return cruiseByPrice;
     }
 
     public List<Cruise> readAllOrderByName(){
-        List<Cruise> cruiseList = new ArrayList<>();
+        List<Cruise> cruiseByName = new ArrayList<>();
 
         try(Connection connection = dataSource.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(READ_CRUISE_BY_NAME)) {
@@ -130,7 +133,7 @@ public class CruiseDAO {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while(resultSet.next()){
-                cruiseList.add(new Cruise(resultSet.getLong("id"),resultSet.getDouble("price"),resultSet.getDate("cruise_start_date"),
+                cruiseByName.add(new Cruise(resultSet.getLong("id"),resultSet.getDouble("price"),resultSet.getDate("cruise_start_date"),
                         resultSet.getDate("cruise_end_date"),resultSet.getString("cruise_liner_name"),
                         resultSet.getInt("passenger_capacity"), CruiseStatus.values()[resultSet.getInt("status")],
                         resultSet.getString("cruise_name"),resultSet.getString("destination"),
@@ -140,14 +143,11 @@ public class CruiseDAO {
         }catch (SQLException e) {
             e.printStackTrace();
         }
-
-        System.out.println(cruiseList);
-
-        return cruiseList;
+        return cruiseByName;
     }
 
     public List<Cruise> readAllOrderByDate(){
-        List<Cruise> cruiseList = new ArrayList<>();
+        List<Cruise> cruiseByDate = new ArrayList<>();
 
         try(Connection connection = dataSource.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(READ_CRUISE_BY_DATE)) {
@@ -155,7 +155,7 @@ public class CruiseDAO {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while(resultSet.next()){
-                cruiseList.add(new Cruise(resultSet.getLong("id"),resultSet.getDouble("price"),resultSet.getDate("cruise_start_date"),
+                cruiseByDate.add(new Cruise(resultSet.getLong("id"),resultSet.getDouble("price"),resultSet.getDate("cruise_start_date"),
                         resultSet.getDate("cruise_end_date"),resultSet.getString("cruise_liner_name"),
                         resultSet.getInt("passenger_capacity"), CruiseStatus.values()[resultSet.getInt("status")],
                         resultSet.getString("cruise_name"),resultSet.getString("destination"),
@@ -165,8 +165,7 @@ public class CruiseDAO {
         }catch (SQLException e) {
             e.printStackTrace();
         }
-
-        return cruiseList;
+        return cruiseByDate;
     }
 
     public List<Cruise> readAllForAdmin(){

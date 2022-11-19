@@ -106,7 +106,7 @@ public class UserCruiseDAO {
                 cruise.setPassengerCapacity(resultSet.getInt("passenger_capacity"));
                 cruise.setCruiseName(resultSet.getString("cruise_name"));
                 cruise.setDestination(resultSet.getString("destination"));
-                cruise.setDestination(resultSet.getString("name_of_cruise"));
+                cruise.setDestination(resultSet.getString("cruise_name"));
                 cruise.setCruiseStartDate(resultSet.getDate("cruise_start_date"));
                 cruise.setCruiseStartDate(resultSet.getDate("cruise_end_date"));
 

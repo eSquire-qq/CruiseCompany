@@ -14,14 +14,8 @@ public class DeleteCruise extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         Long id = Long.valueOf(request.getParameter("id"));
         cruiseDAO.delete(id);
-
         response.sendRedirect("/AdminCatalog");
-
-//        Cruise cruise = cruiseDAO.delete(Long.valueOf(request.getParameter("id")));
-//        request.setAttribute("cruise",cruise);
     }
-
 }

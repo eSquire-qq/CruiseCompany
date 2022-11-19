@@ -28,5 +28,6 @@
     <file url="file://$PROJECT_DIR$/src/main/webapp/bootstrap_files/bootstrap.min.js.map" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/css/Style.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/test/java/tests/UserDAOTest.java" charset="windows-1251" />
+    <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

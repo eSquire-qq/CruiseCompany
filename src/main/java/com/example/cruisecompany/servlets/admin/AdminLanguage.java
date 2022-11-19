@@ -1,4 +1,4 @@
-package com.example.cruisecompany.servlets;
+package com.example.cruisecompany.servlets.admin;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -6,11 +6,13 @@ import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 
-@WebServlet(name = "Sorting", value = "/Sorting")
-public class Sorting extends HttpServlet {
+@WebServlet(name = "AdminLanguage", value = "/AdminLanguage")
+public class AdminLanguage extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        String language = request.getParameter("language");
+        request.getSession().setAttribute("language",language);
+        response.sendRedirect("/AdminHomePage");
     }
 
     @Override

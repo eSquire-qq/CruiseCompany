@@ -19,51 +19,35 @@ public class CatalogueSorting {
 
     private static final CruiseDAO cruiseDAO = CruiseDAO.getCruiseInstance();
 
-    public static List<Cruise> orderByPrice(HttpServletRequest request){
+    public static List<Cruise> orderByPrice(){
 
         List<Cruise> cruisesByPrice;
+        cruisesByPrice = cruiseDAO.readAllOrderByPrice();
 
-        if(request.getParameter("price") != null){
-            cruisesByPrice = cruiseDAO.readAllOrderByPrice();
-        }else{
-            cruisesByPrice = cruiseDAO.readAll();
-        }
         return cruisesByPrice;
     }
 
-    public static List<Cruise> orderByName(HttpServletRequest request){
+    public static List<Cruise> orderByName(){
 
         List<Cruise> cruisesByName;
+        cruisesByName = cruiseDAO.readAllOrderByName();
 
-        if(request.getParameter("name") != null){
-            cruisesByName = cruiseDAO.readAllOrderByName();
-        }else{
-            cruisesByName = cruiseDAO.readAll();
-        }
         return cruisesByName;
     }
 
-    public static List<Cruise> orderByDate(HttpServletRequest request){
+    public static List<Cruise> orderByDate(){
 
         List<Cruise> cruisesByDate;
+        cruisesByDate = cruiseDAO.readAllOrderByDate();
 
-        if(request.getParameter("date") != null){
-            cruisesByDate = cruiseDAO.readAllOrderByDate();
-        }else{
-            cruisesByDate = cruiseDAO.readAll();
-        }
         return cruisesByDate;
     }
 
-    public static List<Cruise> clearSort(HttpServletRequest request){
+    public static List<Cruise> clearSort(){
 
         List<Cruise> cruises;
+        cruises = cruiseDAO.readAll();
 
-        if(request.getParameter("") != null){
-            cruises = cruiseDAO.readAll();
-        }else{
-            cruises = cruiseDAO.readAll();
-        }
         return cruises;
     }
 }

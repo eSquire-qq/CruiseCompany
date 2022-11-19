@@ -47,8 +47,8 @@
         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="AdminCatalog"><fmt:message key="label.catalogADMIN"/></a></li>
         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="Orders"><fmt:message key="label.titleADMINOrder"/></a></li>
         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="AddNewCruise"><fmt:message key="label.addCruiseButton"/></a></li>
-        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="?language=uk"><fmt:setLocale value="uk"/>UK</a></li>
-        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="?language=en"><fmt:setLocale value="en"/>EN</a></li>
+        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="AdminLanguage?language=uk"><fmt:setLocale value="uk"/>UK</a></li>
+        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="AdminLanguage?language=en"><fmt:setLocale value="en"/>EN</a></li>
       </ul>
     </div>
   </div>

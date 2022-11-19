@@ -64,12 +64,14 @@
     </div>
 </header>
 
+<center>
 <form>
-    <a href="Catalog?price" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;"><fmt:message key="label.sortPrice"/></a>
-    <a href="Catalog?name" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;"><fmt:message key="label.sortName"/></a>
-    <a href="Catalog?date" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;"><fmt:message key="label.sortDate"/></a>
-    <a href="Catalog?" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;"><fmt:message key="label.clearSort"/></a>
+    <a href="Catalog?price=price" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;"><fmt:message key="label.sortPrice"/></a>
+    <a href="Catalog?name=name" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;"><fmt:message key="label.sortName"/></a>
+    <a href="Catalog?date=date" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;"><fmt:message key="label.sortDate"/></a>
+    <a href="Catalog?catalog=catalog" class="btn btn-primary" style="background-color: #448b85; border-color: #448b85;"><fmt:message key="label.clearSort"/></a>
 </form>
+</center>
 <!-- Main Content-->
 <c:forEach var="name" items="${cruise}">
 <div class="container px-4 px-lg-5">

@@ -1,15 +1,21 @@
 package com.example.cruisecompany.servlets.user;
 
+import com.example.cruisecompany.dao.CruiseDAO;
 import com.example.cruisecompany.dao.UserDAO;
 import com.example.cruisecompany.entity.User;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
 @WebServlet(name = "AddBalance", value = "/AddBalance")
 public class AddBalance extends HttpServlet {
+
+    private static final Logger logger = LoggerFactory.getLogger(CruiseDAO.class);
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/add/AddBalance.jsp");
